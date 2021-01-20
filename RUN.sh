@@ -58,17 +58,6 @@ echo -e "\e[38;5;77m                             {100%}\e[0m"
 sudo apt-get update 
 sudo apt-get upgrade -y
 reset
-echo -e "\e[38;5;77m    ---------------------------------------------\e[0m"
-echo -e "\e[38;5;77m    |    ____             ____                  |\e[0m"
-echo -e "\e[38;5;77m    |   |  _ \  _____   _|  _ \ _ __ _____  __  |\e[0m"
-echo -e "\e[38;5;77m    |   | | | |/ _ \ \ / / |_) | '__/ _ \ \/ /  |\e[0m"
-echo -e "\e[38;5;77m    |   | |_| |  __/\ V /|  __/| | | (_) >  <   |\e[0m"
-echo -e "\e[38;5;77m    |   |____/ \___| \_/ |_|   |_|  \___/_/\_\  |\e[0m"
-echo -e "\e[38;5;77m    |-------------------------------------------|\e[0m"
-echo -e "\e[38;5;77m    |This Source Was Developed By (ABS) @IQ_ABS.|\e[0m"
-echo -e "\e[38;5;77m    |  This Is The Source Channel @Dev_Prox .   |\e[0m"
-echo -e "\e[38;5;77m    |               - DevProx -                 |\e[0m"
-echo -e "\e[38;5;77m    ---------------------------------------------\e[0m"
 cd ..
 rm -rf luarocks*
 ./tg -s SAKURA.lua
