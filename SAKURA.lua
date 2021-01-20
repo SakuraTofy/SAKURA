@@ -1111,7 +1111,7 @@ return false
 end end
 if text == '~ تعيين كلايش الاوامر ~' then 
 if Sudo(msg) then 
-local Sudo_Welcome = '⧉︙اهلا بك مجددا عزيزي المطور \n⧉︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ديف ساكورا فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '⧉︙اهلا بك مجددا عزيزي المطور \n⧉︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ساكورا فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'حذف كليشة الايدي','تعيين كليشة الايدي'},
 {'تعيين امر الاوامر'},
@@ -9127,9 +9127,9 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
 end
 if Sudo(msg) then
 if text == "تحديث السورس" or text == "تحديث سورس" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙جاري تحديث سورس ديف ساكورا', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙جاري تحديث سورس ساكورا', 1, 'md') 
 os.execute('rm -rf SAKURA.lua') 
-os.execute('wget https://raw.githubusercontent.com/iq0abs/SAKURA/master/SAKURA.lua') 
+os.execute('wget https://raw.githubusercontent.com/SakuraTofy/SAKURA/master/SAKURA.lua') 
 dofile('SAKURA.lua') 
 io.popen("rm -rf ~/.telegram-cli/data/audio/*")
 io.popen("rm -rf ~/.telegram-cli/data/document/*")
