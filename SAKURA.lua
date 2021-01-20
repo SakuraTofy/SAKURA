@@ -10,7 +10,7 @@ lgi = require('lgi')
 notify = lgi.require('Notify') 
 utf8 = require ('lua-utf8') 
 notify.init ("Telegram updates") 
-DevAbs = redis.connect('127.0.0.1', 6379) 
+DevSakura = redis.connect('127.0.0.1', 6379) 
 ServerSAKURA = io.popen("echo $SSH_CLIENT | awk '{ print $1}'"):read('*a') 
 local AutoSet = function() 
 if not DevSakura:get(ServerSAKURA.."IdSAKURA") then 
