@@ -312,7 +312,7 @@ function send(chat_id, reply_to_message_id, text)
 local TextParseMode = {ID = "TextParseModeMarkdown"}
 pcall(tdcli_function ({ID = "SendMessage",chat_id_ = chat_id,reply_to_message_id_ = reply_to_message_id,disable_notification_ = 1,from_background_ = 1,reply_markup_ = nil,input_message_content_ = {ID = "InputMessageText",text_ = text,disable_web_page_preview_ = 1,clear_draft_ = 0,entities_ = {},parse_mode_ = TextParseMode,},}, dl_cb, nil))
 end
-function SAKURAFiles(msg)
+function SakuraFiles(msg)
 for v in io.popen('ls Files'):lines() do
 if v:match(".lua$") then
 plugin = dofile("Files/"..v)
@@ -9264,7 +9264,7 @@ end
 send(msg.chat_id_, msg.id_,Files)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/iq0abs/SAKURAFiles/master/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/SakuraTofy/SakuraFiles/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -9296,7 +9296,7 @@ end
 if text and text:match("^(تعطيل ملف) (.*)(.lua)$") then
 local FileGet = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
 local FileName = FileGet[2]..'.lua'
-local GetJson, Res = https.request("https://raw.githubusercontent.com/iq0abs/SAKURAFiles/master/SAKURAFiles/"..FileName)
+local GetJson, Res = https.request("https://raw.githubusercontent.com/SakuraTofy/SakuraFiles/master/SakuraFiles/"..FileName)
 if Res == 200 then
 os.execute("rm -fr Files/"..FileName)
 send(msg.chat_id_, msg.id_,"\n⧉︙الملف ↫ *"..FileName.."*\n⧉︙تم تعطيله وحذفه من البوت بنجاح") 
@@ -9308,7 +9308,7 @@ end
 if text and text:match("^(تفعيل ملف) (.*)(.lua)$") then
 local FileGet = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
 local FileName = FileGet[2]..'.lua'
-local GetJson, Res = https.request("https://raw.githubusercontent.com/iq0abs/SAKURAFiles/master/SAKURAFiles/"..FileName)
+local GetJson, Res = https.request("https://raw.githubusercontent.com/SakuraTofy/SakuraFiles/master/SakuraFiles/"..FileName)
 if Res == 200 then
 local ChekAuto = io.open("Files/"..FileName,'w+')
 ChekAuto:write(GetJson)
@@ -9439,7 +9439,7 @@ echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙مدة تشغيل السيرف�
 ]]):read('*a'), 1, 'md')
 end
 end
-SAKURAFiles(msg)
+SakuraFiles(msg)
 elseif (data.ID == "UpdateMessageEdited") then
 local msg = data
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.message_id_)},function(extra, result, success)
