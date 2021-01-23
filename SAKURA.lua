@@ -2513,6 +2513,122 @@ end
 getUser(msg.sender_user_id_,get_warning)
 end end
 if Sudo(msg) then
+if text == 'تفعيل النسخه التلقائيه' or text == 'تفعيل جلب نسخه الكروبات' or text == 'تفعيل عمل نسخه للمجموعات' then   
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙تم تفعيل جلب نسخة الكروبات التلقائيه\n⧉︙سيتم ارسال نسخه تلقائيه للكروبات كل يوم الى خاص المطور الاساسي", 1, 'md')
+DevSakura:del(SAKURA.."Sakura:Lock:AutoFile")
+end
+if text == 'تعطيل النسخه التلقائيه' or text == 'تعطيل جلب نسخه الكروبات' or text == 'تعطيل عمل نسخه للمجموعات' then  
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙تم تعطيل جلب نسخة الكروبات التلقائيه", 1, 'md')
+DevSakura:set(SAKURA.."Sakura:Lock:AutoFile",true) 
+end 
+end
+if (text and not DevSakura:get(SAKURA.."Sakura:Lock:AutoFile")) then
+Time = DevSakura:get(SAKURA.."Sakura:AutoFile:Time")
+if Time then 
+if Time ~= os.date("%x") then 
+local list = DevSakura:smembers(SAKURA..'Sakura:Groups') 
+local BotName = (DevSakura:get(SAKURA.."Sakura:NameBot") or 'ساكورا')
+local GetJson = '{"BotId": '..SAKURA..',"BotName": "'..BotName..'","GroupsList":{'  
+for k,v in pairs(list) do 
+LinkGroups = DevSakura:get(SAKURA.."Sakura:Groups:Links"..v)
+Welcomes = DevSakura:get(SAKURA..'Sakura:Groups:Welcomes'..v) or ''
+AbsConstructors = DevSakura:smembers(SAKURA..'Sakura:AbsConstructor:'..v)
+Constructors = DevSakura:smembers(SAKURA..'Sakura:BasicConstructor:'..v)
+BasicConstructors = DevSakura:smembers(SAKURA..'Sakura:Constructor:'..v)
+Managers = DevSakura:smembers(SAKURA..'Sakura:Managers:'..v)
+Admis = DevSakura:smembers(SAKURA..'Sakura:Admins:'..v)
+Vips = DevSakura:smembers(SAKURA..'Sakura:VipMem:'..v)
+if k == 1 then
+GetJson = GetJson..'"'..v..'":{'
+else
+GetJson = GetJson..',"'..v..'":{'
+end
+if #Vips ~= 0 then 
+GetJson = GetJson..'"Vips":['
+for k,v in pairs(Vips) do
+if k == 1 then
+GetJson =  GetJson..'"'..v..'"'
+else
+GetJson =  GetJson..',"'..v..'"'
+end
+end   
+GetJson = GetJson..'],'
+end
+if #Admis ~= 0 then
+GetJson = GetJson..'"Admis":['
+for k,v in pairs(Admis) do
+if k == 1 then
+GetJson =  GetJson..'"'..v..'"'
+else
+GetJson =  GetJson..',"'..v..'"'
+end
+end   
+GetJson = GetJson..'],'
+end
+if #Managers ~= 0 then
+GetJson = GetJson..'"Managers":['
+for k,v in pairs(Managers) do
+if k == 1 then
+GetJson =  GetJson..'"'..v..'"'
+else
+GetJson =  GetJson..',"'..v..'"'
+end
+end   
+GetJson = GetJson..'],'
+end
+if #Constructors ~= 0 then
+GetJson = GetJson..'"Constructors":['
+for k,v in pairs(Constructors) do
+if k == 1 then
+GetJson =  GetJson..'"'..v..'"'
+else
+GetJson =  GetJson..',"'..v..'"'
+end
+end   
+GetJson = GetJson..'],'
+end
+if #BasicConstructors ~= 0 then
+GetJson = GetJson..'"BasicConstructors":['
+for k,v in pairs(BasicConstructors) do
+if k == 1 then
+GetJson =  GetJson..'"'..v..'"'
+else
+GetJson =  GetJson..',"'..v..'"'
+end
+end   
+GetJson = GetJson..'],'
+end
+if #AbsConstructors ~= 0 then
+GetJson = GetJson..'"AbsConstructors":['
+for k,v in pairs(AbsConstructors) do
+if k == 1 then
+GetJson =  GetJson..'"'..v..'"'
+else
+GetJson =  GetJson..',"'..v..'"'
+end
+end   
+GetJson = GetJson..'],'
+end
+if LinkGroups then
+GetJson = GetJson..'"LinkGroups":"'..LinkGroups..'",'
+end
+GetJson = GetJson..'"Welcomes":"'..Welcomes..'"}'
+end
+GetJson = GetJson..'}}'
+local File = io.open('./'..SAKURA..'.json', "w")
+File:write(GetJson)
+File:close()
+local abbas = 'https://api.telegram.org/bot' .. TokenBot .. '/sendDocument'
+local curl = 'curl "' .. abbas .. '" -F "chat_id='..DevId..'" -F "document=@'..SAKURA..'.json' .. '" -F "caption=⧉︙نسخه تلقائيه تحتوي على ↫ '..#list..' مجموعه"'
+io.popen(curl)
+io.popen('fm -fr '..SAKURA..'.json')
+DevSakura:set(SAKURA.."Sakura:AutoFile:Time",os.date("%x"))
+end
+else 
+DevSakura:set(SAKURA.."Sakura:AutoFile:Time",os.date("%x"))
+end
+end
+if Sudo(msg) then
 if text == 'جلب نسخه الكروبات' and ChCheck(msg) or text == 'جلب نسخه احتياطيه' and ChCheck(msg) then
 local list = DevSakura:smembers(SAKURA..'Sakura:Groups') 
 local BotName = (DevSakura:get(SAKURA.."Sakura:NameBot") or 'ساكورا')
@@ -2620,7 +2736,7 @@ tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonu
 end
 end
 if text and text:match("منو ضافني") then
-if not DevSakura:get(SAKURA..'Abs:Added:Me'..msg.chat_id_) then
+if not DevSakura:get(SAKURA..'Sakura:Added:Me'..msg.chat_id_) then
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da and da.status_.ID == "ChatMemberStatusCreator" then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙انت منشئ المجموعه', 1, 'md') 
@@ -2721,7 +2837,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙جلب رابط المجموعه معط
 end
 end
 if ChatType == 'sp' or ChatType == 'gp'  then
-if not DevSakura:get(SAKURA..'Abs:Lock:Reply'..msg.chat_id_) then
+if not DevSakura:get(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_) then
 if text == "انجب" or text == "نجب" or text == "انجبي" or text == "نجبي" or text == "انجبو" or text == "نجبو" then
 if SudoId(msg) then
 rd = 'مطوريي اغلط شكد متريد نورتنه ، ♥️💪🏿'
@@ -7389,7 +7505,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ردود البوت بالتاكيد م
 else
 local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تفعيل ردود البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
-DevSakura:del(SAKURA..'Abs:Lock:Reply'..msg.chat_id_)
+DevSakura:del(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_)
 end 
 end
 if text and (text == 'تعطيل ردود البوت' or text == 'تعطيل الردود') and ChCheck(msg) then
@@ -7398,7 +7514,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ردود البوت بالتاكيد م
 else
 local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تعطيل ردود البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
-DevSakura:set(SAKURA..'Abs:Lock:Reply'..msg.chat_id_,true)
+DevSakura:set(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_,true)
 end 
 end
 end
@@ -7662,12 +7778,12 @@ absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(
 DevSakura:del(SAKURA..'Sakura:LockSettings'..msg.chat_id_) 
 end
 if text == 'تفعيل ضافني' and Manager(msg) then 
-DevSakura:del(SAKURA..'Abs:Added:Me'..msg.chat_id_) 
+DevSakura:del(SAKURA..'Sakura:Added:Me'..msg.chat_id_) 
 local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⧉︙تم تفعيل منو ضافني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 end
 if text == 'تعطيل ضافني' and Manager(msg) then 
-DevSakura:set(SAKURA..'Abs:Added:Me'..msg.chat_id_,true) 
+DevSakura:set(SAKURA..'Sakura:Added:Me'..msg.chat_id_,true) 
 local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⧉︙تم تعطيل منو ضافني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 end
