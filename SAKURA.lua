@@ -6127,7 +6127,7 @@ end
 end 
 if ChatType == 'sp' or ChatType == 'gp'  then
 if Admin(msg) then
-if text and text:match("^قفل (.*)$") and ChCheck(msg) then
+if text and text:match("^قفل (.*)$") then
 local lockptf = {string.match(text, "^(قفل) (.*)$")}
 if lockptf[2] == "التعديل" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
@@ -6673,7 +6673,7 @@ end end end
 end
 end
 if Admin(msg) then
-if text and text:match("^قفل (.*)$") and ChCheck(msg) then
+if text and text:match("^قفل (.*)$") then
 local LockText = {string.match(text, "^(قفل) (.*)$")}
 if LockText[2] == "الدردشه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Text'..msg.chat_id_) then
@@ -6876,7 +6876,7 @@ end
 end
 end
 if Admin(msg) then
-if text and text:match("^فتح (.*)$") and ChCheck(msg) then
+if text and text:match("^فتح (.*)$") then
 local UnLockText = {string.match(text, "^(فتح) (.*)$")}
 if UnLockText[2] == "الدردشه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Text'..msg.chat_id_) then
