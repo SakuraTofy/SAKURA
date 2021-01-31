@@ -291,14 +291,14 @@ end
 function AddFile(msg,chat,ID_FILE,File_Name)
 if File_Name:match('.json') then
 if File_Name:lower():match('(%d+)') ~= SAKURA:lower() then 
-send(chat,msg.id_,"⧉︙عذرا هذا الملف ليس تابع لهذا البوت")   
+send(chat,msg.id_,"⌔∮عذرا هذا الملف ليس تابع لهذا البوت")   
 return false 
 end
-send(chat,msg.id_,"⧉︙جاري رفع الملف ... .")
+send(chat,msg.id_,"⌔∮جاري رفع الملف ... .")
 local File = json:decode(https.request('https://api.telegram.org/bot' .. TokenBot .. '/getfile?file_id='..ID_FILE) ) 
 download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'..File.result.file_path, ''..File_Name) 
 else
-send(chat,msg.id_,"⧉︙عذرا الملف ليس بصيغة ↫ Json يرجى رفع الملف الصحيح")
+send(chat,msg.id_,"⌔∮عذرا الملف ليس بصيغة ↫ Json يرجى رفع الملف الصحيح")
 end
 local info_file = io.open('./'..SAKURA..'.json', "r"):read('*a')
 local JsonInfo = JSON.decode(info_file)
@@ -361,7 +361,7 @@ print('( تم وضع ترحيب المجموعات )')
 end
 end
 end
-send(chat,msg.id_,"⧉︙تم رفع النسخه بنجاح \n⧉︙تم تفعيل جميع المجموعات \n⧉︙تم استرجاع مشرفين المجموعات \n⧉︙تم استرجاع اوامر القفل والفتح في جميع مجموعات البوت ")
+send(chat,msg.id_,"⌔∮تم رفع النسخه بنجاح \n⌔∮تم تفعيل جميع المجموعات \n⌔∮تم استرجاع مشرفين المجموعات \n⌔∮تم استرجاع اوامر القفل والفتح في جميع مجموعات البوت ")
 end
 function resolve_username(username,cb)
 tdcli_function ({
@@ -545,15 +545,15 @@ for gmatch in string.gmatch(dp.first_name_, "[^%s]+") do
 dp.first_name_ = gmatch
 end
 if status == "reply" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙العضو ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮العضو ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 if status == "ReplyAdd" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙بواسطة ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮بواسطة ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙الحساب محذوف قم بالتاكد واعد المحاوله", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮الحساب محذوف قم بالتاكد واعد المحاوله", 1, 'md')
 end
 end,nil)   
 end
@@ -639,7 +639,7 @@ if DevSakura:get(SAKURA..'Sakura:textch:user') then
 local textchuser = DevSakura:get(SAKURA..'Sakura:textch:user')
 send(msg.chat_id_,msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_,msg.id_,"⧉︙عليك الاشتراك في قناة البوت \n⧉︙قناة البوت ↫ ["..DevSakura:get(SAKURA..'DevAbs3').."]")
+send(msg.chat_id_,msg.id_,"⌔∮عليك الاشتراك في قناة البوت \n⌔∮قناة البوت ↫ ["..DevSakura:get(SAKURA..'DevAbs3').."]")
 end
 elseif data.ok then
 return var
@@ -659,25 +659,25 @@ if DataText == '/delyes' and DevSakura:get(SAKURA..'yes'..data.sender_user_id_) 
 DevSakura:del(SAKURA..'yes'..data.sender_user_id_, 'delyes')
 DevSakura:del(SAKURA..'no'..data.sender_user_id_, 'delno')
 if RankChecking(data.sender_user_id_, data.chat_id_) then
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙لا استطيع طرد ↫ "..IdRank(data.sender_user_id_, data.chat_id_)) 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮لا استطيع طرد ↫ "..IdRank(data.sender_user_id_, data.chat_id_)) 
 return false
 end
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=data.chat_id_,user_id_=data.sender_user_id_,status_={ID="ChatMemberStatusKicked"},},function(arg,da) 
 if (da and da.code_ and da.code_ == 400 and da.message_ == "CHAT_ADMIN_REQUIRED") then 
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if (da and da.code_ and da.code_ == 3) then 
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙البوت ليس ادمن يرجى ترقيتي !") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮البوت ليس ادمن يرجى ترقيتي !") 
 return false  
 end
 if da and da.code_ and da.code_ == 400 and da.message_ == "USER_ADMIN_INVALID" then 
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙لا استطيع طرد مشرفين المجموعه") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮لا استطيع طرد مشرفين المجموعه") 
 return false  
 end
 if da and da.ID and da.ID == "Ok" then
 ChatKick(data.chat_id_, data.sender_user_id_)
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙تم طردك من المجموعه") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮تم طردك من المجموعه") 
 return false
 end
 end,nil)  
@@ -685,7 +685,7 @@ end
 if DataText == '/delno' and DevSakura:get(SAKURA..'no'..data.sender_user_id_) == 'delno' then
 DevSakura:del(SAKURA..'yes'..data.sender_user_id_, 'delyes')
 DevSakura:del(SAKURA..'no'..data.sender_user_id_, 'delno')
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙تم الغاء امر اطردني") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮تم الغاء امر اطردني") 
 end
 if DataText == '/yesdel' and DevSakura:get(SAKURA..'yesdel'..data.sender_user_id_) == 'delyes' then
 DevSakura:del(SAKURA..'yesdel'..data.sender_user_id_, 'delyes')
@@ -709,19 +709,19 @@ DevSakura:srem(SAKURA..'Sakura:Admins:'..data.chat_id_,data.sender_user_id_)
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..data.chat_id_,data.sender_user_id_)
 DevSakura:srem(SAKURA..'Sakura:Cleaner:'..data.chat_id_,data.sender_user_id_)
 DevSakura:srem(SAKURA..'User:Donky:'..data.chat_id_,data.sender_user_id_)
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙تم تنزيلك من ↫ ⤈\n~ ( "..constructor..''..Managers..''..admins..''..vipmem..''..cleaner..''..donky.." ) ~ \n") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮تم تنزيلك من ↫ ⤈\n~ ( "..constructor..''..Managers..''..admins..''..vipmem..''..cleaner..''..donky.." ) ~ \n") 
 else 
 if IdRank(data.sender_user_id_, data.chat_id_) == 'العضو' then
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙ليس لديك رتبه في البوت") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮ليس لديك رتبه في البوت") 
 else 
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙لا استطيع تنزيل ↫ "..IdRank(data.sender_user_id_, data.chat_id_)) 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮لا استطيع تنزيل ↫ "..IdRank(data.sender_user_id_, data.chat_id_)) 
 end
 end
 end
 if DataText == '/nodel' and DevSakura:get(SAKURA..'nodel'..data.sender_user_id_) == 'delno' then
 DevSakura:del(SAKURA..'yesdel'..data.sender_user_id_, 'delyes')
 DevSakura:del(SAKURA..'nodel'..data.sender_user_id_, 'delno')
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙تم الغاء امر نزلني") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮تم الغاء امر نزلني") 
 end
 if DataText == '/YesRolet' and DevSakura:get(SAKURA.."Sakura:WittingStartRolet"..data.chat_id_..data.sender_user_id_) then
 local list = DevSakura:smembers(SAKURA..'Sakura:ListRolet'..data.chat_id_) 
@@ -731,18 +731,18 @@ DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..data.chat_id_..dp.id_, 5)
 end,nil) 
 DevSakura:del(SAKURA..'Sakura:ListRolet'..data.chat_id_) 
 DevSakura:del(SAKURA.."Sakura:WittingStartRolet"..data.chat_id_..data.sender_user_id_)
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙*صاحب الحظ* ↫ ["..UserName.."]\n⧉︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*")
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮*صاحب الحظ* ↫ ["..UserName.."]\n⌔∮*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*")
 end
 if DataText == '/NoRolet' then
 DevSakura:del(SAKURA..'Sakura:ListRolet'..data.chat_id_) 
 DevSakura:del(SAKURA.."Sakura:NumRolet"..data.chat_id_..data.sender_user_id_) 
 DevSakura:del(SAKURA.."Sakura:WittingStartRolet"..data.chat_id_..data.sender_user_id_)
-EditMsg(Chat_Id2, Msg_Id2, "⧉︙تم الغاء اللعبه لاعادة اللعب ارسل الالعاب") 
+EditMsg(Chat_Id2, Msg_Id2, "⌔∮تم الغاء اللعبه لاعادة اللعب ارسل الالعاب") 
 end
 if DataText == '/ListRolet' then
 local list = DevSakura:smembers(SAKURA..'Sakura:ListRolet'..data.chat_id_) 
-local Text = '⧉︙قائمة الاعبين ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n' 
-local Textt = '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙تم اكتمال العدد الكلي هل انت مستعد ؟'
+local Text = '⌔∮قائمة الاعبين ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n' 
+local Textt = '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮تم اكتمال العدد الكلي هل انت مستعد ؟'
 for k, v in pairs(list) do 
 Text = Text..k.."~ : [" ..v.."]\n"  
 end 
@@ -762,9 +762,9 @@ if NewCmmd then
 DevSakura:del(SAKURA.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text)
 DevSakura:del(SAKURA.."Set:Cmd:Group:New"..msg.chat_id_)
 DevSakura:srem(SAKURA.."List:Cmd:Group:New"..msg.chat_id_,text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف الامر من المجموعه", 1, 'html')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف الامر من المجموعه", 1, 'html')  
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لايوجد امر بهذا الاسم", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لايوجد امر بهذا الاسم", 1, 'html')
 end
 DevSakura:del(SAKURA.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_)
 return false
@@ -780,7 +780,7 @@ end
 end
 if text and DevSakura:get(SAKURA.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_) == "true" then
 DevSakura:set(SAKURA.."Set:Cmd:Group:New"..msg.chat_id_,text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل الامر الجديد", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل الامر الجديد", 1, 'html')
 DevSakura:del(SAKURA.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_)
 DevSakura:set(SAKURA.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_,"true1") 
 return false
@@ -789,14 +789,14 @@ if text and DevSakura:get(SAKURA.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sende
 local NewCmd = DevSakura:get(SAKURA.."Set:Cmd:Group:New"..msg.chat_id_)
 DevSakura:set(SAKURA.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text,NewCmd)
 DevSakura:sadd(SAKURA.."List:Cmd:Group:New"..msg.chat_id_,text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ الامر", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ الامر", 1, 'html')
 DevSakura:del(SAKURA.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_)
 return false
 end
 if Constructor(msg) then
 if text == "الاوامر المضافه" and ChCheck(msg) then
 local list = DevSakura:smembers(SAKURA.."List:Cmd:Group:New"..msg.chat_id_.."") 
-t = "⧉︙قائمة الاوامر المضافه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "⌔∮قائمة الاوامر المضافه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 Cmds = DevSakura:get(SAKURA.."Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
 if Cmds then 
@@ -806,7 +806,7 @@ t = t..""..k.."~ ("..v..") \n"
 end
 end
 if #list == 0 then
-t = "⧉︙لايوجد اوامر مضافه في المجموعه"
+t = "⌔∮لايوجد اوامر مضافه في المجموعه"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
@@ -816,26 +816,26 @@ for k,v in pairs(list) do
 DevSakura:del(SAKURA.."Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
 DevSakura:del(SAKURA.."List:Cmd:Group:New"..msg.chat_id_)
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف الاوامر المضافه في المجموعه", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف الاوامر المضافه في المجموعه", 1, 'html')
 end
 if text == "اضف امر" or text == "اضافة امر" or text == "اضافه امر" and ChCheck(msg) then
 DevSakura:set(SAKURA.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل الامر القديم", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل الامر القديم", 1, 'html')
 return false
 end
 if text == "حذف امر" or text == "مسح امر" and ChCheck(msg) then 
 DevSakura:set(SAKURA.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل الامر الذي قمت باضافته يدويا", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل الامر الذي قمت باضافته يدويا", 1, 'html')
 return false
 end
 end
 if text == "الصلاحيات" or text == "صلاحيات" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA.."Coomds"..msg.chat_id_)
 if #list == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لاتوجد صلاحيات مضافه", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لاتوجد صلاحيات مضافه", 1, 'html')
 return false
 end
-t = "⧉︙قائمة الصلاحيات المضافه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "⌔∮قائمة الصلاحيات المضافه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 var = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..v..msg.chat_id_)
 if var then
@@ -853,7 +853,7 @@ for k,v in pairs(list) do
 DevSakura:del(SAKURA.."Comd:New:rt:Sakura:"..v..msg.chat_id_)
 DevSakura:del(SAKURA.."Coomds"..msg.chat_id_)
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف الصلاحيات المضافه", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف الصلاحيات المضافه", 1, 'html')
 end
 end
 if text and text:match("^اضف صلاحيه (.*)$") and ChCheck(msg) then 
@@ -861,41 +861,41 @@ ComdNew = text:match("^اضف صلاحيه (.*)$")
 DevSakura:set(SAKURA.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_,ComdNew)  
 DevSakura:sadd(SAKURA.."Coomds"..msg.chat_id_,ComdNew)  
 DevSakura:setex(SAKURA.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_,200,true)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل نوع الصلاحيه \n{ عضو • مميز  • ادمن  • مدير }\n⧉︙ارسل الغاء لالغاء الامر ", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل نوع الصلاحيه \n{ عضو • مميز  • ادمن  • مدير }\n⌔∮ارسل الغاء لالغاء الامر ", 1, 'html')
 end
 if text and text:match("^حذف صلاحيه (.*)$") and ChCheck(msg) or text and text:match("^مسح صلاحيه (.*)$") and ChCheck(msg) then 
 ComdNew = text:match("^حذف صلاحيه (.*)$") or text:match("^مسح صلاحيه (.*)$")
 DevSakura:del(SAKURA.."Comd:New:rt:Sakura:"..ComdNew..msg.chat_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف الصلاحيه", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف الصلاحيه", 1, 'html')
 end
 if DevSakura:get(SAKURA.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم الغاء الامر", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم الغاء الامر", 1, 'html')
 DevSakura:del(SAKURA.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_) 
 return false  
 end 
 if text == "مدير" then
 if not Constructor(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تستطيع اضافة صلاحية ( عضو • مميز  • ادمن )\n⧉︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تستطيع اضافة صلاحية ( عضو • مميز  • ادمن )\n⌔∮ارسال نوع الصلاحيه مره اخرى", 1, 'html')
 return false
 end
 end
 if text == "ادمن" then
 if not Manager(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تستطيع اضافة صلاحية ( عضو • مميز )\n⧉︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تستطيع اضافة صلاحية ( عضو • مميز )\n⌔∮ارسال نوع الصلاحيه مره اخرى", 1, 'html')
 return false
 end
 end
 if text == "مميز" then
 if not Admin(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تستطيع اضافة صلاحية ( عضو )\n⧉︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تستطيع اضافة صلاحية ( عضو )\n⌔∮ارسال نوع الصلاحيه مره اخرى", 1, 'html')
 return false
 end
 end
 if text == "مدير" or text == "ادمن" or text == "مميز" or text == "عضو" then
 local textn = DevSakura:get(SAKURA.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_)  
 DevSakura:set(SAKURA.."Comd:New:rt:Sakura:"..textn..msg.chat_id_,text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم اضافة الصلاحيه", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم اضافة الصلاحيه", 1, 'html')
 DevSakura:del(SAKURA.."Comd:New"..msg.chat_id_..""..msg.sender_user_id_) 
 return false  
 end 
@@ -908,19 +908,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local mrabs = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..DEV_ABBAS..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⧉︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS) 
 DevSakura:sadd(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⧉︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)
 DevSakura:sadd(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⧉︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)  
 DevSakura:sadd(SAKURA..'Sakura:Managers:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⧉︙تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -934,19 +934,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local mrabs = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..DEV_ABBAS..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⧉︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.sender_user_id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⧉︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.sender_user_id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⧉︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:Managers:'..msg.chat_id_, result.sender_user_id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⧉︙تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -960,22 +960,22 @@ function py_username(extra, result, success)
 if result.id_ then
 local mrabs = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..text1[2]..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⧉︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:sadd(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.id_)
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⧉︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:sadd(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.id_)
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⧉︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:sadd(SAKURA..'Sakura:Managers:'..msg.chat_id_, result.id_)
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⧉︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*المعرف غير صحيح*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*المعرف غير صحيح*", 1, 'md')
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text1[3]},py_username,nil) 
@@ -988,22 +988,22 @@ function py_username(extra, result, success)
 if result.id_ then
 local mrabs = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..text1[2]..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⧉︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⧉︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⧉︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:Managers:'..msg.chat_id_, result.id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⧉︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*المعرف غير صحيح*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*المعرف غير صحيح*", 1, 'md')
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text1[3]},py_username,nil) 
@@ -1027,7 +1027,7 @@ end
 if ChatType == 'pv' then 
 if text == '/start' or text == 'رجوع ،🔙‘' then 
 if Sudo(msg) then 
-local Sudo_Welcome = '⧉︙مرحبا عزيزي المطور \n⧉︙انت المطور الاساسي هنا \n⧉︙اليك ازرار سورس ساكورا \n⧉︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '⌔∮مرحبا عزيزي المطور \n⌔∮انت المطور الاساسي هنا \n⌔∮اليك ازرار سورس ساكورا \n⌔∮تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'وضع اسم البوت'},
 {'↫ المطورين ⧉','↫ الاحصائيات ⧉'},
@@ -1050,7 +1050,7 @@ return false
 end end
 if text == '~ تعيين كلايش الاوامر ~' then 
 if Sudo(msg) then 
-local Sudo_Welcome = '⧉︙اهلا بك مجددا عزيزي المطور \n⧉︙اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ساكورا فقط اضغط على الامر الذي تريد تنفيذه'
+local Sudo_Welcome = '⌔∮اهلا بك مجددا عزيزي المطور \n⌔∮اليك الازرار الخاصه بتعديل وتغيير كلايش سورس ساكورا فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {
 {'حذف كليشة الايدي','تعيين كليشة الايدي'},
 {'تعيين امر الاوامر'},
@@ -1070,7 +1070,7 @@ local start = DevSakura:get(SAKURA.."Sakura:Start:Bot")
 if start then 
 Start_Source = start
 else
-Start_Source = "⧉︙مرحبا انا بوت اسمي "..NameBot.."\n⧉︙اختصاصي حماية المجموعات\n⧉︙من التفليش والسبام والخخ .. . ،\n⧉︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر ↫ تفعيل\n⧉︙سيتم رفع الادمنيه والمنشئ تلقائيا"
+Start_Source = "⌔∮مرحبا انا بوت اسمي "..NameBot.."\n⌔∮اختصاصي حماية المجموعات\n⌔∮من التفليش والسبام والخخ .. . ،\n⌔∮تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر ↫ تفعيل\n⌔∮سيتم رفع الادمنيه والمنشئ تلقائيا"
 end 
 SendInline(msg.chat_id_,Start_Source,nil,inline)
 end,nil)
@@ -1080,12 +1080,12 @@ return false
 end 
 if not Sudo(msg) and not DevSakura:sismember(SAKURA..'Sakura:Ban:Pv',msg.sender_user_id_) and not DevSakura:get(SAKURA..'Sakura:Texting:Pv') then
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,chat) 
-Dev_Abs(msg.sender_user_id_, msg.id_, 1, '⧉︙تم ارسال رسالتك الى [المطور](t.me/'..(chat.username_ or "SAKURAV15")..')', 1, 'md') 
+Dev_Abs(msg.sender_user_id_, msg.id_, 1, '⌔∮تم ارسال رسالتك الى [المطور](t.me/'..(chat.username_ or "SAKURAV15")..')', 1, 'md') 
 tdcli_function({ID="ForwardMessages",chat_id_=DevId,from_chat_id_= msg.sender_user_id_,message_ids_={[0]=msg.id_},disable_notification_=1,from_background_=1},function(arg,data) 
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(arg,dp) 
 if data and data.messages_ and data.messages_[0] ~= false and data.ID ~= "Error" then
 if data and data.messages_ and data.messages_[0].content_.sticker_ then
-SendText(DevId,'⧉︙تم ارسال الملصق من ↫ ⤈\n['..string.sub(dp.first_name_,0, 40)..'](tg://user?id='..dp.id_..')',0,'md') 
+SendText(DevId,'⌔∮تم ارسال الملصق من ↫ ⤈\n['..string.sub(dp.first_name_,0, 40)..'](tg://user?id='..dp.id_..')',0,'md') 
 return false
 end;end;end,nil);end,nil);end,nil);end
 if Sudo(msg) and msg.reply_to_message_id_ ~= 0  then    
@@ -1095,13 +1095,13 @@ id_user = result.forward_info_.sender_user_id_
 end     
 tdcli_function ({ID = "GetUser",user_id_ = id_user},function(arg,data) 
 if text == 'حظر' or text == 'حضر' then
-local Text = '⧉︙العضو ↫ ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n⧉︙تم حظره من التواصل'
+local Text = '⌔∮العضو ↫ ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n⌔∮تم حظره من التواصل'
 SendText(DevId,Text,msg.id_/2097152/0.5,'md') 
 DevSakura:sadd(SAKURA..'Sakura:Ban:Pv',data.id_)  
 return false  
 end 
 if text == 'الغاء الحظر' or text == 'الغاء حظر' then
-local Text = '⧉︙العضو ↫ ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n⧉︙تم الغاء حظره من التواصل'
+local Text = '⌔∮العضو ↫ ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n⌔∮تم الغاء حظره من التواصل'
 SendText(DevId,Text,msg.id_/2097152/0.5,'md') 
 DevSakura:srem(SAKURA..'Sakura:Ban:Pv',data.id_)  
 return false  
@@ -1109,24 +1109,24 @@ end
 tdcli_function({ID='GetChat',chat_id_ = id_user},function(arg,dataq)
 tdcli_function ({ ID = "SendChatAction",chat_id_ = id_user, action_ = {  ID = "SendMessageTypingAction", progress_ = 100} },function(arg,dp) 
 if dp.code_ == 400 or dp.code_ == 5 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو قام بحظر البوت لا تستطيع ارسال الرسائل له', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو قام بحظر البوت لا تستطيع ارسال الرسائل له', 1, 'md')
 return false  
 end 
 if text then
 Dev_Abs(id_user, 0, 1, text, 1, "md")  
-Text = '⧉︙تم ارسال الرساله الى ↫ ⤈'
+Text = '⌔∮تم ارسال الرساله الى ↫ ⤈'
 elseif msg.content_.ID == 'MessageSticker' then    
 sendSticker(id_user, msg.id_, 0, 1,nil, msg.content_.sticker_.sticker_.persistent_id_)   
-Text = '⧉︙تم ارسال الملصق الى ↫ ⤈'
+Text = '⌔∮تم ارسال الملصق الى ↫ ⤈'
 elseif msg.content_.ID == 'MessagePhoto' then    
 sendPhoto(id_user, msg.id_, 0, 1,nil, msg.content_.photo_.sizes_[0].photo_.persistent_id_,(msg.content_.caption_ or ''))    
-Text = '⧉︙تم ارسال الصوره الى ↫ ⤈'
+Text = '⌔∮تم ارسال الصوره الى ↫ ⤈'
 elseif msg.content_.ID == 'MessageAnimation' then    
 sendDocument(id_user, msg.id_, 0, 1,nil, msg.content_.animation_.animation_.persistent_id_)    
-Text = '⧉︙تم ارسال المتحركه الى ↫ ⤈'
+Text = '⌔∮تم ارسال المتحركه الى ↫ ⤈'
 elseif msg.content_.ID == 'MessageVoice' then    
 sendVoice(id_user, msg.id_, 0, 1,nil, msg.content_.voice_.voice_.persistent_id_)    
-Text = '⧉︙تم ارسال البصمه الى ↫ ⤈'
+Text = '⌔∮تم ارسال البصمه الى ↫ ⤈'
 end     
 SendText(DevId, Text..'\n'..'['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')',0,'md') 
 end,nil);
@@ -1137,42 +1137,42 @@ end
 end 
 if text and DevSakura:get(SAKURA..'Sakura:Start:Bots') then
 if text == 'الغاء' then   
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء حفظ كليشة الستارت', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء حفظ كليشة الستارت', 1, 'md')
 DevSakura:del(SAKURA..'Sakura:Start:Bots') 
 return false
 end
 DevSakura:set(SAKURA.."Sakura:Start:Bot",text)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ كليشة الستارت', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ كليشة الستارت', 1, 'md')
 DevSakura:del(SAKURA..'Sakura:Start:Bots') 
 return false
 end
 if Sudo(msg) then
 if text == 'تعيين رد الخاص' or text == 'ضع كليشه ستارت' or text == '↫ تعيين رد الخاص ⧉' then 
 DevSakura:set(SAKURA..'Sakura:Start:Bots',true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ارسل لي كليشة الستارت الان', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل لي كليشة الستارت الان', 1, 'md')
 return false
 end
 if text == 'حذف رد الخاص' or text == 'حذف كليشه ستارت' or text == '↫ حذف رد الخاص ⧉' then 
 DevSakura:del(SAKURA..'Start:Bot') 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حذف كليشة الستارت بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حذف كليشة الستارت بنجاح', 1, 'md')
 end
 if text == 'جلب رد الخاص' then  
 local start = DevSakura:get(SAKURA.."Sakura:Start:Bot")
 if start then 
 Start_Source = start
 else
-Start_Source = "⧉︙مرحبا انا بوت اسمي "..NameBot.."\n⧉︙اختصاصي حماية المجموعات\n⧉︙من التفليش والسبام والخخ .. . ،\n⧉︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر ↫ تفعيل\n⧉︙سيتم رفع الادمنيه والمنشئ تلقائيا"
+Start_Source = "⌔∮مرحبا انا بوت اسمي "..NameBot.."\n⌔∮اختصاصي حماية المجموعات\n⌔∮من التفليش والسبام والخخ .. . ،\n⌔∮تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر ↫ تفعيل\n⌔∮سيتم رفع الادمنيه والمنشئ تلقائيا"
 end 
 Dev_Abs(msg.chat_id_, msg.id_, 1, Start_Source, 1, 'md')
 return false
 end
 if text == 'تفعيل التواصل' or text == '↫ تفعيل التواصل ⧉' then   
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل التواصل بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل التواصل بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Texting:Pv') 
 end
 if text == 'تعطيل التواصل' or text == '↫ تعطيل التواصل ⧉' then  
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل التواصل بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل التواصل بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Texting:Pv',true) 
 end
@@ -1264,7 +1264,7 @@ local NameChat = NameChat:gsub("`","")
 local NameChat = NameChat:gsub("*","") 
 local NameChat = NameChat:gsub("{","") 
 local NameChat = NameChat:gsub("}","") 
-SendText(DevId,"⧉︙تم طرد البوت من المجموعه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙بواسطة ↫ "..Name.."\n⧉︙اسم المجموعه ↫ ["..NameChat.."]\n⧉︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙الوقت ↫ "..os.date("%I:%M%p").."\n⧉︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"⌔∮تم طرد البوت من المجموعه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮بواسطة ↫ "..Name.."\n⌔∮اسم المجموعه ↫ ["..NameChat.."]\n⌔∮ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮الوقت ↫ "..os.date("%I:%M%p").."\n⌔∮التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end,nil)
 end,nil)
 end
@@ -1281,15 +1281,15 @@ text = msg.content_.text_
 if text ==('تفعيل') and not SudoBot(msg) and ChCheck(msg) then
 if not DevSakura:get(SAKURA..'Sakura:Lock:FreeBot'..SAKURA) then
 if ChatType == 'pv' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لاتستطيع تفعيلي هنا يرجى اضافتي في مجموعه اولا', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لاتستطيع تفعيلي هنا يرجى اضافتي في مجموعه اولا', 1, 'md')
 return false
 end
 if ChatType ~= 'sp' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المجموعه عاديه وليست خارقه لا تستطيع تفعيلي يرجى ان تضع سجل رسائل المجموعه ضاهر وليس مخفي ومن بعدها يمكنك رفعي ادمن ثم تفعيلي', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المجموعه عاديه وليست خارقه لا تستطيع تفعيلي يرجى ان تضع سجل رسائل المجموعه ضاهر وليس مخفي ومن بعدها يمكنك رفعي ادمن ثم تفعيلي', 1, 'md')
 return false
 end
 if msg.can_be_deleted_ == false then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙البوت ليس ادمن يرجى ترقيتي !', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮البوت ليس ادمن يرجى ترقيتي !', 1, 'md')
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
@@ -1332,13 +1332,13 @@ end
 end
 end,nil)
 if DevSakura:sismember(SAKURA..'Sakura:Groups',msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المجموعه بالتاكيد مفعله', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المجموعه بالتاكيد مفعله', 1, 'md')
 else
 if tonumber(data.member_count_) < tonumber(DevSakura:get(SAKURA..'Sakura:Num:Add:Bot') or 0) and not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عدد اعضاء المجموعه اقل من ↫ *'..(DevSakura:get(SAKURA..'Sakura:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عدد اعضاء المجموعه اقل من ↫ *'..(DevSakura:get(SAKURA..'Sakura:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
 return false
 end
-ReplyStatus(msg,result.id_,"ReplyAdd","⧉︙تم تفعيل المجموعه "..dp.title_)  
+ReplyStatus(msg,result.id_,"ReplyAdd","⌔∮تم تفعيل المجموعه "..dp.title_)  
 DevSakura:sadd(SAKURA.."Sakura:Groups",msg.chat_id_)
 DevSakura:sadd(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_,msg.sender_user_id_)
 local Name1 = result.first_name_
@@ -1364,7 +1364,7 @@ else
 LinkGroup = 'لا يوجد'
 end
 DevSakura:set(SAKURA.."Sakura:Groups:Links"..msg.chat_id_,LinkGroup) 
-SendText(DevId,"⧉︙تم تفعيل مجموعه جديده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙بواسطة ↫ "..Name.."\n⧉︙موقعه في المجموعه ↫ "..status.."\n⧉︙اسم المجموعه ↫ ["..NameChat.."]\n⧉︙عدد اعضاء المجموعه ↫ ❨ *"..NumMem.."* ❩\n⧉︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⧉︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙الوقت ↫ "..os.date("%I:%M%p").."\n⧉︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"⌔∮تم تفعيل مجموعه جديده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮بواسطة ↫ "..Name.."\n⌔∮موقعه في المجموعه ↫ "..status.."\n⌔∮اسم المجموعه ↫ ["..NameChat.."]\n⌔∮عدد اعضاء المجموعه ↫ ❨ *"..NumMem.."* ❩\n⌔∮ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⌔∮رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮الوقت ↫ "..os.date("%I:%M%p").."\n⌔∮التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end end
 end,nil)
@@ -1372,7 +1372,7 @@ end,nil)
 end,nil)
 end,nil)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع تفعيل هذه المجموعه بسبب تعطيل البوت الخدمي من قبل المطور الاساسي', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع تفعيل هذه المجموعه بسبب تعطيل البوت الخدمي من قبل المطور الاساسي', 1, 'md') 
 end 
 end 
 if msg.date_ < (os.time() - 30) then
@@ -1412,9 +1412,9 @@ for k,v in pairs(filter) do
 if v == msg.content_.photo_.id_ then
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙عذرا عزيزي ↫ [@"..data.username_.."]\n⧉︙الصوره التي ارسلتها تم منعها من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ [@"..data.username_.."]\n⌔∮الصوره التي ارسلتها تم منعها من المجموعه", 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⧉︙الصوره التي ارسلتها تم منعها من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⌔∮الصوره التي ارسلتها تم منعها من المجموعه", 1, 'md')
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -1430,9 +1430,9 @@ for k,v in pairs(filter) do
 if v == msg.content_.animation_.animation_.persistent_id_ then
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙عذرا عزيزي ↫ [@"..data.username_.."]\n⧉︙المتحركه التي ارسلتها تم منعها من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ [@"..data.username_.."]\n⌔∮المتحركه التي ارسلتها تم منعها من المجموعه", 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⧉︙المتحركه التي ارسلتها تم منعها من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⌔∮المتحركه التي ارسلتها تم منعها من المجموعه", 1, 'md')
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -1448,9 +1448,9 @@ for k,v in pairs(filter) do
 if v == msg.content_.sticker_.sticker_.persistent_id_ then
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-Dev_Abs(msg.chat_id_,0, 1, "⧉︙عذرا عزيزي ↫ [@"..data.username_.."]\n⧉︙الملصق الذي ارسلته تم منعه من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_,0, 1, "⌔∮عذرا عزيزي ↫ [@"..data.username_.."]\n⌔∮الملصق الذي ارسلته تم منعه من المجموعه", 1, 'md')
 else
-Dev_Abs(msg.chat_id_,0, 1, "⧉︙عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⧉︙الملصق الذي ارسلته تم منعه من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_,0, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⌔∮الملصق الذي ارسلته تم منعه من المجموعه", 1, 'md')
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
@@ -1519,7 +1519,7 @@ end
 if msg.content_.text_ then
 local DelGpRed = DevSakura:get(SAKURA..'Sakura:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'')
 if DelGpRed == 'DelGpRed' then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
 DevSakura:del(SAKURA..'Sakura:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'')
 DevSakura:del(SAKURA..'Sakura:Gif:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
 DevSakura:del(SAKURA..'Sakura:Voice:GpRed'..msg.content_.text_..''..msg.chat_id_..'')
@@ -1536,7 +1536,7 @@ end
 if msg.content_.text_ then
 local DelAllRed = DevSakura:get(SAKURA.."Sakura:Add:AllRed"..msg.sender_user_id_)
 if DelAllRed == 'DelAllRed' then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
 DevSakura:del(SAKURA.."Sakura:Add:AllRed"..msg.sender_user_id_)
 DevSakura:del(SAKURA.."Sakura:Gif:AllRed"..msg.content_.text_)
 DevSakura:del(SAKURA.."Sakura:Voice:AllRed"..msg.content_.text_)
@@ -1556,7 +1556,7 @@ if SaveGpRed == 'SaveGpRed' then
 if text == 'الغاء' then
 local DelManagerRep = DevSakura:get(SAKURA..'DelManagerRep'..msg.chat_id_..'')
 DevSakura:srem(SAKURA..'Sakura:Manager:GpRed'..msg.chat_id_..'',DelManagerRep)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء حفظ الرد', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء حفظ الرد', 1, 'md')
 DevSakura:del(SAKURA..'Sakura:Add:GpText'..msg.sender_user_id_..''..msg.chat_id_..'')
 DevSakura:del(SAKURA..'Sakura:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_)
 DevSakura:del(SAKURA..'DelManagerRep'..msg.chat_id_..'')
@@ -1594,7 +1594,7 @@ end
 if msg.content_.text_ then
 DevSakura:set(SAKURA..'Sakura:Text:GpRed'..SaveGpRed..''..msg.chat_id_..'', msg.content_.text_)
 end 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ الرد الجديد', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ الرد الجديد', 1, 'md') 
 DevSakura:del(SAKURA..'Sakura:Add:GpText'..msg.sender_user_id_..''..msg.chat_id_..'')
 DevSakura:del(SAKURA..'DelManagerRep'..msg.chat_id_..'')
 return false 
@@ -1646,7 +1646,7 @@ if SaveAllRed == 'SaveAllRed' then
 if text == 'الغاء' then
 local DelSudoRep = DevSakura:get(SAKURA..'DelSudoRep')
 DevSakura:del(SAKURA.."Sakura:Sudo:AllRed",DelSudoRep)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء حفظ الرد', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء حفظ الرد', 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Add:AllText"..msg.sender_user_id_)
 DevSakura:del(SAKURA.."Sakura:Add:AllRed"..msg.sender_user_id_)
 DevSakura:del(SAKURA.."DelSudoRep")
@@ -1690,7 +1690,7 @@ end
 if msg.content_.text_ then
 DevSakura:set(SAKURA.."Sakura:Text:AllRed"..SaveAllRed, msg.content_.text_)
 end 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ الرد الجديد', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ الرد الجديد', 1, 'md') 
 DevSakura:del(SAKURA.."Sakura:Add:AllText"..msg.sender_user_id_)
 DevSakura:del(SAKURA..'DelSudoRep')
 return false end end
@@ -1738,7 +1738,7 @@ function NotSpam(msg,Type)
 if Type == "kick" then 
 ChatKick(msg.chat_id_,msg.sender_user_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dp) 
-Text = '⧉︙العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⧉︙قام بالتكرار المحدد تم طرده '
+Text = '⌔∮العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⌔∮قام بالتكرار المحدد تم طرده '
 SendText(msg.chat_id_,Text,0,'md')
 end,nil)
 my_ide = msg.sender_user_id_
@@ -1773,7 +1773,7 @@ if Type == "keed" then
 https.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..msg.sender_user_id_.."") 
 DevSakura:sadd(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, msg.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dp) 
-Text = '⧉︙العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⧉︙قام بالتكرار المحدد تم تقييده '
+Text = '⌔∮العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⌔∮قام بالتكرار المحدد تم تقييده '
 SendText(msg.chat_id_,Text,0,'md')
 end,nil)
 my_ide = msg.sender_user_id_
@@ -1792,7 +1792,7 @@ end
 if Type == "mute" then
 DevSakura:sadd(SAKURA..'Sakura:Muted:'..msg.chat_id_,msg.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dp) 
-Text = '⧉︙العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⧉︙قام بالتكرار المحدد تم كتمه '
+Text = '⌔∮العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⌔∮قام بالتكرار المحدد تم كتمه '
 SendText(msg.chat_id_,Text,0,'md')
 end,nil)
 my_ide = msg.sender_user_id_
@@ -1866,7 +1866,7 @@ if DevSakura:get(SAKURA..'Sakura:viewget'..msg.sender_user_id_) then
 if not msg.forward_info_ then
 DevSakura:del(SAKURA..'Sakura:viewget'..msg.sender_user_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عدد مشاهدات المنشور هو ↫ ('..msg.views_..') \n ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عدد مشاهدات المنشور هو ↫ ('..msg.views_..') \n ', 1, 'md')
 DevSakura:del(SAKURA..'Sakura:viewget'..msg.sender_user_id_)
 end
 end
@@ -2031,11 +2031,11 @@ for i=0,#msg.content_.members_ do
 BotWelcome = msg.content_.members_[i].id_    
 if BotWelcome and BotWelcome == tonumber(SAKURA) then 
 if DevSakura:sismember(SAKURA..'Sakura:Groups',msg.chat_id_) then
-BotText = "مفعله في السابق\n⧉︙ارسل ↫ الاوامر واستمتع بالمميزيات"
+BotText = "مفعله في السابق\n⌔∮ارسل ↫ الاوامر واستمتع بالمميزيات"
 else 
-BotText = "معطله يجب رفعي مشرف\n⧉︙بعد ذلك يرجى ارسال امر ↫ تفعيل\n⧉︙سيتم رفع الادمنيه والمنشئ تلقائيا"
+BotText = "معطله يجب رفعي مشرف\n⌔∮بعد ذلك يرجى ارسال امر ↫ تفعيل\n⌔∮سيتم رفع الادمنيه والمنشئ تلقائيا"
 end 
-local AbsText = (DevSakura:get(SAKURA.."Sakura:Text:BotWelcome") or "⧉︙مرحبا انا بوت اسمي "..NameBot.."\n⧉︙حالة المجموعه ↫ "..BotText.."\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉")
+local AbsText = (DevSakura:get(SAKURA.."Sakura:Text:BotWelcome") or "⌔∮مرحبا انا بوت اسمي "..NameBot.."\n⌔∮حالة المجموعه ↫ "..BotText.."\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉")
 local AbsPhoto = (DevSakura:get(SAKURA.."Sakura:Photo:BotWelcome") or abbas.photos_[0].sizes_[1].photo_.persistent_id_)
 if DevSakura:get(SAKURA.."Sakura:Photo:BotWelcome") or abbas.photos_[0] then
 sendPhoto(msg.chat_id_,msg.id_,0,1,nil,AbsPhoto,AbsText)
@@ -2433,14 +2433,14 @@ end
 end
 if DevSakura:get(SAKURA.."Sakura:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_) then
 if text == "الغاء" then
-send(msg.chat_id_,msg.id_,"⧉︙تم الغاء حفظ الرابط")       
+send(msg.chat_id_,msg.id_,"⌔∮تم الغاء حفظ الرابط")       
 DevSakura:del(SAKURA.."Sakura:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_) 
 return false
 end
 if msg.content_.text_:match("(https://telegram.me/joinchat/%S+)") or msg.content_.text_:match("(https://t.me/joinchat/%S+)") then
 local Link = msg.content_.text_:match("(https://telegram.me/joinchat/%S+)") or msg.content_.text_:match("(https://t.me/joinchat/%S+)")
 DevSakura:set(SAKURA.."Sakura:Groups:Links"..msg.chat_id_,Link)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ الرابط بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ الرابط بنجاح', 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_) 
 return false 
 end
@@ -2451,14 +2451,14 @@ if text and Constructor(msg) then
 if DevSakura:get('SAKURATEAM:'..SAKURA.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
 DevSakura:del('SAKURATEAM:'..SAKURA..'id:user'..msg.chat_id_)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء الامر', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء الامر', 1, 'md')
 DevSakura:del('SAKURATEAM:'..SAKURA.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 return false  end 
 DevSakura:del('SAKURATEAM:'..SAKURA.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 local numadded = string.match(text, "(%d+)") 
 local iduserr = DevSakura:get('SAKURATEAM:'..SAKURA..'id:user'..msg.chat_id_)  
 DevSakura:incrby(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..iduserr,numadded)
-Dev_Abs(msg.chat_id_, msg.id_,  1, "⧉︙تم اضافة "..numadded..' رساله', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_,  1, "⌔∮تم اضافة "..numadded..' رساله', 1, 'md')
 DevSakura:del('SAKURATEAM:'..SAKURA..'id:user'..msg.chat_id_) 
 end
 end
@@ -2466,14 +2466,14 @@ if text and Constructor(msg) then
 if DevSakura:get('SAKURATEAM:'..SAKURA.."nmadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
 DevSakura:del('SAKURATEAM:'..SAKURA..'ids:user'..msg.chat_id_)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء الامر', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء الامر', 1, 'md')
 DevSakura:del('SAKURATEAM:'..SAKURA.."nmadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 return false  end 
 DevSakura:del('SAKURATEAM:'..SAKURA.."nmadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 local numadded = string.match(text, "(%d+)") 
 local iduserr = DevSakura:get('SAKURATEAM:'..SAKURA..'ids:user'..msg.chat_id_)  
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..iduserr,numadded)  
-Dev_Abs(msg.chat_id_, msg.id_,  1, "⧉︙تم اضافة "..numadded..' نقطه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_,  1, "⌔∮تم اضافة "..numadded..' نقطه', 1, 'md')
 DevSakura:del('SAKURATEAM:'..SAKURA..'ids:user'..msg.chat_id_)  
 end
 end
@@ -2481,7 +2481,7 @@ if text:match("طيز") or text:match("ديس") or text:match("انيجمك") or
 if not DevSakura:get(SAKURA.."Sakura:Lock:Fshar"..msg.chat_id_) and not VipMem(msg) then
 function get_warning(extra,result,success)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⧉︙ممنوع الفشار في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⌔∮ممنوع الفشار في المجموعه', 1, 'md')
 end 
 getUser(msg.sender_user_id_,get_warning)
 end end
@@ -2489,7 +2489,7 @@ if text:match("ڬ") or text:match("ٺ") or text:match("چ") or text:match("ڇ") 
 if DevSakura:get(SAKURA.."Sakura:Lock:Farsi"..msg.chat_id_) and not VipMem(msg) then
 function get_warning(extra,result,success)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⧉︙ممنوع التكلم بالغه الفارسيه هنا', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⌔∮ممنوع التكلم بالغه الفارسيه هنا', 1, 'md')
 end 
 getUser(msg.sender_user_id_,get_warning)
 end end
@@ -2502,7 +2502,7 @@ if text:match("خره بالله") or text:match("خبربك") or text:match("ك
 if not DevSakura:get(SAKURA.."Sakura:Lock:Kfr"..msg.chat_id_) and not VipMem(msg) then
 function get_warning(extra,result,success)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⧉︙ممنوع الكفر في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⌔∮ممنوع الكفر في المجموعه', 1, 'md')
 end 
 getUser(msg.sender_user_id_,get_warning)
 end end
@@ -2510,17 +2510,17 @@ if text:match("شيعي نكس") or text:match("سني نكس") or text:match("�
 if not DevSakura:get(SAKURA.."Sakura:Lock:Taf"..msg.chat_id_) and not VipMem(msg) then
 function get_warning(extra,result,success)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⧉︙ممنوع التكلم بالطائفيه هنا', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⌔∮ممنوع التكلم بالطائفيه هنا', 1, 'md')
 end 
 getUser(msg.sender_user_id_,get_warning)
 end end
 if Sudo(msg) then
 if text == 'تفعيل النسخه التلقائيه' or text == 'تفعيل جلب نسخه الكروبات' or text == 'تفعيل عمل نسخه للمجموعات' then   
-Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙تم تفعيل جلب نسخة الكروبات التلقائيه\n⧉︙سيتم ارسال نسخه تلقائيه للكروبات كل يوم الى خاص المطور الاساسي", 1, 'md')
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⌔∮تم تفعيل جلب نسخة الكروبات التلقائيه\n⌔∮سيتم ارسال نسخه تلقائيه للكروبات كل يوم الى خاص المطور الاساسي", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Lock:AutoFile")
 end
 if text == 'تعطيل النسخه التلقائيه' or text == 'تعطيل جلب نسخه الكروبات' or text == 'تعطيل عمل نسخه للمجموعات' then  
-Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙تم تعطيل جلب نسخة الكروبات التلقائيه", 1, 'md')
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⌔∮تم تعطيل جلب نسخة الكروبات التلقائيه", 1, 'md')
 DevSakura:set(SAKURA.."Sakura:Lock:AutoFile",true) 
 end 
 end
@@ -2621,7 +2621,7 @@ local File = io.open('./'..SAKURA..'.json', "w")
 File:write(GetJson)
 File:close()
 local abbas = 'https://api.telegram.org/bot' .. TokenBot .. '/sendDocument'
-local curl = 'curl "' .. abbas .. '" -F "chat_id='..DevId..'" -F "document=@'..SAKURA..'.json' .. '" -F "caption=⧉︙نسخه تلقائيه تحتوي على ↫ '..#list..' مجموعه"'
+local curl = 'curl "' .. abbas .. '" -F "chat_id='..DevId..'" -F "document=@'..SAKURA..'.json' .. '" -F "caption=⌔∮نسخه تلقائيه تحتوي على ↫ '..#list..' مجموعه"'
 io.popen(curl)
 io.popen('fm -fr '..SAKURA..'.json')
 DevSakura:set(SAKURA.."Sakura:AutoFile:Time",os.date("%x"))
@@ -2724,7 +2724,7 @@ GetJson = GetJson..'}}'
 local File = io.open('./'..SAKURA..'.json', "w")
 File:write(GetJson)
 File:close()
-sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './'..SAKURA..'.json', '⧉︙يحتوي الملف على ↫ '..#list..' مجموعه',dl_cb, nil)
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, './'..SAKURA..'.json', '⌔∮يحتوي الملف على ↫ '..#list..' مجموعه',dl_cb, nil)
 end
 if text == 'رفع النسخه' and tonumber(msg.reply_to_message_id_) > 0 or text == 'رفع النسخه الاحتياطيه' and tonumber(msg.reply_to_message_id_) > 0 then   
 function by_reply(extra, result, success)   
@@ -2741,65 +2741,65 @@ if text and text:match("منو ضافني") then
 if not DevSakura:get(SAKURA..'Sakura:Added:Me'..msg.chat_id_) then
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da and da.status_.ID == "ChatMemberStatusCreator" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙انت منشئ المجموعه', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮انت منشئ المجموعه', 1, 'md') 
 return false
 end
 local Added_Me = DevSakura:get(SAKURA.."Who:Added:Me"..msg.chat_id_..':'..msg.sender_user_id_)
 if Added_Me then 
 tdcli_function ({ID = "GetUser",user_id_ = Added_Me},function(extra,result,success)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
-Text = '⧉︙*الشخص الذي قام باضافتك هو* ↫ '..Name
+Text = '⌔∮*الشخص الذي قام باضافتك هو* ↫ '..Name
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 end,nil)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙انت دخلت عبر الرابط', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮انت دخلت عبر الرابط', 1, 'md') 
 end
 end,nil)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙امر منو ضافني تم تعطيله من قبل المدراء', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮امر منو ضافني تم تعطيله من قبل المدراء', 1, 'md') 
 end
 end
 if DevSakura:get(SAKURA.."SET:GAME"..msg.chat_id_) then  
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 6 then
-Dev_Abs( msg.chat_id_, msg.id_, 1,"⧉︙يوجد فقط ( 6 ) اختيارات\n⧉︙ارسل اختيارك مره اخرى", 1, "md")    
+Dev_Abs( msg.chat_id_, msg.id_, 1,"⌔∮يوجد فقط ( 6 ) اختيارات\n⌔∮ارسل اختيارك مره اخرى", 1, "md")    
 return false  end 
 local GETNUM = DevSakura:get(SAKURA.."GAMES"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
 DevSakura:del(SAKURA.."SET:GAME"..msg.chat_id_)   
-Dev_Abs( msg.chat_id_, msg.id_, 1,'⧉︙*المحيبس باليد رقم* ↫ '..NUM..'\n⧉︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, "md") 
+Dev_Abs( msg.chat_id_, msg.id_, 1,'⌔∮*المحيبس باليد رقم* ↫ '..NUM..'\n⌔∮*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, "md") 
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
 DevSakura:del(SAKURA.."SET:GAME"..msg.chat_id_)   
-Dev_Abs( msg.chat_id_, msg.id_, 1,'⧉︙*المحيبس باليد رقم* ↫ '..GETNUM..'\n⧉︙*للاسف لقد خسرت حاول مره اخرى للعثور على المحيبس*', 1, "md")
+Dev_Abs( msg.chat_id_, msg.id_, 1,'⌔∮*المحيبس باليد رقم* ↫ '..GETNUM..'\n⌔∮*للاسف لقد خسرت حاول مره اخرى للعثور على المحيبس*', 1, "md")
 end
 end
 end
 if DevSakura:get(SAKURA..'DevAbs4'..msg.sender_user_id_) then
 if text and text:match("^الغاء$") then 
-send(msg.chat_id_, msg.id_, "⧉︙تم الغاء الامر")
+send(msg.chat_id_, msg.id_, "⌔∮تم الغاء الامر")
 DevSakura:del(SAKURA..'DevAbs4'..msg.sender_user_id_)
 return false  end 
 DevSakura:del(SAKURA..'DevAbs4'..msg.sender_user_id_)
 local username = string.match(text, "@[%a%d_]+") 
 tdcli_function({ID = "SearchPublicChat",username_ = username},function(arg,data) 
 if data and data.message_ and data.message_ == "USERNAME_NOT_OCCUPIED" then 
-send(msg.chat_id_, msg.id_, '⧉︙المعرف لا يوجد فيه قناة')
+send(msg.chat_id_, msg.id_, '⌔∮المعرف لا يوجد فيه قناة')
 return false  end
 if data and data.type_ and data.type_.ID and data.type_.ID == 'PrivateChatInfo' then
-send(msg.chat_id_, msg.id_, '⧉︙عذرا لا يمكنك وضع معرف حسابات في الاشتراك')
+send(msg.chat_id_, msg.id_, '⌔∮عذرا لا يمكنك وضع معرف حسابات في الاشتراك')
 return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == true then
-send(msg.chat_id_, msg.id_, '⧉︙عذرا لا يمكنك وضع معرف مجموعه في الاشتراك')
+send(msg.chat_id_, msg.id_, '⌔∮عذرا لا يمكنك وضع معرف مجموعه في الاشتراك')
 return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
-send(msg.chat_id_, msg.id_,'⧉︙البوت ادمن في القناة \n⧉︙تم تفعيل الاشتراك الاجباري \n⧉︙ايدي القناة ↫ '..data.id_..'\n⧉︙معرف القناة ↫ [@'..data.type_.channel_.username_..']')
+send(msg.chat_id_, msg.id_,'⌔∮البوت ادمن في القناة \n⌔∮تم تفعيل الاشتراك الاجباري \n⌔∮ايدي القناة ↫ '..data.id_..'\n⌔∮معرف القناة ↫ [@'..data.type_.channel_.username_..']')
 DevSakura:set(SAKURA..'DevAbs2',data.id_)
 DevSakura:set(SAKURA..'DevAbs3','@'..data.type_.channel_.username_)
 else
-send(msg.chat_id_, msg.id_,'⧉︙عذرا البوت ليس ادمن في القناة')
+send(msg.chat_id_, msg.id_,'⌔∮عذرا البوت ليس ادمن في القناة')
 end
 return false  
 end
@@ -2808,21 +2808,21 @@ end
 if DevSakura:get(SAKURA.."Sakura:DevText" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then
 if text and text:match("^الغاء$") then 
 DevSakura:del(SAKURA.."Sakura:DevText" .. msg.chat_id_ .. ":" .. msg.sender_user_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء الامر', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء الامر', 1, 'md')
 return false 
 end 
 DevSakura:del(SAKURA.."Sakura:DevText" .. msg.chat_id_ .. ":" .. msg.sender_user_id_)
 local DevText = msg.content_.text_:match("(.*)")
 DevSakura:set(SAKURA.."DevText", DevText)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ كليشة المطور", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ كليشة المطور", 1, "md")
 end
 if DevSakura:get(SAKURA..'Sakura:NameBot'..msg.sender_user_id_) == 'msg' then
 if text and text:match("^الغاء$") then 
 DevSakura:del(SAKURA..'Sakura:NameBot'..msg.sender_user_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء الامر', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء الامر', 1, 'md')
 return false 
 end 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ اسم البوت ', 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ اسم البوت ', 1, 'html')
 DevSakura:del(SAKURA..'Sakura:NameBot'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:NameBot', text)
 return false 
@@ -2830,12 +2830,12 @@ end
 if text == "الرابط" then
 if not DevSakura:get(SAKURA.."Sakura:Lock:GpLinks"..msg.chat_id_) then 
 if DevSakura:get(SAKURA.."Sakura:Groups:Links"..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙𝒈𝒓𝒐𝒖𝒑 𝒍𝒊𝒏𝒌 ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"..DevSakura:get(SAKURA.."Sakura:Groups:Links"..msg.chat_id_), 1, "html")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮𝒈𝒓𝒐𝒖𝒑 𝒍𝒊𝒏𝒌 ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"..DevSakura:get(SAKURA.."Sakura:Groups:Links"..msg.chat_id_), 1, "html")
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لايوجد رابط ارسل ↫ ضع رابط او ارسل ↫ انشاء رابط للانشاء', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لايوجد رابط ارسل ↫ ضع رابط او ارسل ↫ انشاء رابط للانشاء', 1, 'md')
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙جلب رابط المجموعه معطل', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮جلب رابط المجموعه معطل', 1, 'md')
 end
 end
 if ChatType == 'sp' or ChatType == 'gp'  then
@@ -2958,13 +2958,13 @@ return false
 end
 if text =='نقاطي' and ChCheck(msg) then 
 if tonumber((DevSakura:get(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لم تربح اي نقطه\n⧉︙ارسل ↫ الالعاب للعب', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لم تربح اي نقطه\n⌔∮ارسل ↫ الالعاب للعب', 1, 'md')
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙عدد النقاط التي ربحتها ↫ '..(DevSakura:get(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_)), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮عدد النقاط التي ربحتها ↫ '..(DevSakura:get(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_)), 1, 'md')
 end
 end
-if text ==  'حذف رسائلي' and ChCheck(msg) or text ==  'مسح رسائلي' and ChCheck(msg) then DevSakura:del(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حذف جميع رسائلك', 1, 'md') end
-if text ==  'حذف نقاطي' and ChCheck(msg) or text ==  'مسح نقاطي' and ChCheck(msg) then DevSakura:del(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حذف جميع نقاطك', 1, 'md') end
+if text ==  'حذف رسائلي' and ChCheck(msg) or text ==  'مسح رسائلي' and ChCheck(msg) then DevSakura:del(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حذف جميع رسائلك', 1, 'md') end
+if text ==  'حذف نقاطي' and ChCheck(msg) or text ==  'مسح نقاطي' and ChCheck(msg) then DevSakura:del(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حذف جميع نقاطك', 1, 'md') end
 if text == 'سمايلات' and ChCheck(msg) or text == 'السمايلات' and ChCheck(msg) then
 if DevSakura:get(SAKURA..'Sakura:Lock:Games'..msg.chat_id_) then
 DevAbs2 = {'🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🍠','🥐','🍞','🥖','🥨','🧀','🥚','🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','🍟','🍕','🥪','🥙','🍼','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🏆','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🛎','📤','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌','🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔️','🛡','🔮','🌡','💣','⏱','🛢','📓','📗','📂','📅','📪','📫','📬','📭','⏰','📺','🎚','☎️','📡'}
@@ -3087,13 +3087,13 @@ name = string.gsub(name,'⏰','⏰')
 name = string.gsub(name,'📺','📺')
 name = string.gsub(name,'🎚','🎚')
 name = string.gsub(name,'☎️','☎️')
-SAKURATEAM = '⧉︙اول واحد يدز هذا السمايل يربح ↫ '..name
+SAKURATEAM = '⌔∮اول واحد يدز هذا السمايل يربح ↫ '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
 if text == DevSakura:get(SAKURA..'Sakura:GameNum'..msg.chat_id_) and not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ سمايلات للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ سمايلات للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3145,13 +3145,13 @@ name = string.gsub(name,'حاسوب','س ا ح و ب')
 name = string.gsub(name,'انترنيت','ا ت ن ر ن ي ت')
 name = string.gsub(name,'ساحه','ح ا ه س')
 name = string.gsub(name,'جسر','ر ج س')
-SAKURATEAM = '⧉︙اول واحد يرتبها يربح ↫ '..name
+SAKURATEAM = '⌔∮اول واحد يرتبها يربح ↫ '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
 if text == DevSakura:get(SAKURA..'Sakura:GameNum'..msg.chat_id_) and not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ ترتيب للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ ترتيب للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3166,8 +3166,8 @@ TEST = [[
 ↓     ↓     ↓     ↓     ↓     ↓
 👊 ‹› 👊🏻 ‹› 👊🏼 ‹› 👊🏽 ‹› 👊🏾 ‹› 👊🏿
 
-⧉︙اختر رقم لاستخراج المحيبس
-⧉︙الفائز يحصل على (5) نقاط
+⌔∮اختر رقم لاستخراج المحيبس
+⌔∮الفائز يحصل على (5) نقاط
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, TEST, 1, "md") 
 DevSakura:setex(SAKURA.."SET:GAME"..msg.chat_id_, 100, true)  
@@ -3212,13 +3212,13 @@ name = string.gsub(name,'الثلج','انا ابن الماء فان تركون
 name = string.gsub(name,'الاسفنج','كلي ثقوب ومع ذالك احفض الماء فمن اكون ؟')
 name = string.gsub(name,'الصوت','اسير بلا رجلين ولا ادخل الا بالاذنين فمن انا ؟')
 name = string.gsub(name,'بلم','حامل ومحمول نصف ناشف ونصف مبلول فمن اكون ؟ ')
-SAKURATEAM = '⧉︙اول واحد يحلها يربح ↫ '..name
+SAKURATEAM = '⌔∮اول واحد يحلها يربح ↫ '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
 if text == DevSakura:get(SAKURA..'Sakura:GameNum'..msg.chat_id_) and not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ حزوره للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ حزوره للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3255,13 +3255,13 @@ name = string.gsub(name,'زرافه','🦒')
 name = string.gsub(name,'قنفذ','🦔')
 name = string.gsub(name,'تفاحه','🍎')
 name = string.gsub(name,'باذنجان','🍆')
-SAKURATEAM = '⧉︙ما معنى هذا السمايل :؟ ↫ '..name
+SAKURATEAM = '⌔∮ما معنى هذا السمايل :؟ ↫ '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
 if text == DevSakura:get(SAKURA..'Sakura:GameNum2'..msg.chat_id_) and not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ المعاني للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ المعاني للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3298,13 +3298,13 @@ name = string.gsub(name,'موعطشان','عطشان')
 name = string.gsub(name,'خوش ولد','موخوش ولد')
 name = string.gsub(name,'اني','مطي')
 name = string.gsub(name,'هادئ','عصبي')
-SAKURATEAM = '⧉︙ما هو عكس كلمة ↫ '..name
+SAKURATEAM = '⌔∮ما هو عكس كلمة ↫ '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
 if text == DevSakura:get(SAKURA..'Sakura:GameNum3'..msg.chat_id_) and not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ العكس للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ العكس للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3344,13 +3344,13 @@ name = string.gsub(name,'⌛️','⏳⏳⏳⏳⏳⌛️⏳⏳')
 name = string.gsub(name,'📅','📆📆📆📆📆📅📆📆')
 name = string.gsub(name,'👩‍⚖️','👨‍⚖️👨‍⚖️👨‍⚖️👨‍⚖️👨‍⚖️👩‍⚖️👨‍⚖️👨‍⚖️')
 name = string.gsub(name,'👨‍🎨','👩‍🎨👩‍🎨👨‍🎨👩‍🎨👩‍🎨👩‍🎨👩‍🎨👩‍🎨')
-SAKURATEAM = '⧉︙اول واحد يطلع المختلف يربح\n{'..name..'} '
+SAKURATEAM = '⌔∮اول واحد يطلع المختلف يربح\n{'..name..'} '
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
 if text == DevSakura:get(SAKURA..'Sakura:GameNum4'..msg.chat_id_) and not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ المختلف للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ المختلف للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
@@ -3384,7 +3384,7 @@ name = string.gsub(name,'شهر','امشي ___ ولا تعبر نهر')
 name = string.gsub(name,'شكه','يامن تعب يامن ___ يا من على الحاضر لكة')
 name = string.gsub(name,'القرد',' ___ بعين امه غزال')
 name = string.gsub(name,'يكحله','اجه ___ عماها')
-SAKURATEAM = '⧉︙اكمل المثال التالي ↫ ['..name..']'
+SAKURATEAM = '⌔∮اكمل المثال التالي ↫ ['..name..']'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
@@ -3392,7 +3392,7 @@ if text == DevSakura:get(SAKURA..'Sakura:GameNum5'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 DevSakura:del(SAKURA..'Sakura:GameNum5'..msg.chat_id_)
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ امثله للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ امثله للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 end
 DevSakura:set(SAKURA..'Sakura:Games:Ids'..msg.chat_id_,true)
@@ -3416,7 +3416,7 @@ name = string.gsub(name,'15','25 - 10 = ?')
 name = string.gsub(name,'39','44 - 5 = ?')
 name = string.gsub(name,'5','12 + 1 - 8 = ?')
 name = string.gsub(name,'16','16 + 16 - 16 = ?')
-SAKURATEAM = '⧉︙اكمل المعادله التاليه ↫ ⤈\n{'..name..'} '
+SAKURATEAM = '⌔∮اكمل المعادله التاليه ↫ ⤈\n{'..name..'} '
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
@@ -3424,7 +3424,7 @@ if text == DevSakura:get(SAKURA..'Sakura:GameNum6'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 DevSakura:del(SAKURA..'Sakura:GameNum6'..msg.chat_id_)
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ رياضيات للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ رياضيات للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 end
 DevSakura:set(SAKURA..'Sakura:Games:Ids'..msg.chat_id_,true)
@@ -3447,7 +3447,7 @@ name = string.gsub(name,'تمساح','crocodile')
 name = string.gsub(name,'شاطئ','Beach')
 name = string.gsub(name,'غبي','Stupid')
 name = string.gsub(name,'صداقه','Friendchip')
-SAKURATEAM = '⧉︙ما معنى كلمة ↫ '..name
+SAKURATEAM = '⌔∮ما معنى كلمة ↫ '..name
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
@@ -3455,7 +3455,7 @@ if text == DevSakura:get(SAKURA..'Sakura:GameNum7'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 DevSakura:del(SAKURA..'Sakura:GameNum7'..msg.chat_id_)
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ انكليزيه للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ انكليزيه للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 end
 DevSakura:set(SAKURA..'Sakura:Games:Ids'..msg.chat_id_,true)
@@ -3466,37 +3466,37 @@ DevAbs2 = {'النيل','14','الفم','11','30','بوتين','ستيف جوب�
 name = DevAbs2[math.random(#DevAbs2)]
 DevSakura:set(SAKURA..'Sakura:GameNum8'..msg.chat_id_,name)
 DevSakura:del(SAKURA..'Sakura:Games:Ids'..msg.chat_id_)
-name = string.gsub(name,'النيل','⧉︙ماهو اطول نهر في العالم ؟\n1- النيل\n2- الفرات\n3- نهر الكونغو')
-name = string.gsub(name,'14','⧉︙ماعدد عظام الوجه ؟\n1- 15\n2- 13\n3- 14')
-name = string.gsub(name,'الفم','⧉︙كراسي بيضاء وجدران ورديه اذا اغلقته اصبح ظلام  فمن اكون ؟\n1- الفم\n2- الاذن\n3- الثلاجه')
-name = string.gsub(name,'11','⧉︙كم جزء يحتوي مسلسل وادي الذئاب ؟\n1- 7\n2- 15\n3- 11')
-name = string.gsub(name,'30','⧉︙كم جزء يحتوي القران الكريم ؟\n1- 60\n2- 70\n3- 30')
-name = string.gsub(name,'بوتين','⧉︙من هوه اغنى رئيس في العالم ؟\n1- ترامب\n2- اوباما\n3- بوتين')
-name = string.gsub(name,'ستيف جوبر','⧉︙من هوه مؤسس شركه ابل العالميه  ؟\n1- لاري بايج\n2- بيل جيتس\n3- ستيف جوبر')
+name = string.gsub(name,'النيل','⌔∮ماهو اطول نهر في العالم ؟\n1- النيل\n2- الفرات\n3- نهر الكونغو')
+name = string.gsub(name,'14','⌔∮ماعدد عظام الوجه ؟\n1- 15\n2- 13\n3- 14')
+name = string.gsub(name,'الفم','⌔∮كراسي بيضاء وجدران ورديه اذا اغلقته اصبح ظلام  فمن اكون ؟\n1- الفم\n2- الاذن\n3- الثلاجه')
+name = string.gsub(name,'11','⌔∮كم جزء يحتوي مسلسل وادي الذئاب ؟\n1- 7\n2- 15\n3- 11')
+name = string.gsub(name,'30','⌔∮كم جزء يحتوي القران الكريم ؟\n1- 60\n2- 70\n3- 30')
+name = string.gsub(name,'بوتين','⌔∮من هوه اغنى رئيس في العالم ؟\n1- ترامب\n2- اوباما\n3- بوتين')
+name = string.gsub(name,'ستيف جوبر','⌔∮من هوه مؤسس شركه ابل العالميه  ؟\n1- لاري بايج\n2- بيل جيتس\n3- ستيف جوبر')
 name = string.gsub(name,'باريس','ماهي عاصمه فرنسا ؟\n1- باريس\n2- لوين\n3- موسكو')
-name = string.gsub(name,'10','⧉︙ماعدد دول العربيه التي توجد في افريقيا ؟\n1- 10\n2- 17\n3- 9')
-name = string.gsub(name,'النمل','⧉︙ماهو الحيوان الذي يحمل 50 فوق وزنه ؟\n1- الفيل\n2- النمل\n3- الثور')
-name = string.gsub(name,'حرف الواو','⧉︙ماذا يوجد بيني وبينك ؟\n1- الضل\n2- الاخلاق\n3- حرف الواو')
-name = string.gsub(name,'الشعر','⧉︙ماهو الشيء النبات ينبت للانسان بلا بذر ؟\n1- الاضافر\n2- الاسنان\n3- الشعر')
-name = string.gsub(name,'سحاب','⧉︙ما هو الشّيء الذي يستطيع المشي بدون أرجل والبكاء بدون أعين ؟\n1- سحاب\n2- بئر\n3- نهر')
-name = string.gsub(name,'الاسم','⧉︙ما الشيء الذي نمتلكه , لكنّ غيرنا يستعمله أكثر منّا ؟\n1- العمر\n2- ساعه\n3- الاسم')
-name = string.gsub(name,'ذهب','⧉︙اصفر اللون سارق عقول اهل الكون وحارمهم لذيذ النوم ؟\n1- نحاس\n2- الماس\n3- ذهب')
-name = string.gsub(name,'حرف الام','⧉︙في الليل ثلاثة لكنه في النهار واحده فما هو ؟\n1- حرف الباء\n2- حرف الام\n3- حرف الراء')
-name = string.gsub(name,'العزائم','⧉︙على قدر اصل العزم تأتي ؟\n1- العزائم\n2- المكارم\n3- المبائب')
-name = string.gsub(name,'انسات','⧉︙ماهي جمع كلمه انسه ؟\n1- سيدات\n2- انسات\n3- قوانص')
-name = string.gsub(name,'المنجنيق','⧉︙اله اتسعلمت قديما في الحروب ؟\n1- الصاروخ\n2- المسدس\n3- المنجنيق')
-name = string.gsub(name,'اسيا','⧉︙تقع لبنان في قاره ؟\n1- افريقيا\n2- اسيا\n3- امركيا الشماليه')
-name = string.gsub(name,'6','⧉︙كم صفرا للمليون ؟\n1- 4\n2- 3\n3- 6')
-name = string.gsub(name,'الاسد','⧉︙ماهو الحيوان الذي يلقب بملك الغابه ؟\n1- الفيل\n2- الاسد\n3- النمر')
-name = string.gsub(name,'مهر','⧉︙ما اسم صغير الحصان ؟\n1- مهر\n2- جرو\n3- عجل')
-name = string.gsub(name,'الدولفين','⧉︙ما الحيوان الذي ينام واحدى عينه مفتوحه ؟\n1- القرش\n2- الدولفين\n3- الثعلب\n')
-name = string.gsub(name,'اوروبا','⧉︙ماهي القاره التي تلقب بالقاره العجوز ؟\n1- اوروبا\n2- امريكا الشماليه\n3- افريقيا')
-name = string.gsub(name,'الزئبق','⧉︙ما اسم المعدن الموجود فيي الحاله السائله ؟\n1- النحاس\n2- الحديد\n3- الزئبق')
-name = string.gsub(name,'لندن','⧉︙ماهي عاصمه انجلترا ؟\n1- لندن\n2- لفرسول\n3- تركيا')
-name = string.gsub(name,'الانسان','⧉︙ماهو الشئ الذي برأسه سبع فتحات ؟\n1- الهاتف\n2- التلفاز\n3- الانسان')
-name = string.gsub(name,'طوكيو','⧉︙ماهي عاصمه اليابان ؟\n1- بانكول\n2- نيو دلهي\n3- طوكيو')
-name = string.gsub(name,'خديجه','⧉︙من هي زوجه الرسول الاكبر منه سنآ ؟\n1- حفضه\n2- زينب\n3- خديجه')
-SAKURATEAM = name..'\n⧉︙ارسل الجواب الصحيح فقط'
+name = string.gsub(name,'10','⌔∮ماعدد دول العربيه التي توجد في افريقيا ؟\n1- 10\n2- 17\n3- 9')
+name = string.gsub(name,'النمل','⌔∮ماهو الحيوان الذي يحمل 50 فوق وزنه ؟\n1- الفيل\n2- النمل\n3- الثور')
+name = string.gsub(name,'حرف الواو','⌔∮ماذا يوجد بيني وبينك ؟\n1- الضل\n2- الاخلاق\n3- حرف الواو')
+name = string.gsub(name,'الشعر','⌔∮ماهو الشيء النبات ينبت للانسان بلا بذر ؟\n1- الاضافر\n2- الاسنان\n3- الشعر')
+name = string.gsub(name,'سحاب','⌔∮ما هو الشّيء الذي يستطيع المشي بدون أرجل والبكاء بدون أعين ؟\n1- سحاب\n2- بئر\n3- نهر')
+name = string.gsub(name,'الاسم','⌔∮ما الشيء الذي نمتلكه , لكنّ غيرنا يستعمله أكثر منّا ؟\n1- العمر\n2- ساعه\n3- الاسم')
+name = string.gsub(name,'ذهب','⌔∮اصفر اللون سارق عقول اهل الكون وحارمهم لذيذ النوم ؟\n1- نحاس\n2- الماس\n3- ذهب')
+name = string.gsub(name,'حرف الام','⌔∮في الليل ثلاثة لكنه في النهار واحده فما هو ؟\n1- حرف الباء\n2- حرف الام\n3- حرف الراء')
+name = string.gsub(name,'العزائم','⌔∮على قدر اصل العزم تأتي ؟\n1- العزائم\n2- المكارم\n3- المبائب')
+name = string.gsub(name,'انسات','⌔∮ماهي جمع كلمه انسه ؟\n1- سيدات\n2- انسات\n3- قوانص')
+name = string.gsub(name,'المنجنيق','⌔∮اله اتسعلمت قديما في الحروب ؟\n1- الصاروخ\n2- المسدس\n3- المنجنيق')
+name = string.gsub(name,'اسيا','⌔∮تقع لبنان في قاره ؟\n1- افريقيا\n2- اسيا\n3- امركيا الشماليه')
+name = string.gsub(name,'6','⌔∮كم صفرا للمليون ؟\n1- 4\n2- 3\n3- 6')
+name = string.gsub(name,'الاسد','⌔∮ماهو الحيوان الذي يلقب بملك الغابه ؟\n1- الفيل\n2- الاسد\n3- النمر')
+name = string.gsub(name,'مهر','⌔∮ما اسم صغير الحصان ؟\n1- مهر\n2- جرو\n3- عجل')
+name = string.gsub(name,'الدولفين','⌔∮ما الحيوان الذي ينام واحدى عينه مفتوحه ؟\n1- القرش\n2- الدولفين\n3- الثعلب\n')
+name = string.gsub(name,'اوروبا','⌔∮ماهي القاره التي تلقب بالقاره العجوز ؟\n1- اوروبا\n2- امريكا الشماليه\n3- افريقيا')
+name = string.gsub(name,'الزئبق','⌔∮ما اسم المعدن الموجود فيي الحاله السائله ؟\n1- النحاس\n2- الحديد\n3- الزئبق')
+name = string.gsub(name,'لندن','⌔∮ماهي عاصمه انجلترا ؟\n1- لندن\n2- لفرسول\n3- تركيا')
+name = string.gsub(name,'الانسان','⌔∮ماهو الشئ الذي برأسه سبع فتحات ؟\n1- الهاتف\n2- التلفاز\n3- الانسان')
+name = string.gsub(name,'طوكيو','⌔∮ماهي عاصمه اليابان ؟\n1- بانكول\n2- نيو دلهي\n3- طوكيو')
+name = string.gsub(name,'خديجه','⌔∮من هي زوجه الرسول الاكبر منه سنآ ؟\n1- حفضه\n2- زينب\n3- خديجه')
+SAKURATEAM = name..'\n⌔∮ارسل الجواب الصحيح فقط'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 return false
 end end
@@ -3504,7 +3504,7 @@ if text == DevSakura:get(SAKURA..'Sakura:GameNum8'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Games:Ids'..msg.chat_id_) then 
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 DevSakura:del(SAKURA..'Sakura:GameNum8'..msg.chat_id_)
-SAKURATEAM = '⧉︙مبروك لقد ربحت في اللعبه \n⧉︙ارسل ↫ الاسئله للعب مره اخرى'
+SAKURATEAM = '⌔∮مبروك لقد ربحت في اللعبه \n⌔∮ارسل ↫ الاسئله للعب مره اخرى'
 Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 end
 DevSakura:set(SAKURA..'Sakura:Games:Ids'..msg.chat_id_,true)
@@ -3513,27 +3513,27 @@ if DevSakura:get(SAKURA.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_i
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 20 then
-Dev_Abs(msg.chat_id_, msg.id_, 1,"⧉︙عذرا لا يمكنك تخمين عدد اكبر من الـ20 خمن رقم ما بين الـ1 والـ20", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,"⌔∮عذرا لا يمكنك تخمين عدد اكبر من الـ20 خمن رقم ما بين الـ1 والـ20", 1, 'md')
 return false  end 
 local GETNUM = DevSakura:get(SAKURA.."GAMES:NUM"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
 DevSakura:del(SAKURA..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
 DevSakura:del(SAKURA.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙*التخمين الصحيح هو* ↫ '..NUM..'\n⧉︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮*التخمين الصحيح هو* ↫ '..NUM..'\n⌔∮*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, 'md')
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
 DevSakura:incrby(SAKURA..'Set:Num'..msg.chat_id_..msg.sender_user_id_,1)
 if tonumber(DevSakura:get(SAKURA..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
 DevSakura:del(SAKURA..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
 DevSakura:del(SAKURA.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙*التخمين الصحيح هو* ↫ '..GETNUM..'\n⧉︙*للاسف لقد خسرت حاول مره اخرى لتخمين الرقم الصحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮*التخمين الصحيح هو* ↫ '..GETNUM..'\n⌔∮*للاسف لقد خسرت حاول مره اخرى لتخمين الرقم الصحيح*', 1, 'md')
 else
 if tonumber(DevSakura:get(SAKURA..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 1 then
 SetNum = 'محاولتان فقط'
 elseif tonumber(DevSakura:get(SAKURA..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 2 then
 SetNum = 'محاوله واحده فقط'
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لقد خمنت الرقم الخطا وتبقى لديك '..SetNum..' ارسل رقم تخمنه مره اخرى للفوز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لقد خمنت الرقم الخطا وتبقى لديك '..SetNum..' ارسل رقم تخمنه مره اخرى للفوز', 1, 'md')
 end
 end
 end
@@ -3542,7 +3542,7 @@ if text == 'خمن' and ChCheck(msg) or text == 'تخمين' and ChCheck(msg) th
 if DevSakura:get(SAKURA..'Sakura:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,20)
 DevSakura:set(SAKURA.."GAMES:NUM"..msg.chat_id_,Num) 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙اهلا بك عزيزي في لعبة التخمين ↫ ⤈\n ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n⧉︙ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮اهلا بك عزيزي في لعبة التخمين ↫ ⤈\n ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n⌔∮ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
 DevSakura:setex(SAKURA.."GAME:TKMEN" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 100, true)  
 return false  
 end
@@ -3552,16 +3552,16 @@ if DevSakura:get(SAKURA..'Sakura:Lock:Games'..msg.chat_id_) then
 DevSakura:del(SAKURA.."Sakura:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
 DevSakura:del(SAKURA..'Sakura:ListRolet'..msg.chat_id_)  
 DevSakura:setex(SAKURA.."Sakura:StartRolet"..msg.chat_id_..msg.sender_user_id_,3600,true)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙حسنا لنلعب , ارسل عدد اللاعبين للروليت .', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮حسنا لنلعب , ارسل عدد اللاعبين للروليت .', 1, 'md')
 return false  
 end
 end
 if text:match("^(%d+)$") and DevSakura:get(SAKURA.."Sakura:StartRolet"..msg.chat_id_..msg.sender_user_id_) then
 if text == "1" then
-Text = "⧉︙لا استطيع بدء اللعبه بلاعب واحد فقط"
+Text = "⌔∮لا استطيع بدء اللعبه بلاعب واحد فقط"
 else
 DevSakura:set(SAKURA.."Sakura:NumRolet"..msg.chat_id_..msg.sender_user_id_,text)  
-Text = '⧉︙تم بدء تسجيل اللسته يرجى ارسال المعرفات \n⧉︙الفائز يحصل على 5 نقاط عدد المطلوبين ↫ '..text..' لاعب'
+Text = '⌔∮تم بدء تسجيل اللسته يرجى ارسال المعرفات \n⌔∮الفائز يحصل على 5 نقاط عدد المطلوبين ↫ '..text..' لاعب'
 end
 DevSakura:del(SAKURA.."Sakura:StartRolet"..msg.chat_id_..msg.sender_user_id_)
 send(msg.chat_id_,msg.id_,Text)
@@ -3569,12 +3569,12 @@ return false
 end
 if text:match('^(@[%a%d_]+)$') and DevSakura:get(SAKURA.."Sakura:NumRolet"..msg.chat_id_..msg.sender_user_id_) then 
 if DevSakura:sismember(SAKURA..'Sakura:ListRolet'..msg.chat_id_,text) then
-send(msg.chat_id_,msg.id_,'⧉︙المعرف ↫ ['..text..'] موجود اساسا')
+send(msg.chat_id_,msg.id_,'⌔∮المعرف ↫ ['..text..'] موجود اساسا')
 return false
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text},function(extra, res, success) 
 if res and res.message_ and res.message_ == "USERNAME_NOT_OCCUPIED" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙المعرف غير صحيح يرجى ارسال معرف صحيح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮المعرف غير صحيح يرجى ارسال معرف صحيح', 1, 'md')
 return false 
 end
 DevSakura:sadd(SAKURA..'Sakura:ListRolet'..msg.chat_id_,text)
@@ -3584,13 +3584,13 @@ local CountUser = CountAdd - CountAll
 if tonumber(CountAll) == tonumber(CountAdd) then 
 DevSakura:del(SAKURA.."Sakura:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
 DevSakura:setex(SAKURA.."Sakura:WittingStartRolet"..msg.chat_id_..msg.sender_user_id_,1400,true) 
-local Text = "⧉︙تم ادخال المعرف ↫ ["..text.."]\n⧉︙وتم اكتمال العدد الكلي هل انت مستعد ؟"
+local Text = "⌔∮تم ادخال المعرف ↫ ["..text.."]\n⌔∮وتم اكتمال العدد الكلي هل انت مستعد ؟"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/YesRolet"},{text="لا",callback_data="/NoRolet"}},{{text="اللاعبين",callback_data="/ListRolet"}}} 
 Msg_id = msg.id_/2097152/0.5
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end 
-local Text = "⧉︙تم ادخال المعرف ↫ ["..text.."] وتبقى ↫ "..CountUser.." لاعبين ليكتمل العدد ارسل المعرف الاخر"
+local Text = "⌔∮تم ادخال المعرف ↫ ["..text.."] وتبقى ↫ "..CountUser.." لاعبين ليكتمل العدد ارسل المعرف الاخر"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="الغاء",callback_data="/NoRolet"}}} 
 Msg_id = msg.id_/2097152/0.5
@@ -3600,37 +3600,37 @@ end
 if text == 'الالعاب' and ChCheck(msg) or text == 'العاب' and ChCheck(msg) or text == 'اللعبه' and ChCheck(msg) then
 if DevSakura:get(SAKURA..'Sakura:Lock:Games'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1,[[
-⧉︙قائمة العاب المجموعه ↫ ⤈
+⌔∮قائمة العاب المجموعه ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙لعبة التخمين ↫ خمن
-⧉︙لعبة الامثله ↫ امثله
-⧉︙لعبة العكس ↫ العكس
-⧉︙لعبة الاسئله ↫ اسئله
-⧉︙لعبة الروليت ↫ روليت
-⧉︙لعبة الحزوره ↫ حزوره
-⧉︙لعبة الترتيب ↫ ترتيب
-⧉︙لعبة المعاني ↫ معاني
-⧉︙لعبة المختلف ↫ المختلف
-⧉︙لعبة السمايلات ↫ سمايلات
-⧉︙لعبة المحيبس ↫ المحيبس
-⧉︙لعبة الرياضيات ↫ رياضيات
-⧉︙لعبة الانكليزيه ↫ انكليزيه
+⌔∮لعبة التخمين ↫ خمن
+⌔∮لعبة الامثله ↫ امثله
+⌔∮لعبة العكس ↫ العكس
+⌔∮لعبة الاسئله ↫ اسئله
+⌔∮لعبة الروليت ↫ روليت
+⌔∮لعبة الحزوره ↫ حزوره
+⌔∮لعبة الترتيب ↫ ترتيب
+⌔∮لعبة المعاني ↫ معاني
+⌔∮لعبة المختلف ↫ المختلف
+⌔∮لعبة السمايلات ↫ سمايلات
+⌔∮لعبة المحيبس ↫ المحيبس
+⌔∮لعبة الرياضيات ↫ رياضيات
+⌔∮لعبة الانكليزيه ↫ انكليزيه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙نقاطي • بيع نقاطي
+⌔∮نقاطي • بيع نقاطي
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙[Source Channel](https://t.me/SAKURAV15)
+⌔∮[Source Channel](https://t.me/SAKURAV15)
 ]], 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا الالعاب معطله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا الالعاب معطله في المجموعه', 1, 'md')
 end
 end
 if text == 'بيع نقاطي' and ChCheck(msg) then
 if tonumber((DevSakura:get(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لم تربح اي نقطه\n⧉︙ارسل ↫ الالعاب للعب', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لم تربح اي نقطه\n⌔∮ارسل ↫ الالعاب للعب', 1, 'md')
 else
 DevAbs0 = (DevSakura:get(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_) * 50)
 DevSakura:incrby(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_,DevAbs0)
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙تم بيع '..(DevSakura:get(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_))..' من نقاطك\n⧉︙كل نقطه تساوي 50 رساله', 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮تم بيع '..(DevSakura:get(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_))..' من نقاطك\n⌔∮كل نقطه تساوي 50 رساله', 'md')
 DevSakura:del(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_)
 end
 end
@@ -3658,18 +3658,18 @@ DevSakura:sadd(SAKURA..'Sakura:AbsConstructor:'..msg.chat_id_,Manager_id)
 end  
 end  
 if num == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لا يوجد ادمنيه ليتم رفعهم\n⧉︙تم رفع منشئ المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لا يوجد ادمنيه ليتم رفعهم\n⌔∮تم رفع منشئ المجموعه", 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم رفع '..num..' من الادمنيه \n⧉︙تم رفع منشئ المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم رفع '..num..' من الادمنيه \n⌔∮تم رفع منشئ المجموعه', 1, 'md')
 end
 end,nil) 
 end
 if text == 'غادر' and SudoBot(msg) then
 if DevSakura:get(SAKURA.."Sakura:Left:Bot"..SAKURA) and not Sudo(msg) then
-Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙المغادره معطله من قبل المطور الاساسي", 1, 'md')
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⌔∮المغادره معطله من قبل المطور الاساسي", 1, 'md')
 return false  
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم مغادرة المجموعه \n⧉︙تم حذف جميع بياناتها ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم مغادرة المجموعه \n⌔∮تم حذف جميع بياناتها ', 1, 'md')
 ChatLeave(msg.chat_id_, SAKURA)
 DevSakura:srem(SAKURA.."Sakura:Groups",msg.chat_id_)
 end
@@ -3682,7 +3682,7 @@ rtpa = 'الادمن'
 elseif da.status_.ID == "ChatMemberStatusMember" then
 rtpa = 'عضو'
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙موقعك ↫ '..rtpa, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮موقعك ↫ '..rtpa, 1, 'md')
 end,nil)
 end
 if text:match("^معلوماتي$") and ChCheck(msg) then
@@ -3693,59 +3693,59 @@ local cont = (tonumber(DevSakura:get(SAKURA..'Sakura:ContactNumber'..msg.chat_id
 local user_nkt = tonumber(DevSakura:get(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)
 if result.username_ then username = '@'..result.username_ else username = 'لا يوجد' end
 if result.last_name_ then lastname = result.last_name_ else lastname = '' end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙اسمك ↫ ❨ ['..result.first_name_..'] ❩\n⧉︙معرفك ↫ ❨ ['..username..'] ❩\n⧉︙ايديك ↫ ❨ `'..result.id_..'` ❩\n⧉︙نقاطك ↫ ❨ '..user_nkt..' ❩\n⧉︙رسائلك ↫ ❨ '..user_msgs..' ❩\n⧉︙جهاتك ↫ ❨ '..cont..' ❩\n⧉︙تفاعلك ↫ '..formsgs(msguser)..'\n⧉︙رتبتك ↫ '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮اسمك ↫ ❨ ['..result.first_name_..'] ❩\n⌔∮معرفك ↫ ❨ ['..username..'] ❩\n⌔∮ايديك ↫ ❨ `'..result.id_..'` ❩\n⌔∮نقاطك ↫ ❨ '..user_nkt..' ❩\n⌔∮رسائلك ↫ ❨ '..user_msgs..' ❩\n⌔∮جهاتك ↫ ❨ '..cont..' ❩\n⌔∮تفاعلك ↫ '..formsgs(msguser)..'\n⌔∮رتبتك ↫ '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'md')
 end
 getUser(msg.sender_user_id_,get_me)
 end
 end
 if text == "تعيين قناة الاشتراك" or text == "تغيير قناة الاشتراك" or text == "تعيين الاشتراك الاجباري" or text == "وضع قناة الاشتراك" then
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
 DevSakura:setex(SAKURA..'DevAbs4'..msg.sender_user_id_,360,true)
-send(msg.chat_id_, msg.id_, '⧉︙ارسل لي معرف قناة الاشتراك الان')
+send(msg.chat_id_, msg.id_, '⌔∮ارسل لي معرف قناة الاشتراك الان')
 end
 return false  
 end
 if text == "تفعيل الاشتراك الاجباري" then  
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
 if DevSakura:get(SAKURA..'DevAbs2') then
 local DevCh = DevSakura:get(SAKURA..'DevAbs3')
-send(msg.chat_id_, msg.id_,"⧉︙الاشتراك الاجباري مفعل \n⧉︙على القناة ↫ ["..DevCh.."]")
+send(msg.chat_id_, msg.id_,"⌔∮الاشتراك الاجباري مفعل \n⌔∮على القناة ↫ ["..DevCh.."]")
 else
 DevSakura:setex(SAKURA..'DevAbs4'..msg.sender_user_id_,360,true)
-send(msg.chat_id_, msg.id_,"⧉︙لاتوجد قناة لتفعيل الاشتراك\n⧉︙ارسل لي معرف قناة الاشتراك الان")
+send(msg.chat_id_, msg.id_,"⌔∮لاتوجد قناة لتفعيل الاشتراك\n⌔∮ارسل لي معرف قناة الاشتراك الان")
 end
 end
 return false  
 end
 if text == "تعطيل الاشتراك الاجباري" then  
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
 DevSakura:del(SAKURA..'DevAbs2') DevSakura:del(SAKURA..'DevAbs3')
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الاشتراك الاجباري'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الاشتراك الاجباري'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 return false  
 end
 if text == "حذف قناة الاشتراك" or text == "حذف قناه الاشتراك" then
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
 DevSakura:del(SAKURA..'DevAbs2') DevSakura:del(SAKURA..'DevAbs3')
-Dev_Abs(msg.chat_id_, msg.id_, 1,"⧉︙تم حذف قناة الاشتراك الاجباري", 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1,"⌔∮تم حذف قناة الاشتراك الاجباري", 1, 'md') 
 end
 end
 if Sudo(msg) then
 if text == 'جلب قناة الاشتراك' or text == 'قناة الاشتراك' or text == 'الاشتراك الاجباري' or text == 'قناة الاشتراك الاجباري' then
 if DevSakura:get(SAKURA..'DevAbs3') then
 local DevCh = DevSakura:get(SAKURA..'DevAbs3')
-send(msg.chat_id_, msg.id_, "⧉︙قناة الاشتراك ↫ ["..DevCh.."]")
+send(msg.chat_id_, msg.id_, "⌔∮قناة الاشتراك ↫ ["..DevCh.."]")
 else
-send(msg.chat_id_, msg.id_, "⧉︙لاتوجد قناة في الاشتراك الاجباري")
+send(msg.chat_id_, msg.id_, "⌔∮لاتوجد قناة في الاشتراك الاجباري")
 end
 return false  
 end end
@@ -3753,7 +3753,7 @@ if SudoBot(msg) then
 if text == 'اذاعه للكل بالتوجيه' and tonumber(msg.reply_to_message_id_) > 0 then
 function SAKURATEAM(extra,result,success)
 if DevSakura:get(SAKURA.."Sakura:Send:Bot"..SAKURA) and not Sudo(msg) then 
-send(msg.chat_id_, msg.id_,"⧉︙الاذاعه معطله من قبل المطور الاساسي")
+send(msg.chat_id_, msg.id_,"⌔∮الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 local listgp = DevSakura:smembers(SAKURA.."Sakura:Groups")
@@ -3764,14 +3764,14 @@ local listpv = DevSakura:smembers(SAKURA.."Sakura:Users")
 for k,v in pairs(listpv) do
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = result.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم اذاعة رسالتك بالتوجيه \n⧉︙‏في ↫ ❨ '..#listgp..' ❩ مجموعه \n⧉︙والى ↫ ❨ '..#listpv..' ❩ مشترك \n ✓', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم اذاعة رسالتك بالتوجيه \n⌔∮‏في ↫ ❨ '..#listgp..' ❩ مجموعه \n⌔∮والى ↫ ❨ '..#listpv..' ❩ مشترك \n ✓', 1, 'md')
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),SAKURATEAM)
 end
 end
 if text:match("^مشاهده المنشور$") and ChCheck(msg) or text:match("^مشاهدات المنشور$") and ChCheck(msg) or text:match("^عدد المشاهدات$") and ChCheck(msg) then
 DevSakura:set(SAKURA..'Sakura:viewget'..msg.sender_user_id_,true)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙حسنا قم باعادة توجيه للمنشور الذي تريدني حساب مشاهداته', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮حسنا قم باعادة توجيه للمنشور الذي تريدني حساب مشاهداته', 1, 'md')
 end
 if text:match("^السورس$") or text:match("^سورس$") then 
 local text =  [[
@@ -3789,12 +3789,12 @@ end
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == "اطردني" and ChCheck(msg) or text == "ادفرني" and ChCheck(msg) then
 if DevSakura:get(SAKURA.."Sakura:Kick:Me"..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا هذه الخاصيه معطله ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا هذه الخاصيه معطله ', 1, 'md')
 return false
 end
 DevSakura:set(SAKURA..'yes'..msg.sender_user_id_..'', 'delyes')
 DevSakura:set(SAKURA..'no'..msg.sender_user_id_..'', 'delno')
-local Text = '⧉︙هل انت متأكد من المغادره'
+local Text = '⌔∮هل انت متأكد من المغادره'
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/delyes"},{text="لا",callback_data="/delno"}}} 
 Msg_id = msg.id_/2097152/0.5
@@ -3802,22 +3802,22 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?cha
 end
 if text == 'تعطيل اطردني' and Manager(msg) and ChCheck(msg) then
 DevSakura:set(SAKURA.."Sakura:Kick:Me"..msg.chat_id_, true)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل امر اطردني'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل امر اطردني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل اطردني' and Manager(msg) and ChCheck(msg) then
 DevSakura:del(SAKURA.."Sakura:Kick:Me"..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل امر اطردني'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل امر اطردني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if text == "نزلني" and ChCheck(msg) then
 if DevSakura:get(SAKURA.."Sakura:Del:Me"..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا هذه الخاصيه معطله ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا هذه الخاصيه معطله ', 1, 'md')
 return false
 end
 DevSakura:set(SAKURA..'yesdel'..msg.sender_user_id_..'', 'delyes')
 DevSakura:set(SAKURA..'nodel'..msg.sender_user_id_..'', 'delno')
-local Text = '⧉︙هل انت متأكد من تنزيلك'
+local Text = '⌔∮هل انت متأكد من تنزيلك'
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/yesdel"},{text="لا",callback_data="/nodel"}}} 
 Msg_id = msg.id_/2097152/0.5
@@ -3825,18 +3825,18 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?cha
 end
 if text == 'تعطيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
 DevSakura:set(SAKURA.."Sakura:Del:Me"..msg.chat_id_, true)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل امر نزلني'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل امر نزلني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
 DevSakura:del(SAKURA.."Sakura:Del:Me"..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل امر نزلني'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل امر نزلني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if Admin(msg) then
 if text and text == "تاك للكل" and ChCheck(msg) then
 function TagAll(dp1,dp2)
-local text = "⧉︙وينكم يالربع \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+local text = "⌔∮وينكم يالربع \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 i = 0
 for k, v in pairs(dp2.members_) do
 i = i + 1
@@ -3853,7 +3853,7 @@ end
 if text:match("^كللهم (.*)$") and ChCheck(msg) then
 local txt = {string.match(text, "^(كللهم) (.*)$")}
 function TagAll(dp1,dp2)
-local text = "⧉︙"..txt[2].." \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+local text = "⌔∮"..txt[2].." \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 i = 0
 for k, v in pairs(dp2.members_) do
 i = i + 1
@@ -3870,11 +3870,11 @@ end
 end
 if text:match("^رسائلي$") and msg.reply_to_message_id_ == 0 and ChCheck(msg) then
 local user_msgs = DevSakura:get(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙عدد رسائلك هنا ↫ *❨ "..user_msgs.." ❩*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عدد رسائلك هنا ↫ *❨ "..user_msgs.." ❩*", 1, 'md')
 end
 if text:match("^معرفي$") and ChCheck(msg) then
 function get_username(extra,result,success)
-text = '⧉︙معرفك ↫ ❨ User ❩'
+text = '⌔∮معرفك ↫ ❨ User ❩'
 local text = text:gsub('User',('@'..result.username_ or ''))
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
@@ -3882,33 +3882,33 @@ getUser(msg.sender_user_id_,get_username)
 end
 if text:match("^اسمي$") and ChCheck(msg) then
 function get_firstname(extra,result,success)
-text = '⧉︙اسمك ↫ firstname lastname'
+text = '⌔∮اسمك ↫ firstname lastname'
 local text = text:gsub('firstname',(result.first_name_ or ''))
 local text = text:gsub('lastname',(result.last_name_ or ''))
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 getUser(msg.sender_user_id_,get_firstname)
 end   
-if text and text == "اهمس" or text and text == "همسه" or text and text == "اريد بوت الهمسه" or text and text == "دزلي بوت الهمسه" or  text and text == "دزولي بوت الهمسه" then  Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙@HMSEBOT', 1, 'md') end
-if text:match("^رابط حذف$") or text:match("^رابط الحذف$") or text:match("^اريد رابط الحذف$") or  text:match("^شمرلي رابط الحذف$") or text:match("^اريد رابط حذف$") then local inline = {{{text="اضغط هنا",url="https://t.me/DYFBOT"}}} SendInline(msg.chat_id_,'⧉︙اضغط للحصول على الرابط',nil,inline) return false end
-if text:match("^بوت الحذف$") or text:match("^اريد بوت الحذف$") or text:match("^اريد بوت حذف$") or text:match("^بوت حذف$") or text:match("^بوت حذف حسابات$") or text:match("^راح احذف$") then local inline = {{{text="اضغط هنا",url="https://t.me/DYFBOT"}}} SendInline(msg.chat_id_,'⧉︙اضغط للحصول على البوت',nil,inline) return false end
-if text:match("^جهاتي$") and ChCheck(msg) or text:match("^اضافاتي$") and ChCheck(msg) then add = (tonumber(DevSakura:get(SAKURA..'Sakura:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0) Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙عدد جهاتك المضافه ↫ *❨ "..add.." ❩* ", 1, 'md') end
-if text:match("^تعديلاتي$") or text:match("^سحكاتي$") and ChCheck(msg) then local edit_msg = DevSakura:get(SAKURA..'Sakura:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0  Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙عدد تعديلاتك ↫ *❨ "..edit_msg.." ❩* ", 1, 'md') end
-if text:match("^ايديي$") and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙ايديك ↫ ❨ `'..msg.sender_user_id_..'` ❩', 1, 'md') end
-if text:match("^رتبتي$") and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙رتبتك ↫ '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'html') end
-if text:match("^ايدي المجموعه$") and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ايدي المجموعه ↫ `"..msg.chat_id_.."`", 1, 'md') end
-if text == 'مسح سحكاتي' or text == 'مسح تعديلاتي' or text == 'حذف سحكاتي' or text == 'حذف تعديلاتي' then DevSakura:del(SAKURA..'Sakura:EditMsg'..msg.chat_id_..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حذف جميع تعديلاتك بنجاح' , 1, 'md') end
-if text == 'مسح جهاتي' or text == 'مسح اضافاتي' or text == 'حذف جهاتي' or text == 'حذف اضافاتي' then DevSakura:del(SAKURA..'Sakura:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حذف جميع جهاتك المضافه' , 1, 'md') end
+if text and text == "اهمس" or text and text == "همسه" or text and text == "اريد بوت الهمسه" or text and text == "دزلي بوت الهمسه" or  text and text == "دزولي بوت الهمسه" then  Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮@HMSEBOT', 1, 'md') end
+if text:match("^رابط حذف$") or text:match("^رابط الحذف$") or text:match("^اريد رابط الحذف$") or  text:match("^شمرلي رابط الحذف$") or text:match("^اريد رابط حذف$") then local inline = {{{text="اضغط هنا",url="https://t.me/DYFBOT"}}} SendInline(msg.chat_id_,'⌔∮اضغط للحصول على الرابط',nil,inline) return false end
+if text:match("^بوت الحذف$") or text:match("^اريد بوت الحذف$") or text:match("^اريد بوت حذف$") or text:match("^بوت حذف$") or text:match("^بوت حذف حسابات$") or text:match("^راح احذف$") then local inline = {{{text="اضغط هنا",url="https://t.me/DYFBOT"}}} SendInline(msg.chat_id_,'⌔∮اضغط للحصول على البوت',nil,inline) return false end
+if text:match("^جهاتي$") and ChCheck(msg) or text:match("^اضافاتي$") and ChCheck(msg) then add = (tonumber(DevSakura:get(SAKURA..'Sakura:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0) Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عدد جهاتك المضافه ↫ *❨ "..add.." ❩* ", 1, 'md') end
+if text:match("^تعديلاتي$") or text:match("^سحكاتي$") and ChCheck(msg) then local edit_msg = DevSakura:get(SAKURA..'Sakura:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0  Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عدد تعديلاتك ↫ *❨ "..edit_msg.." ❩* ", 1, 'md') end
+if text:match("^ايديي$") and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮ايديك ↫ ❨ `'..msg.sender_user_id_..'` ❩', 1, 'md') end
+if text:match("^رتبتي$") and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮رتبتك ↫ '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'html') end
+if text:match("^ايدي المجموعه$") and ChCheck(msg) then Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ايدي المجموعه ↫ `"..msg.chat_id_.."`", 1, 'md') end
+if text == 'مسح سحكاتي' or text == 'مسح تعديلاتي' or text == 'حذف سحكاتي' or text == 'حذف تعديلاتي' then DevSakura:del(SAKURA..'Sakura:EditMsg'..msg.chat_id_..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حذف جميع تعديلاتك بنجاح' , 1, 'md') end
+if text == 'مسح جهاتي' or text == 'مسح اضافاتي' or text == 'حذف جهاتي' or text == 'حذف اضافاتي' then DevSakura:del(SAKURA..'Sakura:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_) Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حذف جميع جهاتك المضافه' , 1, 'md') end
 if text == "المطور" then 
 local DevCh1 = DevSakura:get(SAKURA.."DevAbs3")
 local DevText = DevSakura:get(SAKURA.."DevText")
-if DevCh1 then DevCh = '\n⧉︙*Dev Ch* ↬ ['..DevCh1..']' else DevCh = '' end
+if DevCh1 then DevCh = '\n⌔∮*Dev Ch* ↬ ['..DevCh1..']' else DevCh = '' end
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
 if dp.username_ ~= false then DevUser = '@'..dp.username_ else DevUser = dp.first_name_ end
 if DevText then
 Dev_Abs(msg.chat_id_, msg.id_, 1, DevText, 1, "md")
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*Dev User* ↬ ['..DevUser..']\n⧉︙*Dev Id* ↬ '..DevId..''..DevCh, 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*Dev User* ↬ ['..DevUser..']\n⌔∮*Dev Id* ↬ '..DevId..''..DevCh, 1, "md")
 end
 end,nil)
 end 
@@ -3937,7 +3937,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 local SAKURATEAM = { "لكك جرجف @"..username.." احترم اسيادكك لا اكتلكك وازربب على كبركك،💩🖐🏿","هشش لكك فاشل @"..username.." لتضل تمسلت لا اخربط تضاريس وجهك جنه ابط عبده، 😖👌🏿","حبيبي @"..username.." راح احاول احترمكك هالمره بلكي تبطل حيونه، 🤔🔪","دمشي لك @"..username.." ينبوع الفشل مو زين ملفيك ونحجي وياك هي منبوذ 😏🖕🏿","ها الغليض التفس ابو راس المربع @"..username.." متعلملك جم حجايه وجاي تطكطكهن علينه دبطل😒🔪",}
 Dev_Abs(msg.chat_id_, result.id_, 1,''..SAKURATEAM[math.random(#SAKURATEAM)]..'', 1, 'html') 
 else  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو غير موجود في المجموعه', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو غير موجود في المجموعه', 1, 'md') 
 end 
 end 
 resolve_username(username,SAKURATEAM)
@@ -4027,7 +4027,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1,SAKURATEAM, 1, 'md')
 local SAKURATEAM = { "تتعال ححب @"..username.." محتاجيك🙂🍭","تعال يولل @"..username.." استاذكك ايريدككك😒🔪","يمعوود @"..username.." تعاال يريدوكك🤕♥️","تعال لكك @"..username.." ديصيحوك😐🖤",}
 Dev_Abs(msg.chat_id_, result.id_, 1,''..SAKURATEAM[math.random(#SAKURATEAM)]..'', 1, 'html') 
 else  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العضو غير موجود في المجموعه', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو غير موجود في المجموعه', 1, 'md') 
 end 
 end 
 resolve_username(username,SAKURATEAM)
@@ -4036,7 +4036,7 @@ end
 if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Manager(msg) and ChCheck(msg) then 
 function promote_by_reply(extra, result, success)
 if SudoId(result.sender_user_id_) == true then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لاتستطيع تنزيل المطور الاساسي", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لاتستطيع تنزيل المطور الاساسي", 1, 'md')
 return false 
 end
 if DevSakura:sismember(SAKURA..'Sakura:SudoBot:',result.sender_user_id_) then
@@ -4055,9 +4055,9 @@ if DevSakura:sismember(SAKURA..'Sakura:Cleaner:'..msg.chat_id_, result.sender_us
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.sender_user_id_,msg.chat_id_) ~= false then
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من ↫ ⤈\n~ ( "..sudobot..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من ↫ ⤈\n~ ( "..sudobot..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
 else 
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙لم تتم ترقيته مسبقا")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮لم تتم ترقيته مسبقا")  
 end
 if AbsDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudoid' then
 DevSakura:srem(SAKURA..'Sakura:SudoBot:', result.sender_user_id_)
@@ -4104,7 +4104,7 @@ local rem = {string.match(text, "^(تنزيل الكل) @(.*)$")}
 function remm(extra, result, success)
 if result.id_ then
 if SudoId(result.id_) == true then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لاتستطيع تنزيل المطور الاساسي", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لاتستطيع تنزيل المطور الاساسي", 1, 'md')
 return false 
 end
 if DevSakura:sismember(SAKURA..'Sakura:SudoBot:',result.id_) then
@@ -4123,9 +4123,9 @@ if DevSakura:sismember(SAKURA..'Sakura:Cleaner:'..msg.chat_id_, result.id_) then
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.id_,msg.chat_id_) ~= false then
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تنزيله من ↫ ⤈\n~ ( "..sudobot..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تنزيله من ↫ ⤈\n~ ( "..sudobot..''..basicconstructor..''..constructor..''..manager..''..admins..''..vipmem..''..cleaner.." ) ~")  
 else 
-ReplyStatus(msg,result.id_,"reply","⧉︙لم تتم ترقيته مسبقا")  
+ReplyStatus(msg,result.id_,"reply","⌔∮لم تتم ترقيته مسبقا")  
 end 
 if AbsDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudoid' then
 DevSakura:srem(SAKURA..'Sakura:SudoBot:', result.id_)
@@ -4164,7 +4164,7 @@ DevSakura:srem(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.id_)
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.id_)
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المعرف غير صحيح*', 1, 'md')
 end
 end
 resolve_username(rem[2],remm)
@@ -4174,7 +4174,7 @@ if Sudo(msg) then
 if text ==('رفع مطور') and ChCheck(msg) then
 function sudo_reply(extra, result, success)
 DevSakura:sadd(SAKURA..'Sakura:SudoBot:',result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه في قائمة المطورين")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه في قائمة المطورين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4185,22 +4185,22 @@ local username = text:match('^رفع مطور @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:sadd(SAKURA..'Sakura:SudoBot:',result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم رفعه في قائمة المطورين")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم رفعه في قائمة المطورين")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع مطور (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مطور (%d+)')
 DevSakura:sadd(SAKURA..'Sakura:SudoBot:',user)
-ReplyStatus(msg,user,"reply","⧉︙تم رفعه في قائمة المطورين")  
+ReplyStatus(msg,user,"reply","⌔∮تم رفعه في قائمة المطورين")  
 end
 --       Rem SudoBot      --
 if text ==('تنزيل مطور') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:SudoBot:',result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من قائمة المطورين")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من قائمة المطورين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4211,16 +4211,16 @@ local username = text:match('^تنزيل مطور @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:SudoBot:',result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تنزيله من قائمة المطورين")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تنزيله من قائمة المطورين")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل مطور (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مطور (%d+)')
 DevSakura:srem(SAKURA..'Sakura:SudoBot:',user)
-ReplyStatus(msg,user,"reply","⧉︙تم تنزيله من قائمة المطورين")  
+ReplyStatus(msg,user,"reply","⌔∮تم تنزيله من قائمة المطورين")  
 end end
 --  Set BasicConstructor  --
 if ChatType == 'sp' or ChatType == 'gp'  then
@@ -4228,7 +4228,7 @@ if AbsConstructor(msg) then
 if text ==('رفع منشئ اساسي') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevSakura:sadd(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه منشئ اساسي")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه منشئ اساسي")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4239,22 +4239,22 @@ local username = text:match('^رفع منشئ اساسي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:sadd(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم رفعه منشئ اساسي")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم رفعه منشئ اساسي")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع منشئ اساسي (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منشئ اساسي (%d+)')
 DevSakura:sadd(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم رفعه منشئ اساسي")  
+ReplyStatus(msg,user,"reply","⌔∮تم رفعه منشئ اساسي")  
 end
 --  Rem BasicConstructor  --
 if text ==('تنزيل منشئ اساسي') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله منشئ اساسي")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله منشئ اساسي")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4265,26 +4265,26 @@ local username = text:match('^تنزيل منشئ اساسي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تنزيله منشئ اساسي")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تنزيله منشئ اساسي")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل منشئ اساسي (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منشئ اساسي (%d+)')
 DevSakura:srem(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم تنزيله منشئ اساسي")  
+ReplyStatus(msg,user,"reply","⌔∮تم تنزيله منشئ اساسي")  
 end end
 if text ==('رفع منشئ اساسي') and not AbsConstructor(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙هذا الامر لمنشئ المجموعه والمطورين فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮هذا الامر لمنشئ المجموعه والمطورين فقط', 1, 'md')
 end
 --    Set  Constructor    --
 if BasicConstructor(msg) then
 if text ==('رفع منشئ') and ChCheck(msg) then
 function raf_reply(extra, result, success)
 DevSakura:sadd(SAKURA..'Sakura:Constructor:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه في قائمة المنشئين")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه في قائمة المنشئين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4295,22 +4295,22 @@ local username = text:match('^رفع منشئ @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:sadd(SAKURA..'Sakura:Constructor:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم رفعه في قائمة المنشئين")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم رفعه في قائمة المنشئين")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع منشئ (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منشئ (%d+)')
 DevSakura:sadd(SAKURA..'Sakura:Constructor:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم رفعه في قائمة المنشئين")  
+ReplyStatus(msg,user,"reply","⌔∮تم رفعه في قائمة المنشئين")  
 end
 --    Rem  Constructor    --
 if text ==('تنزيل منشئ') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:Constructor:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من قائمة المنشئين")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من قائمة المنشئين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4321,16 +4321,16 @@ local username = text:match('^تنزيل منشئ @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:Constructor:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تنزيله من قائمة المنشئين")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تنزيله من قائمة المنشئين")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل منشئ (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منشئ (%d+)')
 DevSakura:srem(SAKURA..'Sakura:Constructor:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم تنزيله من قائمة المنشئين")  
+ReplyStatus(msg,user,"reply","⌔∮تم تنزيله من قائمة المنشئين")  
 end 
 end
 --      Set Manager       --
@@ -4338,7 +4338,7 @@ if Constructor(msg) then
 if text ==('رفع مدير') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:sadd(SAKURA..'Sakura:Managers:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه في قائمة المدراء")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه في قائمة المدراء")  
 end  
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4349,22 +4349,22 @@ local username = text:match('^رفع مدير @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:sadd(SAKURA..'Sakura:Managers:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم رفعه في قائمة المدراء")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم رفعه في قائمة المدراء")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end 
 if text and text:match('^رفع مدير (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مدير (%d+)')
 DevSakura:sadd(SAKURA..'Sakura:Managers:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم رفعه في قائمة المدراء")  
+ReplyStatus(msg,user,"reply","⌔∮تم رفعه في قائمة المدراء")  
 end
 --       Rem Manager      --
 if text ==('تنزيل مدير') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:Managers:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من قائمة المدراء")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من قائمة المدراء")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4375,22 +4375,22 @@ local username = text:match('^تنزيل مدير @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:Managers:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تنزيله من قائمة المدراء")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تنزيله من قائمة المدراء")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل مدير (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مدير (%d+)')
 DevSakura:srem(SAKURA..'Sakura:Managers:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم تنزيله من قائمة المدراء")  
+ReplyStatus(msg,user,"reply","⌔∮تم تنزيله من قائمة المدراء")  
 end 
 --       Set Cleaner      --
 if text ==('رفع منظف') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:sadd(SAKURA..'Sakura:Cleaner:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه في قائمة المنظفين")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه في قائمة المنظفين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4401,22 +4401,22 @@ local username = text:match('^رفع منظف @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:sadd(SAKURA..'Sakura:Cleaner:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم رفعه في قائمة المنظفين")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم رفعه في قائمة المنظفين")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع منظف (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منظف (%d+)')
 DevSakura:sadd(SAKURA..'Sakura:Cleaner:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم رفعه في قائمة المنظفين")  
+ReplyStatus(msg,user,"reply","⌔∮تم رفعه في قائمة المنظفين")  
 end
 --       Rem Cleaner      --
 if text ==('تنزيل منظف') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:Cleaner:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من قائمة المنظفين")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من قائمة المنظفين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4427,27 +4427,27 @@ local username = text:match('^تنزيل منظف @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:Cleaner:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تنزيله من قائمة المنظفين")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تنزيله من قائمة المنظفين")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل منظف (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منظف (%d+)')
 DevSakura:srem(SAKURA..'Sakura:Cleaner:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم تنزيله من قائمة المنظفين")  
+ReplyStatus(msg,user,"reply","⌔∮تم تنزيله من قائمة المنظفين")  
 end end
 --       Set admin        --
 if Manager(msg) then
 if text ==('رفع ادمن') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 if not BasicConstructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:ProSet"..msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
 DevSakura:sadd(SAKURA..'Sakura:Admins:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه في قائمة الادمنيه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه في قائمة الادمنيه")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4457,31 +4457,31 @@ if text and text:match('^رفع ادمن @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع ادمن @(.*)')
 function promreply(extra,result,success)
 if not BasicConstructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:ProSet"..msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
 if result.id_ then
 DevSakura:sadd(SAKURA..'Sakura:Admins:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم رفعه في قائمة الادمنيه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم رفعه في قائمة الادمنيه")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع ادمن (%d+)') and ChCheck(msg) then
 local user = text:match('رفع ادمن (%d+)')
 if not BasicConstructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:ProSet"..msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
 DevSakura:sadd(SAKURA..'Sakura:Admins:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم رفعه في قائمة الادمنيه")  
+ReplyStatus(msg,user,"reply","⌔∮تم رفعه في قائمة الادمنيه")  
 end
 --        Rem admin       --
 if text ==('تنزيل ادمن') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:Admins:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من قائمة الادمنيه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من قائمة الادمنيه")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4492,27 +4492,27 @@ local username = text:match('^تنزيل ادمن @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:Admins:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تنزيله من قائمة الادمنيه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تنزيله من قائمة الادمنيه")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل ادمن (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل ادمن (%d+)')
 DevSakura:srem(SAKURA..'Sakura:Admins:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم تنزيله من قائمة الادمنيه")  
+ReplyStatus(msg,user,"reply","⌔∮تم تنزيله من قائمة الادمنيه")  
 end end
 --       Set Vipmem       --
 if Admin(msg) then
 if text ==('رفع مميز') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 if not BasicConstructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:ProSet"..msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
 DevSakura:sadd(SAKURA..'Sakura:VipMem:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه في قائمة المميزين")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه في قائمة المميزين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4522,31 +4522,31 @@ if text and text:match('^رفع مميز @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مميز @(.*)')
 function promreply(extra,result,success)
 if not BasicConstructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:ProSet"..msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
 if result.id_ then
 DevSakura:sadd(SAKURA..'Sakura:VipMem:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم رفعه في قائمة المميزين")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم رفعه في قائمة المميزين")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع مميز (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مميز (%d+)')
 if not BasicConstructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:ProSet"..msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
 DevSakura:sadd(SAKURA..'Sakura:VipMem:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم رفعه في قائمة المميزين")  
+ReplyStatus(msg,user,"reply","⌔∮تم رفعه في قائمة المميزين")  
 end
 --       Rem Vipmem       --
 if text ==('تنزيل مميز') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..msg.chat_id_,result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من قائمة المميزين")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من قائمة المميزين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4557,16 +4557,16 @@ local username = text:match('^تنزيل مميز @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..msg.chat_id_,result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تنزيله من قائمة المميزين")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تنزيله من قائمة المميزين")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل مميز (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مميز (%d+)')
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..msg.chat_id_,user)
-ReplyStatus(msg,user,"reply","⧉︙تم تنزيله من قائمة المميزين")  
+ReplyStatus(msg,user,"reply","⌔∮تم تنزيله من قائمة المميزين")  
 end end 
 if BasicConstructor(msg) then
 if text and text:match("^رفع مشرف$") and msg.reply_to_message_id_ then
@@ -4575,9 +4575,9 @@ local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatM
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
 HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه مشرف في المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه مشرف في المجموعه")  
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -4588,9 +4588,9 @@ local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatM
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
 HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من مشرفين المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من مشرفين المجموعه")  
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -4601,9 +4601,9 @@ local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatM
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
 HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه مشرف في جميع الصلاحيات")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه مشرف في جميع الصلاحيات")  
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -4615,10 +4615,10 @@ local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatM
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
 https.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم اضافة ↫ "..Abs.." كلقب له")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم اضافة ↫ "..Abs.." كلقب له")  
 https.request("https://api.telegram.org/bot"..TokenBot.."/setChatAdministratorCustomTitle?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&custom_title="..Abs)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
@@ -4632,38 +4632,38 @@ if msg.reply_to_message_id_ ~= 0 then
 if text and (text:match("^مسح$") or text:match("^حذف$")) and ChCheck(msg) then
 DeleteMessage(msg.chat_id_,{[0] = msg.reply_to_message_id_})
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حذف الرساله مع رسالة الامر', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حذف الرساله مع رسالة الامر', 1, 'md')
 end end end
 if Constructor(msg) then
 if text:match("^تفعيل الحظر$") and ChCheck(msg) or text:match("^تفعيل الطرد$") and ChCheck(msg) then
 DevSakura:del(SAKURA.."Sakura:Lock:KickBan"..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الطرد والحظر'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الطرد والحظر'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if text:match("^تعطيل الحظر$") and ChCheck(msg) or text:match("^تعطيل الطرد$") and ChCheck(msg) then
 DevSakura:set(SAKURA.."Sakura:Lock:KickBan"..msg.chat_id_,"true")
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الطرد والحظر'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الطرد والحظر'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if text:match("^تفعيل الكتم$") and ChCheck(msg) or text:match("^تفعيل التقييد$") and ChCheck(msg) then
 DevSakura:del(SAKURA.."Sakura:Lock:MuteTked"..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الكتم والتقيد'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الكتم والتقيد'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if text:match("^تعطيل الكتم$") and ChCheck(msg) or text:match("^تعطيل التقييد$") and ChCheck(msg) then
 DevSakura:set(SAKURA.."Sakura:Lock:MuteTked"..msg.chat_id_,"true")
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الكتم والتقيد'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الكتم والتقيد'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end
 if BasicConstructor(msg) then
 if text:match("^تفعيل الرفع$") and ChCheck(msg) or text:match("^تفعيل الترقيه$") and ChCheck(msg) then
 DevSakura:del(SAKURA.."Sakura:Lock:ProSet"..msg.chat_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم تفعيل رفع ↫ الادمن • المميز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم تفعيل رفع ↫ الادمن • المميز', 1, 'md')
 end
 if text:match("^تعطيل الرفع$") and ChCheck(msg) or text:match("^تعطيل الترقيه$") and ChCheck(msg) then
 DevSakura:set(SAKURA.."Sakura:Lock:ProSet"..msg.chat_id_,"true")
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم تعطيل رفع ↫ الادمن • المميز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم تعطيل رفع ↫ الادمن • المميز', 1, 'md')
 end
 end
 --          Kick          --
@@ -4671,23 +4671,23 @@ if Admin(msg) then
 if text ==('طرد') and ChCheck(msg) then
 function KickReply(extra, result, success)
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:KickBan"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع طرد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع طرد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.sender_user_id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_,msg.id_,"⧉︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_,msg.id_,"⌔∮ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if dp and dp.code_ and dp.code_ == 400 and dp.message_ == "USER_ADMIN_INVALID" then 
-send(msg.chat_id_,msg.id_,"⧉︙لا استطيع طرد مشرفين المجموعه") 
+send(msg.chat_id_,msg.id_,"⌔∮لا استطيع طرد مشرفين المجموعه") 
 return false  
 end
 ChatKick(result.chat_id_, result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم طرده من المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم طرده من المجموعه")  
 end,nil)
 end
 end 
@@ -4699,51 +4699,51 @@ if text and text:match('^طرد @(.*)') and ChCheck(msg) then
 local username = text:match('^طرد @(.*)')
 function KickUser(extra,result,success)
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:KickBan"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع طرد ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع طرد ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_,msg.id_,"⧉︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_,msg.id_,"⌔∮ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if dp and dp.code_ and dp.code_ == 400 and dp.message_ == "USER_ADMIN_INVALID" then 
-send(msg.chat_id_,msg.id_,"⧉︙لا استطيع طرد مشرفين المجموعه") 
+send(msg.chat_id_,msg.id_,"⌔∮لا استطيع طرد مشرفين المجموعه") 
 return false  
 end
 ChatKick(msg.chat_id_, result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم طرده من المجموعه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم طرده من المجموعه")  
 end,nil)
 end
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,KickUser)
 end
 if text and text:match('^طرد (%d+)') and ChCheck(msg) then
 local user = text:match('طرد (%d+)')
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:KickBan"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع طرد ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع طرد ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=user,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_,msg.id_,"⧉︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_,msg.id_,"⌔∮ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if dp and dp.code_ and dp.code_ == 400 and dp.message_ == "USER_ADMIN_INVALID" then 
-send(msg.chat_id_,msg.id_,"⧉︙لا استطيع طرد مشرفين المجموعه") 
+send(msg.chat_id_,msg.id_,"⌔∮لا استطيع طرد مشرفين المجموعه") 
 return false  
 end
 ChatKick(msg.chat_id_, user)
-ReplyStatus(msg,user,"reply","⧉︙تم طرده من المجموعه")  
+ReplyStatus(msg,user,"reply","⌔∮تم طرده من المجموعه")  
 end,nil)
 end
 end
@@ -4754,24 +4754,24 @@ local text = msg.content_.text_:gsub('حضر','حظر')
 if text ==('حظر') and ChCheck(msg) then
 function BanReply(extra, result, success)
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:KickBan"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع حظر ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع حظر ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.sender_user_id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_,msg.id_,"⧉︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_,msg.id_,"⌔∮ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if dp and dp.code_ and dp.code_ == 400 and dp.message_ == "USER_ADMIN_INVALID" then 
-send(msg.chat_id_,msg.id_,"⧉︙لا استطيع حظر مشرفين المجموعه") 
+send(msg.chat_id_,msg.id_,"⌔∮لا استطيع حظر مشرفين المجموعه") 
 return false  
 end
 ChatKick(result.chat_id_, result.sender_user_id_)
 DevSakura:sadd(SAKURA..'Sakura:Ban:'..msg.chat_id_, result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم حظره من المجموعه") 
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم حظره من المجموعه") 
 end,nil) 
 end 
 end 
@@ -4783,53 +4783,53 @@ if text and text:match('^حظر @(.*)') and ChCheck(msg) then
 local username = text:match('^حظر @(.*)')
 function BanUser(extra,result,success)
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:KickBan"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع حظر ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع حظر ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_,msg.id_,"⧉︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_,msg.id_,"⌔∮ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if dp and dp.code_ and dp.code_ == 400 and dp.message_ == "USER_ADMIN_INVALID" then 
-send(msg.chat_id_,msg.id_,"⧉︙لا استطيع حظر مشرفين المجموعه") 
+send(msg.chat_id_,msg.id_,"⌔∮لا استطيع حظر مشرفين المجموعه") 
 return false  
 end
 ChatKick(msg.chat_id_, result.id_)
 DevSakura:sadd(SAKURA..'Sakura:Ban:'..msg.chat_id_, result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم حظره من المجموعه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم حظره من المجموعه")  
 end,nil) 
 end
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,BanUser)
 end
 if text and text:match('^حظر (%d+)') and ChCheck(msg) then
 local user = text:match('حظر (%d+)')
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:KickBan"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع حظر ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع حظر ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=user,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_,msg.id_,"⧉︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_,msg.id_,"⌔∮ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if dp and dp.code_ and dp.code_ == 400 and dp.message_ == "USER_ADMIN_INVALID" then 
-send(msg.chat_id_,msg.id_,"⧉︙لا استطيع حظر مشرفين المجموعه") 
+send(msg.chat_id_,msg.id_,"⌔∮لا استطيع حظر مشرفين المجموعه") 
 return false  
 end
 ChatKick(msg.chat_id_, user)
 DevSakura:sadd(SAKURA..'Sakura:Ban:'..msg.chat_id_, user)
-ReplyStatus(msg,user,"reply","⧉︙تم حظره من المجموعه")  
+ReplyStatus(msg,user,"reply","⌔∮تم حظره من المجموعه")  
 end,nil) 
 end
 end
@@ -4839,7 +4839,7 @@ if text ==('الغاء حظر') and ChCheck(msg) then
 function UnBanReply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:Ban:'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم الغاء حظره من المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم الغاء حظره من المجموعه")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -4851,9 +4851,9 @@ function UnBanUser(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:Ban:'..msg.chat_id_, result.id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-ReplyStatus(msg,result.id_,"reply","⧉︙تم الغاء حظره من المجموعه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم الغاء حظره من المجموعه")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,UnBanUser)
 end
@@ -4861,7 +4861,7 @@ if text and text:match('^الغاء حظر (%d+)') and ChCheck(msg) then
 local user = text:match('الغاء حظر (%d+)')
 DevSakura:srem(SAKURA..'Sakura:Ban:'..msg.chat_id_, user)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = user, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-ReplyStatus(msg,user,"reply","⧉︙تم الغاء حظره من المجموعه")  
+ReplyStatus(msg,user,"reply","⌔∮تم الغاء حظره من المجموعه")  
 end 
 end 
 --          Mute          --
@@ -4869,17 +4869,17 @@ if Admin(msg) then
 if text ==('كتم') and ChCheck(msg) then
 function MuteReply(extra, result, success)
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:MuteTked"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع كتم ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع كتم ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 if DevSakura:sismember(SAKURA..'Sakura:Muted:'..msg.chat_id_, result.sender_user_id_) then
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙هو بالفعل مكتوم من المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮هو بالفعل مكتوم من المجموعه")  
 else
 DevSakura:sadd(SAKURA..'Sakura:Muted:'..msg.chat_id_, result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم كتمه من المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم كتمه من المجموعه")  
 end 
 end
 end 
@@ -4891,39 +4891,39 @@ if text and text:match('^كتم @(.*)') and ChCheck(msg) then
 local username = text:match('^كتم @(.*)')
 function MuteUser(extra,result,success)
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:MuteTked"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع كتم ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع كتم ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 if DevSakura:sismember(SAKURA..'Sakura:Muted:'..msg.chat_id_, result.id_) then
-ReplyStatus(msg,result.id_,"reply","⧉︙هو بالفعل مكتوم من المجموعه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮هو بالفعل مكتوم من المجموعه")  
 else
 DevSakura:sadd(SAKURA..'Sakura:Muted:'..msg.chat_id_, result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم كتمه من المجموعه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم كتمه من المجموعه")  
 end
 end
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,MuteUser)
 end
 if text and text:match('^كتم (%d+)') and ChCheck(msg) then
 local user = text:match('كتم (%d+)')
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:MuteTked"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع كتم ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع كتم ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 if DevSakura:sismember(SAKURA..'Sakura:Muted:'..msg.chat_id_, user) then
-ReplyStatus(msg,user,"reply","⧉︙هو بالفعل مكتوم من المجموعه")  
+ReplyStatus(msg,user,"reply","⌔∮هو بالفعل مكتوم من المجموعه")  
 else
 DevSakura:sadd(SAKURA..'Sakura:Muted:'..msg.chat_id_, user)
-ReplyStatus(msg,user,"reply","⧉︙تم كتمه من المجموعه")  
+ReplyStatus(msg,user,"reply","⌔∮تم كتمه من المجموعه")  
 end
 end
 end
@@ -4932,10 +4932,10 @@ local text = msg.content_.text_:gsub('الغاء الكتم','الغاء كتم'
 if text ==('الغاء كتم') and ChCheck(msg) then
 function UnMuteReply(extra, result, success)
 if not DevSakura:sismember(SAKURA..'Sakura:Muted:'..msg.chat_id_, result.sender_user_id_) then
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙هو ليس مكتوم لالغاء كتمه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮هو ليس مكتوم لالغاء كتمه")  
 else
 DevSakura:srem(SAKURA..'Sakura:Muted:'..msg.chat_id_, result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم الغاء كتمه من المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم الغاء كتمه من المجموعه")  
 end
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
@@ -4947,23 +4947,23 @@ local username = text:match('^الغاء كتم @(.*)')
 function UnMuteUser(extra,result,success)
 if result.id_ then
 if not DevSakura:sismember(SAKURA..'Sakura:Muted:'..msg.chat_id_, result.id_) then
-ReplyStatus(msg,result.id_,"reply","⧉︙هو ليس مكتوم لالغاء كتمه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮هو ليس مكتوم لالغاء كتمه")  
 else
 DevSakura:srem(SAKURA..'Sakura:Muted:'..msg.chat_id_, result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم الغاء كتمه من المجموعه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم الغاء كتمه من المجموعه")  
 end
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,UnMuteUser)
 end
 if text and text:match('^الغاء كتم (%d+)') and ChCheck(msg) then
 local user = text:match('الغاء كتم (%d+)')
 if not DevSakura:sismember(SAKURA..'Sakura:Muted:'..msg.chat_id_, user) then
-ReplyStatus(msg,user,"reply","⧉︙هو ليس مكتوم لالغاء كتمه")  
+ReplyStatus(msg,user,"reply","⌔∮هو ليس مكتوم لالغاء كتمه")  
 else
 DevSakura:srem(SAKURA..'Sakura:Muted:'..msg.chat_id_, user)
-ReplyStatus(msg,user,"reply","⧉︙تم الغاء كتمه من المجموعه")  
+ReplyStatus(msg,user,"reply","⌔∮تم الغاء كتمه من المجموعه")  
 end
 end 
 end 
@@ -4973,15 +4973,15 @@ local text = msg.content_.text_:gsub('تقيد','تقييد')
 if text ==('تقييد') and ChCheck(msg) then
 function TkeedReply(extra, result, success)
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:MuteTked"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_)
 DevSakura:sadd(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تقيده من المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تقيده من المجموعه")  
 end
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
@@ -4992,34 +4992,34 @@ if text and text:match('^تقييد @(.*)') and ChCheck(msg) then
 local username = text:match('^تقييد @(.*)')
 function TkeedUser(extra,result,success)
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:MuteTked"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع تقيد ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع تقيد ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.id_)
 DevSakura:sadd(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم تقيده من المجموعه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم تقيده من المجموعه")  
 end
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,TkeedUser)
 end
 if text and text:match('^تقييد (%d+)') and ChCheck(msg) then
 local user = text:match('تقييد (%d+)')
 if not Constructor(msg) and DevSakura:get(SAKURA.."Sakura:Lock:MuteTked"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⧉︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'⌔∮لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع تقيد ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع تقيد ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..user)
 DevSakura:sadd(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, user)
-ReplyStatus(msg,user,"reply","⧉︙تم تقيده من المجموعه")  
+ReplyStatus(msg,user,"reply","⌔∮تم تقيده من المجموعه")  
 end
 end
 --         UnTkeed          --
@@ -5028,7 +5028,7 @@ if text ==('الغاء تقييد') and ChCheck(msg) then
 function UnTkeedReply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 DevSakura:srem(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم الغاء تقيده من المجموعه")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم الغاء تقيده من المجموعه")  
 end
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -5040,9 +5040,9 @@ function UnTkeedUser(extra,result,success)
 if result.id_ then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.id_.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 DevSakura:srem(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم الغاء تقيده من المجموعه")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم الغاء تقيده من المجموعه")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,UnTkeedUser)
 end
@@ -5050,7 +5050,7 @@ if text and text:match('^الغاء تقييد (%d+)') and ChCheck(msg) then
 local user = text:match('الغاء تقييد (%d+)')
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..user.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 DevSakura:srem(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, user)
-ReplyStatus(msg,user,"reply","⧉︙تم الغاء تقيده من المجموعه")  
+ReplyStatus(msg,user,"reply","⌔∮تم الغاء تقيده من المجموعه")  
 end
 end 
 end
@@ -5060,16 +5060,16 @@ local text = msg.content_.text_:gsub('حضر عام','حظر عام')
 if text ==('حظر عام') then
 function BanAllReply(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع حظر البوت عام*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع حظر البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(result.sender_user_id_) == true then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
 ChatKick(result.chat_id_, result.sender_user_id_)
 DevSakura:sadd(SAKURA..'Sakura:BanAll:', result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم حظره عام من المجموعات")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم حظره عام من المجموعات")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -5079,49 +5079,49 @@ if text and text:match('^حظر عام @(.*)') then
 local username = text:match('^حظر عام @(.*)')
 function BanAllUser(extra,result,success)
 if tonumber(result.id_) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع حظر البوت عام*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع حظر البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(result.id_) == true then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
 if result.id_ then
 ChatKick(msg.chat_id_, result.id_)
 DevSakura:sadd(SAKURA..'Sakura:BanAll:', result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم حظره عام من المجموعات")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم حظره عام من المجموعات")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,BanAllUser)
 end
 if text and text:match('^حظر عام (%d+)') then
 local user = text:match('حظر عام (%d+)')
 if tonumber(user) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع حظر البوت عام*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع حظر البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(user) == true then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
 ChatKick(msg.chat_id_, user)
 DevSakura:sadd(SAKURA..'Sakura:BanAll:', user)
-ReplyStatus(msg,user,"reply","⧉︙تم حظره عام من المجموعات")  
+ReplyStatus(msg,user,"reply","⌔∮تم حظره عام من المجموعات")  
 end
 --         MuteAll        --
 if text ==('كتم عام') then
 function MuteAllReply(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع كتم البوت عام*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع كتم البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(result.sender_user_id_) == true then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
 DevSakura:sadd(SAKURA..'Sakura:MuteAll:', result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم كتمه عام من المجموعات")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم كتمه عام من المجموعات")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -5131,33 +5131,33 @@ if text and text:match('^كتم عام @(.*)') then
 local username = text:match('^كتم عام @(.*)')
 function MuteAllUser(extra,result,success)
 if tonumber(result.id_) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع كتم البوت عام*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع كتم البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(result.id_) == true then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
 if result.id_ then
 DevSakura:sadd(SAKURA..'Sakura:MuteAll:', result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم كتمه عام من المجموعات")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم كتمه عام من المجموعات")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,MuteAllUser)
 end
 if text and text:match('^كتم عام (%d+)') then
 local user = text:match('كتم عام (%d+)')
 if tonumber(user) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع كتم البوت عام*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع كتم البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(user) == true then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
 DevSakura:sadd(SAKURA..'Sakura:MuteAll:', user)
-ReplyStatus(msg,user,"reply","⧉︙تم كتمه عام من المجموعات")  
+ReplyStatus(msg,user,"reply","⌔∮تم كتمه عام من المجموعات")  
 end
 --         UnAll          --
 local text = msg.content_.text_:gsub('الغاء العام','الغاء عام')
@@ -5165,7 +5165,7 @@ if text ==('الغاء عام') then
 function UnAllReply(extra, result, success)
 DevSakura:srem(SAKURA..'Sakura:BanAll:', result.sender_user_id_)
 DevSakura:srem(SAKURA..'Sakura:MuteAll:', result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم الغاء (الحظر • الكتم) عام من المجموعات")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم الغاء (الحظر • الكتم) عام من المجموعات")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) == 0 then
 else
@@ -5177,9 +5177,9 @@ function UnAllUser(extra,result,success)
 if result.id_ then
 DevSakura:srem(SAKURA..'Sakura:BanAll:', result.id_)
 DevSakura:srem(SAKURA..'Sakura:MuteAll:', result.id_)
-ReplyStatus(msg,result.id_,"reply","⧉︙تم الغاء (الحظر • الكتم) عام من المجموعات")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم الغاء (الحظر • الكتم) عام من المجموعات")  
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,UnAllUser)
 end
@@ -5187,7 +5187,7 @@ if text and text:match('^الغاء عام (%d+)') then
 local user = text:match('الغاء عام (%d+)')
 DevSakura:srem(SAKURA..'Sakura:BanAll:', user)
 DevSakura:srem(SAKURA..'Sakura:MuteAll:', user)
-ReplyStatus(msg,user,"reply","⧉︙تم الغاء (الحظر • الكتم) عام من المجموعات")  
+ReplyStatus(msg,user,"reply","⌔∮تم الغاء (الحظر • الكتم) عام من المجموعات")  
 end
 end
 end
@@ -5195,9 +5195,9 @@ if msg.reply_to_message_id_ ~= 0 then
 if text and text:match("^رفع مطي$") and ChCheck(msg) then
 function donky_by_reply(extra, result, success)
 if DevSakura:sismember(SAKURA..'User:Donky:'..msg.chat_id_, result.sender_user_id_) then
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙هو مطي شرفع منه بعد😹💔") 
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮هو مطي شرفع منه بعد😹💔") 
 else
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفعه في قائمة المطايه") 
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفعه في قائمة المطايه") 
 DevSakura:sadd(SAKURA..'User:Donky:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,donky_by_reply)
@@ -5206,10 +5206,10 @@ if msg.reply_to_message_id_ ~= 0  then
 if text and text:match("^تنزيل مطي$") and ChCheck(msg) then
 function donky_by_reply(extra, result, success)
 if not DevSakura:sismember(SAKURA..'User:Donky:'..msg.chat_id_, result.sender_user_id_) then
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙هو ليس مطي ليتم تنزيله") 
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮هو ليس مطي ليتم تنزيله") 
 else
 DevSakura:srem(SAKURA..'User:Donky:'..msg.chat_id_, result.sender_user_id_)
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تنزيله من قائمة المطايه") 
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تنزيله من قائمة المطايه") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,donky_by_reply)
 end end
@@ -5220,10 +5220,10 @@ local mutept = text:match('^تقييد دقيقه (%d+)$') or text:match('^كت�
 local Minutes = string.gsub(mutept, 'm', '')
 local num1 = tonumber(Minutes) * 60 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تقيده لمدة ↫ "..mutept.." د") 
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تقيده لمدة ↫ "..mutept.." د") 
 DevSakura:sadd(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end 
 if tonumber(msg.reply_to_message_id_) == 0 then else
@@ -5235,10 +5235,10 @@ local mutept = text:match('^تقييد ساعه (%d+)$') or text:match('^كتم 
 local hour = string.gsub(mutept, 'h', '')
 local num1 = tonumber(hour) * 3600 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تقيده لمدة ↫ "..mutept.." س") 
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تقيده لمدة ↫ "..mutept.." س") 
 DevSakura:sadd(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end
 if tonumber(msg.reply_to_message_id_) == 0 then else
@@ -5250,10 +5250,10 @@ local mutept = text:match('^تقييد يوم (%d+)$') or text:match('^كتم ي
 local day = string.gsub(mutept, 'd', '')
 local num1 = tonumber(day) * 86400 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم تقيده لمدة ↫ "..mutept.." ي") 
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم تقيده لمدة ↫ "..mutept.." ي") 
 DevSakura:sadd(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end
 if tonumber(msg.reply_to_message_id_) == 0 then else
@@ -5265,10 +5265,10 @@ if Constructor(msg) then
 TXT = text:match("^اضف رسائل (%d+)$")
 DevSakura:set('SAKURATEAM:'..SAKURA..'id:user'..msg.chat_id_,TXT)  
 DevSakura:setex('SAKURATEAM:'..SAKURA.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 300, true)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل عدد الرسائل الان \n⧉︙ارسل الغاء لالغاء الامر ", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل عدد الرسائل الان \n⌔∮ارسل الغاء لالغاء الامر ", 1, "md")
 Dev_Abs(msg.chat_id_, msg.id_, 1,numd, 1, 'md') 
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙هذا الامر للمنشئين فقط', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮هذا الامر للمنشئين فقط', 1, 'md') 
 end 
 end 
 if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
@@ -5276,7 +5276,7 @@ local Num = text:match("^اضف رسائل (%d+)$")
 function reply(extra, result, success)
 DevSakura:del(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..result.sender_user_id_) 
 DevSakura:incrby(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..result.sender_user_id_,Num) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم اضافة "..Num..' رساله', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم اضافة "..Num..' رساله', 1, 'md') 
 end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},reply, nil)
 return false
@@ -5286,17 +5286,17 @@ if Constructor(msg) then
 TXT = text:match("^اضف نقاط (%d+)$")
 DevSakura:set('SAKURATEAM:'..SAKURA..'ids:user'..msg.chat_id_,TXT)  
 DevSakura:setex('SAKURATEAM:'..SAKURA.."nmadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 300, true)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل عدد النقاط الان \n⧉︙ارسل الغاء لالغاء الامر ", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل عدد النقاط الان \n⌔∮ارسل الغاء لالغاء الامر ", 1, "md")
 Dev_Abs(msg.chat_id_, msg.id_, 1,numd, 1, 'md') 
 else 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙هذا الامر للمنشئين فقط', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮هذا الامر للمنشئين فقط', 1, 'md') 
 end 
 end 
 if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
 local Num = text:match("^اضف نقاط (%d+)$")
 function reply(extra, result, success)
 DevSakura:incrby(SAKURA..'Sakura:GamesNumber'..msg.chat_id_..result.sender_user_id_,Num) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم اضافة "..Num..' نقطه', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم اضافة "..Num..' نقطه', 1, 'md') 
 end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},reply, nil)
 return false
@@ -5305,22 +5305,22 @@ if DevSakura:get(SAKURA..'Sakura:Lock:Clean'..msg.chat_id_) then if msg.content_
 if Manager(msg) and msg.reply_to_message_id_ ~= 0 then
 if text and text:match("^تثبيت$") and ChCheck(msg) then 
 if DevSakura:sismember(SAKURA.."Sakura:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
-Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⌔∮التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
 tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100",""),message_id_ = msg.reply_to_message_id_,disable_notification_ = 1},function(arg,data) 
 if data.ID == "Ok" then
 DevSakura:set(SAKURA..'Sakura:PinnedMsg'..msg.chat_id_,msg.reply_to_message_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تثبيت الرساله بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تثبيت الرساله بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false  
 end
 if data.code_ == 6 then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙البوت ليس ادمن هنا !', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮البوت ليس ادمن هنا !', 1, 'md')
 return false  
 end
 if data.message_ == "CHAT_ADMIN_REQUIRED" then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات', 1, 'md')
 return false  
 end
 end,nil)
@@ -5329,7 +5329,7 @@ end
 if Admin(msg) then
 if text == "المميزين" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:VipMem:'..msg.chat_id_)
-text = "⧉︙قائمة المميزين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المميزين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5338,7 +5338,7 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then 
-text = "⧉︙*لا يوجد مميزين*"
+text = "⌔∮*لا يوجد مميزين*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end 
@@ -5346,7 +5346,7 @@ if Manager(msg) then
 if text == "الادمنيه" and ChCheck(msg) or text == "الادمنية" and ChCheck(msg) then 
 local abs =  'Sakura:Admins:'..msg.chat_id_
 local list = DevSakura:smembers(SAKURA..abs)
-text = "⧉︙قائمة الادمنيه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة الادمنيه ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5355,7 +5355,7 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then
-text = "⧉︙*لا يوجد ادمنيه*"
+text = "⌔∮*لا يوجد ادمنيه*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end
@@ -5363,7 +5363,7 @@ end end
 if Constructor(msg) then
 if text == "المدراء" and ChCheck(msg) or text == "مدراء" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:Managers:'..msg.chat_id_)
-text = "⧉︙قائمة المدراء ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المدراء ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5372,13 +5372,13 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then 
-text = "⧉︙*لا يوجد مدراء*"
+text = "⌔∮*لا يوجد مدراء*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "المنظفين" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:Cleaner:'..msg.chat_id_)
-text = "⧉︙قائمة المنظفين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المنظفين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5387,14 +5387,14 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then 
-text = "⧉︙*لا يوجد منظفين*"
+text = "⌔∮*لا يوجد منظفين*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end 
 if BasicConstructor(msg) then
 if text == "المنشئين" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:Constructor:'..msg.chat_id_)
-text = "⧉︙قائمة المنشئين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المنشئين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5403,14 +5403,14 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then 
-text = "⧉︙*لا يوجد منشئين*"
+text = "⌔∮*لا يوجد منشئين*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end 
 if AbsConstructor(msg) then
 if text == "المنشئين الاساسيين" and ChCheck(msg) or text == "منشئين اساسيين" and ChCheck(msg) or text == "المنشئين الاساسين" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_)
-text = "⧉︙قائمة المنشئين الاساسيين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المنشئين الاساسيين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5419,7 +5419,7 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then 
-text = "⧉︙*لا يوجد منشئين اساسيين*"
+text = "⌔∮*لا يوجد منشئين اساسيين*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
@@ -5432,11 +5432,11 @@ if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 Manager_id = admins[i].user_id_
 tdcli_function ({ID = "GetUser",user_id_ = Manager_id},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙حساب المنشئ محذوف", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮حساب المنشئ محذوف", 1, "md")
 return false  
 end
 local UserName = (dp.username_ or "Dev_Prox")
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙منشئ المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md")  
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮منشئ المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md")  
 end,nil)   
 end
 end
@@ -5445,7 +5445,7 @@ end
 if Admin(msg) then
 if text == "المكتومين" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:Muted:'..msg.chat_id_)
-text = "⧉︙قائمة المكتومين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المكتومين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5454,13 +5454,13 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then 
-text = "⧉︙*لا يوجد مكتومين*"
+text = "⌔∮*لا يوجد مكتومين*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "المقيدين" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:Tkeed:'..msg.chat_id_)
-text = "⧉︙قائمة المقيدين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المقيدين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5469,13 +5469,13 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then
-text = "⧉︙*لا يوجد مقيدين*"
+text = "⌔∮*لا يوجد مقيدين*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "المحظورين" and ChCheck(msg) or text == "المحضورين" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:Ban:'..msg.chat_id_)
-text = "⧉︙قائمة المحظورين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المحظورين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5484,25 +5484,25 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then 
-text = "⧉︙*لا يوجد محظورين*"
+text = "⌔∮*لا يوجد محظورين*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "قائمه المنع" and ChCheck(msg) then
 local list = DevSakura:hkeys(SAKURA..'Sakura:Filters:'..msg.chat_id_)
-text = "⧉︙قائمة المنع ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المنع ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k, v in pairs(list) do
 text = text..k..'~ ❨ '..v..' ❩\n'
 end
 if #list == 0 then
-text = "⧉︙لا توجد كلمات ممنوعه"
+text = "⌔∮لا توجد كلمات ممنوعه"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 end 
 if text == "المطايه" and ChCheck(msg) or text == "المطاية" and ChCheck(msg) then
 local list = DevSakura:smembers(SAKURA..'User:Donky:'..msg.chat_id_)
-text = "⧉︙قائمة مطاية المجموعه 😹💔 ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة مطاية المجموعه 😹💔 ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5511,7 +5511,7 @@ else
 text = text..""..k.."~ : `"..v.."`\n"
 end end
 if #list == 0 then
-text = "⧉︙*لا يوجد مطايه كلها اوادم* 😹💔"
+text = "⌔∮*لا يوجد مطايه كلها اوادم* 😹💔"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
@@ -5520,7 +5520,7 @@ if text == "قائمه العام" and ChCheck(msg) or text == "المحظوري
 local BanAll = DevSakura:smembers(SAKURA..'Sakura:BanAll:')
 local MuteAll = DevSakura:smembers(SAKURA..'Sakura:MuteAll:')
 if #BanAll ~= 0 then 
-text = "⧉︙قائمة المحظورين عام ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المحظورين عام ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(BanAll) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5532,7 +5532,7 @@ else
 text = ""
 end
 if #MuteAll ~= 0 then 
-text = text.."⧉︙قائمة المكتومين عام ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = text.."⌔∮قائمة المكتومين عام ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(MuteAll) do
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
 if username then
@@ -5546,13 +5546,13 @@ end
 if #BanAll ~= 0 or #MuteAll ~= 0 then 
 text = text
 else
-text = "⧉︙*لم يتم حظر او كتم اي عضو*"
+text = "⌔∮*لم يتم حظر او كتم اي عضو*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "المطورين" and ChCheck(msg) or text == "↫ المطورين ⧉" and ChCheck(msg) then 
 local list = DevSakura:smembers(SAKURA..'Sakura:SudoBot:')
-text = "⧉︙قائمة المطورين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = "⌔∮قائمة المطورين ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local sudouser = DevSakura:get(SAKURA..'Sakura:Sudos'..v) 
 local username = DevSakura:get(SAKURA..'Save:UserName'..v)
@@ -5562,7 +5562,7 @@ else
 text = text..""..k.."~ : `"..v.."` ↬ Gps : "..(sudouser or 0).."\n"
 end end
 if #list == 0 then
-text = "⧉︙*عذرا لم يتم رفع اي مطورين*"
+text = "⌔∮*عذرا لم يتم رفع اي مطورين*"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
@@ -5577,11 +5577,11 @@ end
 end
 tdcli_function ({ID = "GetUser",user_id_ = Manager_id},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙حساب المنشئ محذوف", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮حساب المنشئ محذوف", 1, "md")
 return false  
 end
 local UserName = (dp.username_ or "Dev_Prox")
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم رفع منشئ المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم رفع منشئ المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
 DevSakura:sadd(SAKURA.."Sakura:AbsConstructor:"..msg.chat_id_,dp.id_)
 end,nil)   
 end,nil)   
@@ -5594,19 +5594,19 @@ function filter_by_reply(extra, result, success)
 if result.content_.sticker_ then
 local idsticker = result.content_.sticker_.sticker_.persistent_id_
 DevSakura:sadd(SAKURA.."Sakura:FilterSteckr"..msg.chat_id_,idsticker)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم منع الملصق بنجاح لن يتم ارساله مجددا', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم منع الملصق بنجاح لن يتم ارساله مجددا', 1, 'md')
 return false
 end
 if result.content_.ID == "MessagePhoto" then
 local photo = result.content_.photo_.id_
 DevSakura:sadd(SAKURA.."Sakura:FilterPhoto"..msg.chat_id_,photo)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم منع الصوره بنجاح لن يتم ارسالها مجددا', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم منع الصوره بنجاح لن يتم ارسالها مجددا', 1, 'md')
 return false
 end
 if result.content_.animation_ then
 local idanimation = result.content_.animation_.animation_.persistent_id_
 DevSakura:sadd(SAKURA.."Sakura:FilterAnimation"..msg.chat_id_,idanimation)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم منع المتحركه بنجاح لن يتم ارسالها مجددا', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم منع المتحركه بنجاح لن يتم ارسالها مجددا', 1, 'md')
 return false
 end
 end
@@ -5617,19 +5617,19 @@ function unfilter_by_reply(extra, result, success)
 if result.content_.sticker_ then
 local idsticker = result.content_.sticker_.sticker_.persistent_id_
 DevSakura:srem(SAKURA.."Sakura:FilterSteckr"..msg.chat_id_,idsticker)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء منع الملصق يمكنهم ارساله الان', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء منع الملصق يمكنهم ارساله الان', 1, 'md')
 return false
 end
 if result.content_.ID == "MessagePhoto" then
 local photo = result.content_.photo_.id_
 DevSakura:srem(SAKURA.."Sakura:FilterPhoto"..msg.chat_id_,photo)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء منع الصوره يمكنهم ارسالها الان', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء منع الصوره يمكنهم ارسالها الان', 1, 'md')
 return false
 end
 if result.content_.animation_.animation_ then
 local idanimation = result.content_.animation_.animation_.persistent_id_
 DevSakura:srem(SAKURA.."Sakura:FilterAnimation"..msg.chat_id_,idanimation)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء منع المتحركه يمكنهم ارسالها الان', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء منع المتحركه يمكنهم ارسالها الان', 1, 'md')
 return false
 end
 end
@@ -5655,28 +5655,28 @@ else
 Tkeed = false
 end
 if Tkeed ~= false then
-Tked = '\n⧉︙القيود ↫ '..Tkeed
+Tked = '\n⌔∮القيود ↫ '..Tkeed
 else 
 Tked = '' 
 end
 if DevSakura:sismember(SAKURA..'Sakura:SudoBot:',result.sender_user_id_) and SudoBot(msg) then
-sudobot = '\n⧉︙عدد الكروبات ↫ '..(DevSakura:get(SAKURA..'Sakura:Sudos'..result.sender_user_id_) or 0)..'' 
+sudobot = '\n⌔∮عدد الكروبات ↫ '..(DevSakura:get(SAKURA..'Sakura:Sudos'..result.sender_user_id_) or 0)..'' 
 else 
 sudobot = '' 
 end
 if GetCustomTitle(result.sender_user_id_,msg.chat_id_) ~= false then
-CustomTitle = '\n⧉︙لقبه ↫ '..GetCustomTitle(result.sender_user_id_,msg.chat_id_)
+CustomTitle = '\n⌔∮لقبه ↫ '..GetCustomTitle(result.sender_user_id_,msg.chat_id_)
 else 
 CustomTitle = '' 
 end
 if data.first_name_ == false then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙الحساب محذوف', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮الحساب محذوف', 1, 'md')
 return false  end
 if data.username_ == false then
-Text = '⧉︙اسمه ↫ ['..CatchName(data.first_name_,20)..'](tg://user?id='..result.sender_user_id_..')\n⧉︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⧉︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..''..sudobot..'\n⧉︙رسائله ↫ ❨ '..user_msgs..' ❩\n⧉︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⧉︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
+Text = '⌔∮اسمه ↫ ['..CatchName(data.first_name_,20)..'](tg://user?id='..result.sender_user_id_..')\n⌔∮ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌔∮رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..''..sudobot..'\n⌔∮رسائله ↫ ❨ '..user_msgs..' ❩\n⌔∮تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌔∮نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙معرفه ↫ [@'..data.username_..']\n⧉︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⧉︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..''..sudobot..'\n⧉︙رسائله ↫ ❨ '..user_msgs..' ❩\n⧉︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⧉︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮معرفه ↫ [@'..data.username_..']\n⌔∮ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌔∮رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..''..sudobot..'\n⌔∮رسائله ↫ ❨ '..user_msgs..' ❩\n⌔∮تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌔∮نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end
 end,nil)
 end 
@@ -5686,16 +5686,16 @@ if text and text:match('^كشف @(.*)') and ChCheck(msg) or text and text:match(
 local username = text:match('^كشف @(.*)') or text:match('^ايدي @(.*)')
 tdcli_function ({ID = "SearchPublicChat",username_ = username},function(extra, res, success) 
 if res and res.message_ and res.message_ == "USERNAME_NOT_OCCUPIED" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙*المعرف غير صحيح*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮*المعرف غير صحيح*', 1, 'md')
 return false  end
 if res.type_.ID == "ChannelChatInfo" then 
 if res.type_.channel_.is_supergroup_ == false then
 local ch = 'قناة'
-local chn = '⧉︙نوع الحساب ↫ ❨ '..ch..' ❩\n⧉︙الايدي ↫ ❨ `'..res.id_..'` ❩\n⧉︙المعرف ↫ ❨ [@'..username..'] ❩\n⧉︙الاسم ↫ ❨ ['..res.title_..'] ❩'
+local chn = '⌔∮نوع الحساب ↫ ❨ '..ch..' ❩\n⌔∮الايدي ↫ ❨ `'..res.id_..'` ❩\n⌔∮المعرف ↫ ❨ [@'..username..'] ❩\n⌔∮الاسم ↫ ❨ ['..res.title_..'] ❩'
 Dev_Abs(msg.chat_id_, msg.id_, 1,chn, 1, 'md')
 else
 local gr = 'مجموعه'
-local grr = '⧉︙نوع الحساب ↫ ❨ '..gr..' ❩\n⧉︙الايدي ↫ ❨ '..res.id_..' ❩\n⧉︙المعرف ↫ ❨ [@'..username..'] ❩\n⧉︙الاسم ↫ ❨ ['..res.title_..'] ❩'
+local grr = '⌔∮نوع الحساب ↫ ❨ '..gr..' ❩\n⌔∮الايدي ↫ ❨ '..res.id_..' ❩\n⌔∮المعرف ↫ ❨ [@'..username..'] ❩\n⌔∮الاسم ↫ ❨ ['..res.title_..'] ❩'
 Dev_Abs(msg.chat_id_, msg.id_, 1,grr, 1, 'md')
 end
 return false  end
@@ -5717,24 +5717,24 @@ else
 Tkeed = false
 end
 if Tkeed ~= false then
-Tked = '\n⧉︙القيود ↫ '..Tkeed
+Tked = '\n⌔∮القيود ↫ '..Tkeed
 else 
 Tked = '' 
 end
 if DevSakura:sismember(SAKURA..'Sakura:SudoBot:',res.id_) and SudoBot(msg) then
-sudobot = '\n⧉︙عدد الكروبات ↫ '..(DevSakura:get(SAKURA..'Sakura:Sudos'..res.id_) or 0)..'' 
+sudobot = '\n⌔∮عدد الكروبات ↫ '..(DevSakura:get(SAKURA..'Sakura:Sudos'..res.id_) or 0)..'' 
 else 
 sudobot = '' 
 end
 if GetCustomTitle(res.id_,msg.chat_id_) ~= false then
-CustomTitle = '\n⧉︙لقبه ↫ '..GetCustomTitle(res.id_,msg.chat_id_)
+CustomTitle = '\n⌔∮لقبه ↫ '..GetCustomTitle(res.id_,msg.chat_id_)
 else 
 CustomTitle = '' 
 end
 if data.first_name_ == false then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙الحساب محذوف', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮الحساب محذوف', 1, 'md')
 return false  end
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙معرفه ↫ [@'..data.username_..']\n⧉︙ايديه ↫ ❨ `'..res.id_..'` ❩\n⧉︙رتبته ↫ '..IdRank(res.id_, msg.chat_id_)..''..sudobot..'\n⧉︙رسائله ↫ ❨ '..user_msgs..' ❩\n⧉︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⧉︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮معرفه ↫ [@'..data.username_..']\n⌔∮ايديه ↫ ❨ `'..res.id_..'` ❩\n⌔∮رتبته ↫ '..IdRank(res.id_, msg.chat_id_)..''..sudobot..'\n⌔∮رسائله ↫ ❨ '..user_msgs..' ❩\n⌔∮تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌔∮نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end,nil)
 end 
 end,nil)
@@ -5744,7 +5744,7 @@ if text and text:match('كشف (%d+)') and ChCheck(msg) or text and text:match('
 local iduser = text:match('كشف (%d+)') or text:match('ايدي (%d+)')  
 tdcli_function ({ID = "GetUser",user_id_ = iduser},function(arg,data) 
 if data.message_ == "User not found" then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙لم يتم التعرف على الحساب', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮لم يتم التعرف على الحساب', 1, 'md')
 return false  
 end
 local user_msgs = DevSakura:get(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..iduser) or 0
@@ -5763,28 +5763,28 @@ else
 Tkeed = false
 end
 if Tkeed ~= false then
-Tked = '\n⧉︙القيود ↫ '..Tkeed
+Tked = '\n⌔∮القيود ↫ '..Tkeed
 else 
 Tked = '' 
 end
 if DevSakura:sismember(SAKURA..'Sakura:SudoBot:',iduser) and SudoBot(msg) then
-sudobot = '\n⧉︙عدد الكروبات ↫ '..(DevSakura:get(SAKURA..'Sakura:Sudos'..iduser) or 0)..'' 
+sudobot = '\n⌔∮عدد الكروبات ↫ '..(DevSakura:get(SAKURA..'Sakura:Sudos'..iduser) or 0)..'' 
 else 
 sudobot = '' 
 end
 if GetCustomTitle(iduser,msg.chat_id_) ~= false then
-CustomTitle = '\n⧉︙لقبه ↫ '..GetCustomTitle(iduser,msg.chat_id_)
+CustomTitle = '\n⌔∮لقبه ↫ '..GetCustomTitle(iduser,msg.chat_id_)
 else 
 CustomTitle = '' 
 end
 if data.first_name_ == false then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙الحساب محذوف', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮الحساب محذوف', 1, 'md')
 return false  end
 if data.username_ == false then
-Text = '⧉︙اسمه ↫ ['..CatchName(data.first_name_,20)..'](tg://user?id='..iduser..')\n⧉︙ايديه ↫ ❨ `'..iduser..'` ❩\n⧉︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..''..sudobot..'\n⧉︙رسائله ↫ ❨ '..user_msgs..' ❩\n⧉︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⧉︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
+Text = '⌔∮اسمه ↫ ['..CatchName(data.first_name_,20)..'](tg://user?id='..iduser..')\n⌔∮ايديه ↫ ❨ `'..iduser..'` ❩\n⌔∮رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..''..sudobot..'\n⌔∮رسائله ↫ ❨ '..user_msgs..' ❩\n⌔∮تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌔∮نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙معرفه ↫ [@'..data.username_..']\n⧉︙ايديه ↫ ❨ `'..iduser..'` ❩\n⧉︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..''..sudobot..'\n⧉︙رسائله ↫ ❨ '..user_msgs..' ❩\n⧉︙تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⧉︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮معرفه ↫ [@'..data.username_..']\n⌔∮ايديه ↫ ❨ `'..iduser..'` ❩\n⌔∮رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..''..sudobot..'\n⌔∮رسائله ↫ ❨ '..user_msgs..' ❩\n⌔∮تفاعله ↫ '..formsgs(user_msgs)..''..CustomTitle..'\n⌔∮نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end
 end,nil)
 return false 
@@ -5796,7 +5796,7 @@ if DevSakura:sismember(SAKURA..'Sakura:Ban:'..msg.chat_id_,result.sender_user_id
 if DevSakura:sismember(SAKURA..'Sakura:BanAll:',result.sender_user_id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
 if DevSakura:sismember(SAKURA..'Sakura:MuteAll:',result.sender_user_id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
 if DevSakura:sismember(SAKURA..'Sakura:Tkeed:',result.sender_user_id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الحظر العام ↫ '..banall..'\n⧉︙الكتم العام ↫ '..muteall..'\n⧉︙الحظر ↫ '..banned..'\n⧉︙الكتم ↫ '..muted..'\n⧉︙التقيد ↫ '..tkeed..'', 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الحظر العام ↫ '..banall..'\n⌔∮الكتم العام ↫ '..muteall..'\n⌔∮الحظر ↫ '..banned..'\n⌔∮الكتم ↫ '..muted..'\n⌔∮التقيد ↫ '..tkeed..'', 1, 'md')  
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),kshf_by_reply) 
 end
@@ -5809,9 +5809,9 @@ if DevSakura:sismember(SAKURA..'Sakura:Ban:'..msg.chat_id_,result.id_) then bann
 if DevSakura:sismember(SAKURA..'Sakura:BanAll:',result.id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
 if DevSakura:sismember(SAKURA..'Sakura:MuteAll:',result.id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
 if DevSakura:sismember(SAKURA..'Sakura:Tkeed:',result.id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الحظر العام ↫ '..banall..'\n⧉︙الكتم العام ↫ '..muteall..'\n⧉︙الحظر ↫ '..banned..'\n⧉︙الكتم ↫ '..muted..'\n⧉︙التقيد ↫ '..tkeed..'', 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الحظر العام ↫ '..banall..'\n⌔∮الكتم العام ↫ '..muteall..'\n⌔∮الحظر ↫ '..banned..'\n⌔∮الكتم ↫ '..muted..'\n⌔∮التقيد ↫ '..tkeed..'', 1, 'md')  
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')  
 end
 end
 resolve_username(username,kshf_by_username) 
@@ -5819,10 +5819,10 @@ end
 if text == 'رفع القيود' and tonumber(msg.reply_to_message_id_) > 0 and Admin(msg) and ChCheck(msg) then 
 function unbanreply(extra, result, success) 
 if tonumber(result.sender_user_id_) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙انا البوت وليس لدي قيود', 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮انا البوت وليس لدي قيود', 1, 'md')  
 return false  
 end 
-ReplyStatus(msg,result.sender_user_id_,"reply","⧉︙تم رفع قيوده")  
+ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮تم رفع قيوده")  
 HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..result.sender_user_id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
 DevSakura:srem(SAKURA..'Sakura:Tkeed:'..msg.chat_id_,result.sender_user_id_) DevSakura:srem(SAKURA..'Sakura:Ban:'..msg.chat_id_,result.sender_user_id_) DevSakura:srem(SAKURA..'Sakura:Muted:'..msg.chat_id_,result.sender_user_id_)   
 end
@@ -5831,15 +5831,15 @@ end
 if text and text:match('^رفع القيود (%d+)') and Admin(msg) and ChCheck(msg) then 
 local user = text:match('رفع القيود (%d+)') 
 if tonumber(user) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙انا البوت وليس لدي قيود', 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮انا البوت وليس لدي قيود', 1, 'md')  
 return false  
 end 
 tdcli_function ({ID = "GetUser",user_id_ = user},function(arg,data) 
 if data and data.code_ and data.code_ == 6 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لم استطع استخراج المعلومات', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لم استطع استخراج المعلومات', 1, 'md') 
 return false  
 end
-ReplyStatus(msg,user,"reply","⧉︙تم رفع قيوده")  
+ReplyStatus(msg,user,"reply","⌔∮تم رفع قيوده")  
 HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..user.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
 DevSakura:srem(SAKURA..'Sakura:Tkeed:'..msg.chat_id_,user) DevSakura:srem(SAKURA..'Sakura:Ban:'..msg.chat_id_,user) DevSakura:srem(SAKURA..'Sakura:Muted:'..msg.chat_id_,user)   
 end,nil)  
@@ -5848,23 +5848,23 @@ if text and text:match('^رفع القيود @(.*)') and Admin(msg) and ChCheck(
 local username = text:match('رفع القيود @(.*)')  
 function unbanusername(extra,result,success)  
 if result and result.message_ and result.message_ == "USERNAME_NOT_OCCUPIED" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*المعرف غير صحيح*', 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*المعرف غير صحيح*', 1, 'md')  
 return false  
 end
 if result and result.type_ and result.type_.channel_ and result.type_.channel_.ID == "Channel" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙هذا معرف قناة وليس معرف حساب', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮هذا معرف قناة وليس معرف حساب', 1, 'md') 
 return false  
 end
 if tonumber(result.id_) == tonumber(SAKURA) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙انا البوت وليس لدي قيود', 1, 'md')  
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮انا البوت وليس لدي قيود', 1, 'md')  
 return false  
 end 
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(arg,data) 
 if data and data.code_ and data.code_ == 6 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لم استطع استخراج المعلومات', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لم استطع استخراج المعلومات', 1, 'md') 
 return false  
 end
-ReplyStatus(msg,result.id_,"reply","⧉︙تم رفع قيوده")  
+ReplyStatus(msg,result.id_,"reply","⌔∮تم رفع قيوده")  
 HTTPS.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..result.id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
 DevSakura:srem(SAKURA..'Sakura:Tkeed:'..msg.chat_id_,result.id_) DevSakura:srem(SAKURA..'Sakura:Ban:'..msg.chat_id_,result.id_) DevSakura:srem(SAKURA..'Sakura:Muted:'..msg.chat_id_,result.id_)   
 end,nil)   
@@ -5932,12 +5932,12 @@ local List = {
 .𖣂 𝙢𝙨𝙂𝙨 , #msgs
 ]],
 [[
-⧉︙𝐔𝐒𝐄𝐑 ↬ #username 
-⧉︙𝐈𝐃 ↬ #id
-⧉︙𝐒𝐓𝐀𝐒𝐓 ↬ #stast
-⧉︙𝐀𝐔𝐓𝐎 ↬ #cont 
-⧉︙𝐌𝐀𝐒𝐆 ↬ #msgs
-⧉︙𝐆𝐀𝐌𝐄 ↬ #game
+⌔∮𝐔𝐒𝐄𝐑 ↬ #username 
+⌔∮𝐈𝐃 ↬ #id
+⌔∮𝐒𝐓𝐀𝐒𝐓 ↬ #stast
+⌔∮𝐀𝐔𝐓𝐎 ↬ #cont 
+⌔∮𝐌𝐀𝐒𝐆 ↬ #msgs
+⌔∮𝐆𝐀𝐌𝐄 ↬ #game
 ]],
 [[
 ᯓ 𝗨𝗦𝗘𝗥𝗡𝗮𝗺𝗘 . #username 🇺🇸 ꙰
@@ -5957,50 +5957,50 @@ local List = {
 ]]}
 local Text_Rand = List[math.random(#List)]
 DevSakura:set(SAKURA.."Sakura:GpIds:Text"..msg.chat_id_,Text_Rand)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تغيير كليشة الايدي'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تغيير كليشة الايدي'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if Sudo(msg) then
 if text and text:match("^تعيين الايدي العام$") or text and text:match("^تعين الايدي العام$") or text and text:match("^تعيين كليشة الايدي$") then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙رجائا اتبع التعليمات للتعيين \n⧉︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮رجائا اتبع التعليمات للتعيين \n⌔∮لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉', 1, 'md')
 DevSakura:set("SAKURA:New:id:"..SAKURA..msg.sender_user_id_,'SAKURATEAM')
 return "SAKURATEAM"
 end
 if text and DevSakura:get("SAKURA:New:id:"..SAKURA..msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء حفظ كليشة الايدي', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء حفظ كليشة الايدي', 1, 'md')
 DevSakura:del("SAKURA:New:id:"..SAKURA..msg.sender_user_id_)
 return false
 end
 DevSakura:del("SAKURA:New:id:"..SAKURA..msg.sender_user_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ كليشة الايدي العامه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ كليشة الايدي العامه', 1, 'md')
 DevSakura:set(SAKURA.."Sakura:AllIds:Text",text)
 return false
 end
 if text and text:match("^حذف الايدي العام$") or text and text:match("^مسح الايدي العام$") or text and text:match("^حذف كليشة الايدي$") then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف كليشة الايدي العامه'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف كليشة الايدي العامه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:AllIds:Text")
 end
 end
 if text and text:match("^تعيين الايدي$") and ChCheck(msg) or text and text:match("^تعين الايدي$") and ChCheck(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙رجائا اتبع التعليمات للتعيين \n⧉︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮رجائا اتبع التعليمات للتعيين \n⌔∮لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉', 1, 'md')
 DevSakura:set("SAKURA:New:id:"..SAKURA..msg.chat_id_..msg.sender_user_id_,'SAKURATEAM')
 return "SAKURATEAM"
 end
 if text and Manager(msg) and DevSakura:get("SAKURA:New:id:"..SAKURA..msg.chat_id_..msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء حفظ كليشة الايدي', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء حفظ كليشة الايدي', 1, 'md')
 DevSakura:del("SAKURA:New:id:"..SAKURA..msg.chat_id_..msg.sender_user_id_)
 return false
 end
 DevSakura:del("SAKURA:New:id:"..SAKURA..msg.chat_id_..msg.sender_user_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ الكليشه الجديده', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ الكليشه الجديده', 1, 'md')
 DevSakura:set(SAKURA.."Sakura:GpIds:Text"..msg.chat_id_,text)
 return false
 end
 if text and text:match("^حذف الايدي$") and ChCheck(msg) or text and text:match("^مسح الايدي$") and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف كليشة الايدي'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف كليشة الايدي'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:GpIds:Text"..msg.chat_id_)
 end
@@ -6037,7 +6037,7 @@ newpicid = newpicid:gsub('#auto',(formsgs(msguser) or 'لا يوجد'))
 newpicid = newpicid:gsub('#stast',(IdRank(msg.sender_user_id_, msg.chat_id_) or 'لا يوجد'))
 newpicid = newpicid:gsub('#Description',(Description or 'لا يوجد'))
 else
-newpicid = "⧉︙"..Description.."\n⧉︙معرفك ↫ ❨ "..username.." ❩\n⧉︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⧉︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⧉︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⧉︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⧉︙تفاعلك ↫ "..formsgs(msguser).."\n⧉︙نقاطك ↫ ❨ "..user_nkt.." ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+newpicid = "⌔∮"..Description.."\n⌔∮معرفك ↫ ❨ "..username.." ❩\n⌔∮ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌔∮رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌔∮رسائلك ↫ ❨ "..user_msgs.." ❩\n⌔∮سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌔∮تفاعلك ↫ "..formsgs(msguser).."\n⌔∮نقاطك ↫ ❨ "..user_nkt.." ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 end 
 if not DevSakura:get(SAKURA.."Sakura:GpIds:Text"..msg.chat_id_) then 
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, abbas.photos_[0].sizes_[1].photo_.persistent_id_,newpicid,msg.id_,msg.id_.."")
@@ -6071,7 +6071,7 @@ newallid = newallid:gsub('#auto',(formsgs(msguser) or 'لا يوجد'))
 newallid = newallid:gsub('#stast',(IdRank(msg.sender_user_id_, msg.chat_id_) or 'لا يوجد'))
 newallid = newallid:gsub('#Description',(Description or 'لا يوجد'))
 else
-newallid = "⧉︙معرفك ↫ ❨ "..username.." ❩\n⧉︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⧉︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⧉︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⧉︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⧉︙تفاعلك ↫ "..formsgs(msguser).."\n⧉︙نقاطك ↫ ❨ "..user_nkt.." ❩"
+newallid = "⌔∮معرفك ↫ ❨ "..username.." ❩\n⌔∮ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌔∮رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌔∮رسائلك ↫ ❨ "..user_msgs.." ❩\n⌔∮سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌔∮تفاعلك ↫ "..formsgs(msguser).."\n⌔∮نقاطك ↫ ❨ "..user_nkt.." ❩"
 end 
 if not DevSakura:get(SAKURA.."Sakura:GpIds:Text"..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, newallid, 1, 'html')
@@ -6092,7 +6092,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, new_id, 1, 'html')
 end
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا الايدي معطل ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا الايدي معطل ', 1, 'md')
 end
 else
 if DevSakura:get(SAKURA.."Sakura:AllIds:Text") then
@@ -6109,16 +6109,16 @@ notpicid = notpicid:gsub('#auto',(formsgs(msguser) or 'لا يوجد'))
 notpicid = notpicid:gsub('#stast',(IdRank(msg.sender_user_id_, msg.chat_id_) or 'لا يوجد'))
 notpicid = notpicid:gsub('#Description',(Description or 'لا يوجد'))
 else
-notpicid = "⧉︙لا استطيع عرض صورتك لانك قمت بحظر البوت او انك لاتمتلك صوره في بروفايلك\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙معرفك ↫ ❨ "..username.." ❩\n⧉︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⧉︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⧉︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⧉︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⧉︙تفاعلك ↫ "..formsgs(msguser).."\n⧉︙نقاطك ↫ ❨ "..user_nkt.." ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+notpicid = "⌔∮لا استطيع عرض صورتك لانك قمت بحظر البوت او انك لاتمتلك صوره في بروفايلك\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮معرفك ↫ ❨ "..username.." ❩\n⌔∮ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌔∮رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌔∮رسائلك ↫ ❨ "..user_msgs.." ❩\n⌔∮سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌔∮تفاعلك ↫ "..formsgs(msguser).."\n⌔∮نقاطك ↫ ❨ "..user_nkt.." ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 end 
 if not DevSakura:get(SAKURA..'Sakura:Lock:Id'..msg.chat_id_) then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Id:Photo'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, notpicid, 1, 'html')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙معرفك ↫ ❨ "..username.." ❩\n⧉︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⧉︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⧉︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⧉︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⧉︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⧉︙تفاعلك ↫ "..formsgs(msguser).."\n⧉︙نقاطك ↫ ❨ "..user_nkt.." ❩", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮معرفك ↫ ❨ "..username.." ❩\n⌔∮ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌔∮رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌔∮رسائلك ↫ ❨ "..user_msgs.." ❩\n⌔∮سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌔∮رسائلك ↫ ❨ "..user_msgs.." ❩\n⌔∮تفاعلك ↫ "..formsgs(msguser).."\n⌔∮نقاطك ↫ ❨ "..user_nkt.." ❩", 1, 'md')
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عذرا الايدي معطل', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا الايدي معطل', 1, 'md')
 end end end
 tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = msg.sender_user_id_, offset_ = 0, limit_ = 1 }, getpro, nil)
 end
@@ -6131,112 +6131,112 @@ if text and text:match("^قفل (.*)$") and ChCheck(msg) then
 local lockptf = {string.match(text, "^(قفل) (.*)$")}
 if lockptf[2] == "التعديل" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل التعديل بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التعديل بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙التعديل بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التعديل بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if lockptf[2] == "التعديل الميديا" or lockptf[2] == "تعديل الميديا" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل تعديل الميديا\n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل تعديل الميديا\n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تعديل الميديا بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تعديل الميديا بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if lockptf[2] == "الفارسيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الفارسيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الفارسيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الفارسيه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفارسيه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if lockptf[2] == "الفشار" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الفشار بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الفشار بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الفشار بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفشار بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if lockptf[2] == "الطائفيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الطائفيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الطائفيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الطائفيه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الطائفيه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if lockptf[2] == "الكفر" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الكفر بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الكفر بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الكفر بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الكفر بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if lockptf[2] == "الفارسيه بالطرد" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:FarsiBan'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الفارسيه بالطرد \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الفارسيه بالطرد \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:FarsiBan'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الفارسيه بالطرد بالفعل مقفله ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفارسيه بالطرد بالفعل مقفله ', 1, 'md')
 end
 end
 if lockptf[2] == "البوتات" or lockptf[2] == "البوتات بالحذف" then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل البوتات بالحذف \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل البوتات بالحذف \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"del")  
 end
 if lockptf[2] == "البوتات بالطرد" then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل البوتات بالطرد \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل البوتات بالطرد \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"kick")  
 end
 if lockptf[2] == "البوتات بالتقييد" or lockptf[2] == "البوتات بالتقيد" then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل البوتات بالتقييد \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل البوتات بالتقييد \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"ked")  
 end
 if lockptf[2] == "التكرار" or lockptf[2] == "التكرار بالحذف" then 
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","del")  
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل التكرار بالحذف \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التكرار بالحذف \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if lockptf[2] == "التكرار بالطرد" then 
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","kick")  
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل التكرار بالطرد \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التكرار بالطرد \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if lockptf[2] == "التكرار بالتقيد" or lockptf[2] == "التكرار بالتقييد" then 
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed")  
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل التكرار بالتقييد \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التكرار بالتقييد \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if lockptf[2] == "التكرار بالكتم" then 
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","mute")  
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل التكرار بالكتم \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التكرار بالكتم \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if BasicConstructor(msg) then
 if lockptf[2] == "التثبيت" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_) then
 tdcli_function ({ ID = "GetChannelFull",  channel_id_ = msg.chat_id_:gsub("-100","") }, function(arg,data)  DevSakura:set(SAKURA.."Sakura:PinnedMsg"..msg.chat_id_,data.pinned_message_id_)  end,nil)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل التثبيت بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التثبيت بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_,true)
 DevSakura:sadd(SAKURA.."Sakura:Lock:Pinpin",msg.chat_id_) 
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙التثبيت بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التثبيت بالفعل مقفل في المجموعه', 1, 'md')
 end end end
 end
 end
@@ -6245,54 +6245,54 @@ if Admin(msg) then
 if text and (text:match("^ضع تكرار (%d+)$") or text:match("^وضع تكرار (%d+)$")) then   
 local TextSpam = text:match("ضع تكرار (%d+)$") or text:match("وضع تكرار (%d+)$")
 if tonumber(TextSpam) < 2 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙قم بتحديد عدد اكبر من 2 للتكرار', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮قم بتحديد عدد اكبر من 2 للتكرار', 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم وضع عدد التكرار ↫ '..TextSpam, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم وضع عدد التكرار ↫ '..TextSpam, 1, 'md')
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Num:Spam" ,TextSpam) 
 end
 end
 if text and (text:match("^ضع زمن التكرار (%d+)$") or text:match("^وضع زمن التكرار (%d+)$")) then  
 local TextSpam = text:match("ضع زمن التكرار (%d+)$") or text:match("وضع زمن التكرار (%d+)$")
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Num:Spam:Time" ,TextSpam) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم وضع زمن التكرار ↫ '..TextSpam, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم وضع زمن التكرار ↫ '..TextSpam, 1, 'md')
 end
 if Manager(msg) then
 if text and text == 'تفعيل الايدي بالصوره' and ChCheck(msg) then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Id:Photo'..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الايدي بالصوره بالتاكيد مفعل', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الايدي بالصوره بالتاكيد مفعل', 1, 'md')
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الايدي بالصوره'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الايدي بالصوره'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Id:Photo'..msg.chat_id_)
 end end
 if text and text == 'تعطيل الايدي بالصوره' and ChCheck(msg) then
 if DevSakura:get(SAKURA..'Sakura:Lock:Id:Photo'..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الايدي بالصوره بالتاكيد معطل', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الايدي بالصوره بالتاكيد معطل', 1, 'md')
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الايدي بالصوره'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الايدي بالصوره'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Id:Photo'..msg.chat_id_,true)
 end end 
 
 if text and text == 'تفعيل الايدي' and ChCheck(msg) then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Id'..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الايدي بالتاكيد مفعل ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الايدي بالتاكيد مفعل ', 1, 'md')
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الايدي بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الايدي بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Id'..msg.chat_id_)
 end end 
 if text and text == 'تعطيل الايدي' and ChCheck(msg) then
 if DevSakura:get(SAKURA..'Sakura:Lock:Id'..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الايدي بالتاكيد معطل ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الايدي بالتاكيد معطل ', 1, 'md')
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الايدي بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الايدي بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Id'..msg.chat_id_,true)
 end end
 end
 if text == 'ضع رابط' or text == 'وضع رابط' or text == 'ضع الرابط' or text == 'وضع الرابط' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
 DevSakura:setex(SAKURA.."Sakura:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_,300,true) 
 end
 if text == 'انشاء رابط' or text == 'انشاء الرابط' then
@@ -6301,44 +6301,44 @@ if not DevSakura:get(SAKURA.."Sakura:Groups:Links"..msg.chat_id_)  then
 if LinkGp.ok == true then 
 LinkGroup = LinkGp.result
 DevSakura:set(SAKURA.."Sakura:Groups:Links"..msg.chat_id_,LinkGroup) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم انشاء رابط جديد ارسل ↫ الرابط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم انشاء رابط جديد ارسل ↫ الرابط', 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ليست لدي صلاحية دعوة المستخدمين عبر الرابط يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ليست لدي صلاحية دعوة المستخدمين عبر الرابط يرجى التحقق من الصلاحيات', 1, 'md')
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
 DevSakura:setex(SAKURA.."Sakura:Set:Groups:Links"..msg.chat_id_..""..msg.sender_user_id_,300,true) 
 end
 end
 end
 if Admin(msg) then
 if text and text:match("^تفعيل الترحيب$") and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الترحيب بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الترحيب بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA.."Sakura:Lock:Welcome"..msg.chat_id_,true)
 end
 if text and text:match("^تعطيل الترحيب$") and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الترحيب بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الترحيب بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:Lock:Welcome"..msg.chat_id_)
 end
 if DevSakura:get(SAKURA..'Sakura:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_) then 
 if text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء حفظ كليشة الترحيب', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء حفظ كليشة الترحيب', 1, 'md')
 DevSakura:del(SAKURA..'Sakura:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  
 end 
 DevSakura:del(SAKURA..'Sakura:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:Groups:Welcomes'..msg.chat_id_,text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ كليشة الترحيب', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ كليشة الترحيب', 1, 'md')
 return false   
 end
 if text and text:match("^ضع ترحيب$") and ChCheck(msg) or text and text:match("^وضع ترحيب$") and ChCheck(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ارسل لي الترحيب الان\n⧉︙تستطيع اضافة مايلي ↫ ⤈\n⧉︙دالة عرض الاسم ↫ firstname\n⧉︙دالة عرض المعرف ↫ username', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل لي الترحيب الان\n⌔∮تستطيع اضافة مايلي ↫ ⤈\n⌔∮دالة عرض الاسم ↫ firstname\n⌔∮دالة عرض المعرف ↫ username', 1, 'md')
 DevSakura:set(SAKURA..'Sakura:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 if text and text:match("^حذف الترحيب$") and ChCheck(msg) or text and text:match("^حذف ترحيب$") and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف الترحيب \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف الترحيب \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Groups:Welcomes'..msg.chat_id_)
 end
@@ -6347,57 +6347,57 @@ local wel = DevSakura:get(SAKURA..'Sakura:Groups:Welcomes'..msg.chat_id_)
 if wel then
 Dev_Abs(msg.chat_id_, msg.id_, 1, wel, 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لم يتم وضع الترحيب \n⧉︙ارسل ↫ ضع ترحيب للحفظ ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لم يتم وضع الترحيب \n⌔∮ارسل ↫ ضع ترحيب للحفظ ', 1, 'md')
 end
 end
 if DevSakura:get(SAKURA..'Sakura:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_) then  
 if text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم الغاء حفظ الوصف", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم الغاء حفظ الوصف", 1, 'md')
 DevSakura:del(SAKURA..'Sakura:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  
 end 
 DevSakura:del(SAKURA..'Sakura:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_)
 https.request('https://api.telegram.org/bot'..TokenBot..'/setChatDescription?chat_id='..msg.chat_id_..'&description='..text) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم تغيير وصف المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم تغيير وصف المجموعه', 1, 'md')
 return false  
 end 
 if text and text:match("^ضع وصف$") and ChCheck(msg) or text and text:match("^وضع وصف$") and ChCheck(msg) then  
 DevSakura:set(SAKURA..'Sakura:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_,true)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ارسل لي الوصف الان', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل لي الوصف الان', 1, 'md')
 end
 if text and text == "منع" and msg.reply_to_message_id_ == 0 and ChCheck(msg) then       
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل لي الكلمه الان", 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل لي الكلمه الان", 1, 'md') 
 DevSakura:set(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_,"add")  
 return false  
 end    
 if DevSakura:get(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_) == "add" then
 if text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء امر المنع', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء امر المنع', 1, 'md')
 DevSakura:del(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 return false  
 end   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم منع الكلمه ↫ "..text, 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم منع الكلمه ↫ "..text, 1, 'html')
 DevSakura:del(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 DevSakura:hset(SAKURA..'Sakura:Filters:'..msg.chat_id_, text,'newword')
 return false
 end
 if text and text == "الغاء منع" and msg.reply_to_message_id_ == 0 and ChCheck(msg) then       
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل لي الكلمه الان", 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل لي الكلمه الان", 1, 'md') 
 DevSakura:set(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_,"del")  
 return false  
 end    
 if DevSakura:get(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_) == "del" then   
 if text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء امر الغاء المنع', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء امر الغاء المنع', 1, 'md')
 DevSakura:del(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 return false  
 end   
 if not DevSakura:hget(SAKURA..'Sakura:Filters:'..msg.chat_id_, text) then  
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙الكلمه ↫ "..text.." غير ممنوعه", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮الكلمه ↫ "..text.." غير ممنوعه", 1, 'html')
 DevSakura:del(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 else
 DevSakura:hdel(SAKURA..'Sakura:Filters:'..msg.chat_id_, text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙الكلمه ↫ "..text.." تم الغاء منعها", 1, 'html')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮الكلمه ↫ "..text.." تم الغاء منعها", 1, 'html')
 DevSakura:del(SAKURA.."Sakura:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 end
 return false
@@ -6405,24 +6405,24 @@ end
 if SudoBot(msg) then
 if text and text == "الاحصائيات" and ChCheck(msg) or text and text == "↫ الاحصائيات ⧉" then
 local gps = DevSakura:scard(SAKURA.."Sakura:Groups") local users = DevSakura:scard(SAKURA.."Sakura:Users") 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙احصائيات البوت ↫ ⤈\n⧉︙عدد المشتركين ↫ ❨ '..users..' ❩\n⧉︙عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮احصائيات البوت ↫ ⤈\n⌔∮عدد المشتركين ↫ ❨ '..users..' ❩\n⌔∮عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
 end
 if text and text == "المشتركين" and ChCheck(msg) or text and text == "↫ المشتركين ⧉" then
 local users = DevSakura:scard(SAKURA.."Sakura:Users")
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عدد المشتركين ↫ ❨ '..users..' ❩', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عدد المشتركين ↫ ❨ '..users..' ❩', 1, 'md')
 end
 end
 if text and text == 'المجموعات' and ChCheck(msg) or text and text == '↫ المجموعات ⧉' then
 if not SudoBot(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطورين فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطورين فقط ', 1, 'md')
 else
 local list = DevSakura:smembers(SAKURA.."Sakura:Groups")
-local t = '⧉︙مجموعات البوت ↫ ⤈ \n'
+local t = '⌔∮مجموعات البوت ↫ ⤈ \n'
 for k,v in pairs(list) do
 t = t..k.."~ : `"..v.."`\n" 
 end
 if #list == 0 then
-t = '⧉︙لا يوجد مجموعات مفعله'
+t = '⌔∮لا يوجد مجموعات مفعله'
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1,t, 1, 'md')
 end end
@@ -6430,7 +6430,7 @@ if text and text:match('^تنظيف (%d+)$') and ChCheck(msg) then
 if not DevSakura:get(SAKURA..'Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then  
 local Number = tonumber(text:match('^تنظيف (%d+)$')) 
 if Number > 1000 then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لاتستطيع تنظيف اكثر من 1000 رساله', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لاتستطيع تنظيف اكثر من 1000 رساله', 1, 'md')
 return false  
 end  
 local Message = msg.id_
@@ -6438,7 +6438,7 @@ for i=1,tonumber(Number) do
 DeleteMessage(msg.chat_id_,{[0]=Message})
 Message = Message - 1048576 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم تنظيف *'..Number..'* من الرسائل', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم تنظيف *'..Number..'* من الرسائل', 1, 'md')
 DevSakura:setex(SAKURA..'Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end 
 end
@@ -6458,10 +6458,10 @@ sendok = sendok + 1
 end
 if #pv == i then 
 if sendok == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙*لا يوجد مشتركين وهميين*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮*لا يوجد مشتركين وهميين*', 1, 'md')
 else
 local ok = #pv - sendok
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عدد المشتركين الان ↫ { '..#pv..' }\n⧉︙تم حذف ↫ { '..sendok..' } من المشتركين\n⧉︙العدد الحقيقي الان  ↫ ( '..ok..' ) \n', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عدد المشتركين الان ↫ { '..#pv..' }\n⌔∮تم حذف ↫ { '..sendok..' } من المشتركين\n⌔∮العدد الحقيقي الان  ↫ ( '..ok..' ) \n', 1, 'md')
 end
 end
 end,nil)
@@ -6495,21 +6495,21 @@ w = w + 1
 end
 if #group == i then 
 if (w + q) == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙*لاتوجد مجموعات وهميه*', 1, 'md')   
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮*لاتوجد مجموعات وهميه*', 1, 'md')   
 else
 local SAKURAgp2 = (w + q)
 local SAKURAgp3 = #group - SAKURAgp2
 if q == 0 then
 SAKURAgp2 = ''
 else
-SAKURAgp2 = '\n⧉︙تم حذف ↫ { '..q..' } مجموعه من البوت'
+SAKURAgp2 = '\n⌔∮تم حذف ↫ { '..q..' } مجموعه من البوت'
 end
 if w == 0 then
 SAKURAgp1 = ''
 else
-SAKURAgp1 = '\n⧉︙تم حذف ↫ { '..w..' } مجموعه بسبب تنزيل البوت الى عضو'
+SAKURAgp1 = '\n⌔∮تم حذف ↫ { '..w..' } مجموعه بسبب تنزيل البوت الى عضو'
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1,'⧉︙عدد الكروبات الان ↫ { '..#group..' }'..SAKURAgp1..''..SAKURAgp2..'\n⧉︙العدد الحقيقي الان  ↫ ( '..SAKURAgp3..' ) \n ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1,'⌔∮عدد الكروبات الان ↫ { '..#group..' }'..SAKURAgp1..''..SAKURAgp2..'\n⌔∮العدد الحقيقي الان  ↫ ( '..SAKURAgp3..' ) \n ', 1, 'md')
 end end
 end,nil)
 end
@@ -6517,12 +6517,12 @@ return false
 end 
 end
 if text == "تفعيل امسح" and Constructor(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل امسح بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل امسح بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Clean'..msg.chat_id_,true)  
 end
 if text == "تعطيل امسح" and Constructor(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل امسح بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل امسح بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Clean'..msg.chat_id_) 
 end
@@ -6531,9 +6531,9 @@ if DevSakura:get(SAKURA..'Sakura:Lock:Clean'..msg.chat_id_) then
 if text == "الميديا" and ChCheck(msg) or text == "عدد الميديا" and ChCheck(msg) then 
 local M = DevSakura:scard(SAKURA.."Sakura:cleaner"..msg.chat_id_)
 if M ~= 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙عدد الميديا ↫ "..M, 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عدد الميديا ↫ "..M, 1, 'md') 
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لاتوجد ميديا هنا", 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لاتوجد ميديا هنا", 1, 'md') 
 end end
 if text == "امسح" and ChCheck(msg) or text == "تنظيف ميديا" and ChCheck(msg) or text == "تنظيف الميديا" and ChCheck(msg) then
 local list = DevSakura:smembers(SAKURA.."Sakura:cleaner"..msg.chat_id_)
@@ -6545,10 +6545,10 @@ DeleteMessage(msg.chat_id_,{[0]=Message})
 Message = Message - 1048576 
 end
 if Del ~= 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف "..Del.." من الميديا", 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف "..Del.." من الميديا", 1, 'md') 
 DevSakura:del(SAKURA.."Sakura:cleaner"..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لاتوجد ميديا هنا", 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لاتوجد ميديا هنا", 1, 'md') 
 end end 
 end
 end
@@ -6571,7 +6571,7 @@ end
 end
 DeleteMessage(msg.chat_id_,Abs_Del2)
 end,nil)  
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم تنظيف 100 من الرسائل المعدله', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم تنظيف 100 من الرسائل المعدله', 1, 'md')
 end
 if ChatType == 'sp' or ChatType == 'gp'  then
 if Admin(msg) then
@@ -6579,96 +6579,96 @@ if text and text:match("^فتح (.*)$") and ChCheck(msg) then
 local unlockpts = {string.match(text, "^(فتح) (.*)$")}
 if unlockpts[2] == "التعديل" then
 if DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح التعديل بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التعديل بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙التعديل بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التعديل بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if unlockpts[2] == "التعديل الميديا" or unlockpts[2] == "تعديل الميديا" then
 if DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح تعديل الميديا\n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح تعديل الميديا\n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تعديل الميديا بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تعديل الميديا بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if unlockpts[2] == "الفارسيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الفارسيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الفارسيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الفارسيه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفارسيه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if unlockpts[2] == "الفشار" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الفشار بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الفشار بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الفشار بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفشار بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if unlockpts[2] == "الطائفيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الطائفيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الطائفيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الطائفيه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الطائفيه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if unlockpts[2] == "الكفر" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الكفر بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الكفر بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الكفر بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الكفر بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if unlockpts[2] == "الفارسيه بالطرد" then
 if DevSakura:get(SAKURA..'Sakura:Lock:FarsiBan'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الفارسيه بالطرد \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الفارسيه بالطرد \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:FarsiBan'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الفارسيه بالطرد بالفعل مفتوحه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفارسيه بالطرد بالفعل مفتوحه', 1, 'md')
 end
 end
 if unlockpts[2] == "البوتات" then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح البوتات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح البوتات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_)  
 end
 if unlockpts[2] == "البوتات بالطرد" then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح البوتات بالطرد \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح البوتات بالطرد \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_)  
 end
 if unlockpts[2] == "البوتات بالتقييد" then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح البوتات بالتقييد \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح البوتات بالتقييد \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_)  
 end
 if unlockpts[2] == "التكرار" then 
 DevSakura:hdel(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User")  
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح التكرار بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التكرار بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if BasicConstructor(msg) then
 if unlockpts[2] == "التثبيت" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح التثبيت بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التثبيت بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_)
 DevSakura:srem(SAKURA.."Sakura:Lock:Pinpin",msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙التثبيت بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التثبيت بالفعل مفتوح في المجموعه', 1, 'md')
 end end end
 end
 end
@@ -6677,200 +6677,200 @@ if text and text:match("^قفل (.*)$") and ChCheck(msg) then
 local LockText = {string.match(text, "^(قفل) (.*)$")}
 if LockText[2] == "الدردشه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Text'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الدردشه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الدردشه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Text'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الدردشه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الدردشه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الاونلاين" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الاونلاين بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الاونلاين بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الاونلاين بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاونلاين بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الصور" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الصور بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الصور بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الصور بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الصور بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الكلايش" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الكلايش بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الكلايش بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الكلايش بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الكلايش بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الدخول" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Join'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الدخول بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الدخول بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Join'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الدخول بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الدخول بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الفيديو" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الفيديو بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الفيديو بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الفيديو بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفيديو بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "المتحركه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل المتحركه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل المتحركه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المتحركه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المتحركه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الاغاني" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Music'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الاغاني بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الاغاني بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Music'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الاغاني بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاغاني بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الصوت" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الصوت بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الصوت بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الصوت بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الصوت بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الروابط" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Links'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الروابط بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الروابط بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Links'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الروابط بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الروابط بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "المواقع" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Location'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل المواقع بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل المواقع بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Location'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المواقع بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المواقع بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "المعرف" or LockText[2] == "المعرفات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل المعرفات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل المعرفات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المعرفات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المعرفات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الملفات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Document'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الملفات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الملفات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Document'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الملفات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الملفات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الهاشتاك" or LockText[2] == "التاك" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الهاشتاك بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الهاشتاك بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الهاشتاك بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الهاشتاك بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الجهات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الجهات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الجهات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '️⧉︙الجهات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '️⌔∮الجهات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الشبكات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الشبكات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الشبكات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_,true) 
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الشبكات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الشبكات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "العربيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل العربيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل العربيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العربيه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العربيه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الانكليزيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:English'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الانكليزيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الانكليزيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:English'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الانكليزيه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الانكليزيه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الملصقات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الملصقات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الملصقات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الملصقات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الملصقات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الماركداون" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الماركداون بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الماركداون بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الماركداون بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الماركداون بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الاشعارات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل الاشعارات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الاشعارات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الاشعارات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاشعارات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "التوجيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل التوجيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التوجيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_,true)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙التوجيه بالفعل مقفل في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التوجيه بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 end
@@ -6880,233 +6880,233 @@ if text and text:match("^فتح (.*)$") and ChCheck(msg) then
 local UnLockText = {string.match(text, "^(فتح) (.*)$")}
 if UnLockText[2] == "الدردشه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Text'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الدردشه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الدردشه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Text'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الدردشه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الدردشه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الصور" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الصور بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الصور بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الصور بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الصور بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الكلايش" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الكلايش بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الكلايش بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الكلايش بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الكلايش بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الدخول" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Join'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الدخول بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الدخول بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Join'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الدخول بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الدخول بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الفيديو" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الفيديو بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الفيديو بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الفيديو بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفيديو بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الملفات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Document'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الملفات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الملفات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Document'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الملفات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الملفات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الاونلاين" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الاونلاين بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الاونلاين بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الاونلاين بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاونلاين بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الماركداون" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الماركداون بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الماركداون بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الماركداون بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الماركداون بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "المتحركه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح المتحركه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح المتحركه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المتحركه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المتحركه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الاغاني" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Music'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الاغاني بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الاغاني بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Music'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الاغاني بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاغاني بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الصوت" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الصوت بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الصوت بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الصوت بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الصوت بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الروابط" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Links'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الروابط بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الروابط بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Links'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الروابط بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الروابط بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "المواقع" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Location'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح المواقع بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح المواقع بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Location'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المواقع بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المواقع بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "المعرف" or UnLockText[2] == "المعرفات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح المعرفات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح المعرفات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المعرفات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المعرفات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الهاشتاك" or UnLockText[2] == "التاك" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الهاشتاك بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الهاشتاك بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الهاشتاك بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الهاشتاك بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الجهات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الجهات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الجهات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الجهات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الجهات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الشبكات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الشبكات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الشبكات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الشبكات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الشبكات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "العربيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح العربيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح العربيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙العربيه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العربيه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الانكليزيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:English'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الانكليزيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الانكليزيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:English'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الانكليزيه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الانكليزيه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الاشعارات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الاشعارات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الاشعارات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الاشعارات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاشعارات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الملصقات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح الملصقات بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الملصقات بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙الملصقات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الملصقات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "التوجيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح التوجيه بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التوجيه بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙التوجيه بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التوجيه بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 end
 end
 if text and text:match("^قفل التفليش$") or text and text:match("^تفعيل الحمايه القصوى$") then
 if not Constructor(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمنشئين فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمنشئين فقط', 1, 'md')
 else
 DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","del") 
 LockList ={'Sakura:Lock:Links','Sakura:Lock:Contact','Sakura:Lock:Forwards','Sakura:Lock:Videos','Sakura:Lock:Gifs','Sakura:Lock:EditMsgs','Sakura:Lock:Stickers','Sakura:Lock:Farsi','Sakura:Lock:Spam','Sakura:Lock:WebLinks','Sakura:Lock:Photo'}
 for i,Lock in pairs(LockList) do
 DevSakura:set(SAKURA..Lock..msg.chat_id_,true)
 end
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل التفليش بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التفليش بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end
 if text and text:match("^فتح التفليش$") then
 if not Constructor(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمنشئين فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمنشئين فقط', 1, 'md')
 else
 DevSakura:hdel(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User") 
 UnLockList ={'Sakura:Lock:Links','Sakura:Lock:Contact','Sakura:Lock:Forwards','Sakura:Lock:Videos','Sakura:Lock:Gifs','Sakura:Lock:EditMsgs','Sakura:Lock:Stickers','Sakura:Lock:Farsi','Sakura:Lock:Spam','Sakura:Lock:WebLinks','Sakura:Lock:Photo'}
 for i,UnLock in pairs(UnLockList) do
 DevSakura:del(SAKURA..UnLock..msg.chat_id_)
 end
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح التفليش بنجاح \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التفليش بنجاح \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end
 if text and text:match("^قفل الكل$") then
 if not Constructor(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمنشئين فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمنشئين فقط', 1, 'md')
 else
 DevSakura:del(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_) DevSakura:del(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) DevSakura:del(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) 
 DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","del") 
@@ -7114,20 +7114,20 @@ LockList ={'Sakura:Lock:EditMsgs','Sakura:Lock:Farsi','Sakura:Lock:TagServr','Sa
 for i,Lock in pairs(LockList) do
 DevSakura:set(SAKURA..Lock..msg.chat_id_,true)
 end
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم قفل جميع الاوامر \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل جميع الاوامر \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end
 if text and text:match("^فتح الكل$") then
 if not Constructor(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمنشئين فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمنشئين فقط', 1, 'md')
 else
 DevSakura:set(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_,true) DevSakura:set(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_,true) DevSakura:set(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_,true) DevSakura:hdel(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User") 
 UnLockList ={'Sakura:Lock:EditMsgs','Sakura:Lock:Text','Sakura:Lock:Arabic','Sakura:Lock:English','Sakura:Lock:Join','Sakura:Lock:Bots','Sakura:Lock:Farsi','Sakura:Lock:FarsiBan','Sakura:Lock:TagServr','Sakura:Lock:Inline','Sakura:Lock:Photo','Sakura:Lock:Spam','Sakura:Lock:Videos','Sakura:Lock:Gifs','Sakura:Lock:Music','Sakura:Lock:Voice','Sakura:Lock:Links','Sakura:Lock:Location','Sakura:Lock:Tags','Sakura:Lock:Stickers','Sakura:Lock:Markdown','Sakura:Lock:Forwards','Sakura:Lock:Document','Sakura:Lock:Contact','Sakura:Lock:Hashtak','Sakura:Lock:WebLinks'}
 for i,UnLock in pairs(UnLockList) do
 DevSakura:del(SAKURA..UnLock..msg.chat_id_)
 end
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم فتح جميع الاوامر \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح جميع الاوامر \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end
@@ -7135,10 +7135,10 @@ if Admin(msg) then
 if text and (text:match("^ضع سبام (%d+)$") or text:match("^وضع سبام (%d+)$")) then
 local SetSpam = text:match("ضع سبام (%d+)$") or text:match("وضع سبام (%d+)$")
 if tonumber(SetSpam) < 40 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙اختر عدد اكبر من 40 حرف ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮اختر عدد اكبر من 40 حرف ', 1, 'md')
 else
 DevSakura:set(SAKURA..'Sakura:Spam:Text'..msg.chat_id_,SetSpam)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم وضع عدد السبام ↫'..SetSpam, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم وضع عدد السبام ↫'..SetSpam, 1, 'md')
 end
 end
 end
@@ -7153,50 +7153,50 @@ if GetInfo.result.can_invite_users == true then INV = '✔️' else INV = '✖�
 if GetInfo.result.can_pin_messages == true then PIN = '✔️' else PIN = '✖️' end
 if GetInfo.result.can_restrict_members == true then BAN = '✔️' else BAN = '✖️' end
 if GetInfo.result.can_promote_members == true then VIP = '✔️' else VIP = '✖️' end 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙صلاحيات البوت هي ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙حذف الرسائل ↫ '..DEL..'\n⧉︙دعوة المستخدمين ↫ '..INV..'\n⧉︙حظر المستخدمين ↫ '..BAN..'\n⧉︙تثبيت الرسائل ↫ '..PIN..'\n⧉︙تغيير المعلومات ↫ '..EDT..'\n⧉︙اضافة مشرفين ↫ '..VIP..'\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮صلاحيات البوت هي ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮حذف الرسائل ↫ '..DEL..'\n⌔∮دعوة المستخدمين ↫ '..INV..'\n⌔∮حظر المستخدمين ↫ '..BAN..'\n⌔∮تثبيت الرسائل ↫ '..PIN..'\n⌔∮تغيير المعلومات ↫ '..EDT..'\n⌔∮اضافة مشرفين ↫ '..VIP..'\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉', 1, 'md')
 end end
 if text and text:match("^تغير رد المطور (.*)$") then
 local Text = text:match("^تغير رد المطور (.*)$") 
 DevSakura:set(SAKURA.."Sakura:SudoBot:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تغير رد المطور الى ↫ "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تغير رد المطور الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد منشئ الاساسي (.*)$") then
 local Text = text:match("^تغير رد منشئ الاساسي (.*)$") 
 DevSakura:set(SAKURA.."Sakura:BasicConstructor:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تغير رد المنشئ الاساسي الى ↫ "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تغير رد المنشئ الاساسي الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المنشئ (.*)$") then
 local Text = text:match("^تغير رد المنشئ (.*)$") 
 DevSakura:set(SAKURA.."Sakura:Constructor:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تغير رد المنشئ الى ↫ "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تغير رد المنشئ الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المدير (.*)$") then
 local Text = text:match("^تغير رد المدير (.*)$") 
 DevSakura:set(SAKURA.."Sakura:Managers:Rd"..msg.chat_id_,Text) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تغير رد المدير الى ↫ "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تغير رد المدير الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد الادمن (.*)$") then
 local Text = text:match("^تغير رد الادمن (.*)$") 
 DevSakura:set(SAKURA.."Sakura:Admins:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تغير رد الادمن الى ↫ "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تغير رد الادمن الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المميز (.*)$") then
 local Text = text:match("^تغير رد المميز (.*)$") 
 DevSakura:set(SAKURA.."Sakura:VipMem:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تغير رد المميز الى ↫ "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تغير رد المميز الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المنظف (.*)$") then
 local Text = text:match("^تغير رد المنظف (.*)$") 
 DevSakura:set(SAKURA.."Sakura:Cleaner:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تغير رد المنظف الى ↫ "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تغير رد المنظف الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد العضو (.*)$") then
 local Text = text:match("^تغير رد العضو (.*)$") 
 DevSakura:set(SAKURA.."Sakura:mem:Rd"..msg.chat_id_,Text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تغير رد العضو الى ↫ "..Text, 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تغير رد العضو الى ↫ "..Text, 1, 'md')
 end
 if text == "حذف ردود الرتب" or text == "مسح ردود الرتب" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف جميع ردود الرتب", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف جميع ردود الرتب", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:mem:Rd"..msg.chat_id_)
 DevSakura:del(SAKURA.."Sakura:Cleaner:Rd"..msg.chat_id_)
 DevSakura:del(SAKURA.."Sakura:VipMem:Rd"..msg.chat_id_)
@@ -7210,7 +7210,7 @@ end
 if text == "كشف البوتات" and ChCheck(msg) then 
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersBots"},offset_ = 0,limit_ = 100 },function(extra,result,success)
 local admins = result.members_  
-text = '⧉︙*قائمة البوتات* ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n'
+text = '⌔∮*قائمة البوتات* ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n'
 local n = 0
 local t = 0
 for i=0 , #admins do 
@@ -7225,11 +7225,11 @@ ab = ' ✯'
 end
 text = text.."~ [@"..data.username_..']'..ab.."\n"
 if #admins == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتوجد بوتات هنا*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتوجد بوتات هنا*", 1, 'md')
 return false end
 if #admins == i then 
-local a = '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙*عدد البوتات هنا* ↫ '..n..'\n'
-local f = '⧉︙*عدد البوتات المرفوعه* ↫ '..t..'\n⧉︙*ملاحضه علامة الـ*✯ *تعني ان البوت ادمن في هذه المجموعه*'
+local a = '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮*عدد البوتات هنا* ↫ '..n..'\n'
+local f = '⌔∮*عدد البوتات المرفوعه* ↫ '..t..'\n⌔∮*ملاحضه علامة الـ*✯ *تعني ان البوت ادمن في هذه المجموعه*'
 Dev_Abs(msg.chat_id_, msg.id_, 1, text..a..f, 1, 'md')
 end
 end,nil)
@@ -7251,9 +7251,9 @@ end
 c = c + 1
 end     
 if (c - x) == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*لاتوجد بوتات هنا*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*لاتوجد بوتات هنا*", 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙*عدد البوتات هنا* ↫ "..c.."\n⧉︙*عدد البوتات المرفوعه* ↫ "..x.."\n⧉︙*تم طرد* ↫ "..(c - x).." *من البوتات*", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*عدد البوتات هنا* ↫ "..c.."\n⌔∮*عدد البوتات المرفوعه* ↫ "..x.."\n⌔∮*تم طرد* ↫ "..(c - x).." *من البوتات*", 1, 'md')
 end 
 end,nil)  
 end 
@@ -7265,65 +7265,65 @@ local txtss = {string.match(text, "^(مسح) (.*)$")}
 if Sudo(msg) then 
 if txts[2] == 'المطورين' or txtss[2] == 'المطورين' then
 DevSakura:del(SAKURA..'Sakura:SudoBot:')
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المطورين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المطورين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if txts[2] == 'قائمه العام' or txtss[2] == 'قائمه العام' then
 DevSakura:del(SAKURA..'Sakura:BanAll:')
 DevSakura:del(SAKURA..'Sakura:MuteAll:')
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف قائمة العام \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف قائمة العام \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end
 if AbsConstructor(msg) then
 if txts[2] == 'المنشئين الاساسيين' or txtss[2] == 'المنشئين الاساسيين' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المنشئين الاساسيين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المنشئين الاساسيين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_)
 end
 end
 if BasicConstructor(msg) then
 if txts[2] == 'المنشئين' or txtss[2] == 'المنشئين' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المنشئين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المنشئين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Constructor:'..msg.chat_id_)
 end end
 if Constructor(msg) then
 if txts[2] == 'المدراء' or txtss[2] == 'المدراء' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المدراء \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المدراء \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Managers:'..msg.chat_id_)
 end 
 if txts[2] == 'المنظفين' or txtss[2] == 'المنظفين' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المنظفين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المنظفين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Cleaner:'..msg.chat_id_)
 end end
 if Manager(msg) then
 if txts[2] == 'الادمنيه' or txtss[2] == 'الادمنيه' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف الادمنيه \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف الادمنيه \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Admins:'..msg.chat_id_)
 end
 end
 if txts[2] == 'المطايه' or txtss[2] == 'المطايه' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المطايه \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المطايه \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'User:Donky:'..msg.chat_id_)
 end
 if txts[2] == 'الرابط' or txtss[2] == 'الرابط' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف رابط المجموعه \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف رابط المجموعه \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:Groups:Links"..msg.chat_id_)
 end
 if txts[2] == 'المميزين' or txtss[2] == 'المميزين' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المميزين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المميزين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:VipMem:'..msg.chat_id_)
 end
 if txts[2] == 'المكتومين' or txtss[2] == 'المكتومين' then
 DevSakura:del(SAKURA..'Sakura:Muted:'..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المكتومين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المكتومين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if txts[2] == 'المقيدين' or txtss[2] == 'المقيدين' then     
@@ -7332,16 +7332,16 @@ for k,v in pairs(list) do
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..v.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True") 
 DevSakura:srem(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, v)
 end 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المقيدين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المقيدين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if txts[2] == 'قائمه المنع' or txtss[2] == 'قائمه المنع' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف قائمة المنع \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف قائمة المنع \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Filters:'..msg.chat_id_)
 end
 if txts[2] == 'قوائم المنع' or txtss[2] == 'قوائم المنع' then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف قوائم المنع \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف قوائم المنع \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Filters:'..msg.chat_id_)
 DevSakura:del(SAKURA.."Sakura:FilterAnimation"..msg.chat_id_)
@@ -7350,31 +7350,31 @@ DevSakura:del(SAKURA.."Sakura:FilterSteckr"..msg.chat_id_)
 end
 if txts[2] == 'قائمه منع المتحركات' or txtss[2] == 'قائمه منع المتحركات' then     
 DevSakura:del(SAKURA.."Sakura:FilterAnimation"..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف قائمة منع المتحركات \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف قائمة منع المتحركات \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if txts[2] == 'قائمه منع الصور' or txtss[2] == 'قائمه منع الصور' then     
 DevSakura:del(SAKURA.."Sakura:FilterPhoto"..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف قائمة منع الصور \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف قائمة منع الصور \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 if txts[2] == 'قائمه منع الملصقات' or txtss[2] == 'قائمه منع الملصقات' then     
 DevSakura:del(SAKURA.."Sakura:FilterSteckr"..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف قائمة منع الملصقات \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف قائمة منع الملصقات \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end
 end
 if text and text:match("^حذف القوائم$") and ChCheck(msg) or text and text:match("^مسح القوائم$") and ChCheck(msg) then
 if not BasicConstructor(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمنشئ الاساسي فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمنشئ الاساسي فقط', 1, 'md')
 else
 DevSakura:del(SAKURA..'Sakura:Ban:'..msg.chat_id_) DevSakura:del(SAKURA..'Sakura:Admins:'..msg.chat_id_) DevSakura:del(SAKURA..'User:Donky:'..msg.chat_id_) DevSakura:del(SAKURA..'Sakura:VipMem:'..msg.chat_id_) DevSakura:del(SAKURA..'Sakura:Filters:'..msg.chat_id_) DevSakura:del(SAKURA..'Sakura:Muted:'..msg.chat_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف ↫ ❨ قائمة المنع • المحظورين • المكتومين • الادمنيه • المميزين • المطايه ❩ بنجاح \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف ↫ ❨ قائمة المنع • المحظورين • المكتومين • الادمنيه • المميزين • المطايه ❩ بنجاح \n ✓", 1, 'md')
 end end
 if text and text:match("^حذف جميع الرتب$") and ChCheck(msg) or text and text:match("^مسح جميع الرتب$") and ChCheck(msg) or text and text:match("^تنزيل جميع الرتب$") and ChCheck(msg) then
 if not AbsConstructor(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لمنشئ المجموعه فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لمنشئ المجموعه فقط', 1, 'md')
 else
 local basicconstructor = DevSakura:smembers(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_)
 local constructor = DevSakura:smembers(SAKURA..'Sakura:Constructor:'..msg.chat_id_)
@@ -7395,9 +7395,9 @@ DevSakura:del(SAKURA..'Sakura:Managers:'..msg.chat_id_)
 DevSakura:del(SAKURA..'Sakura:Admins:'..msg.chat_id_)
 DevSakura:del(SAKURA..'Sakura:VipMem:'..msg.chat_id_)
 DevSakura:del(SAKURA..'User:Donky:'..msg.chat_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف جميع الرتب التاليه ↫ ❨ "..basicconstructort..''..constructort..''..Managerst..''..adminst..''..vipmemt..''..donkyt.." ❩ بنجاح \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف جميع الرتب التاليه ↫ ❨ "..basicconstructort..''..constructort..''..Managerst..''..adminst..''..vipmemt..''..donkyt.." ❩ بنجاح \n ✓", 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لاتوجد رتب هنا", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لاتوجد رتب هنا", 1, 'md')
 end 
 end 
 end
@@ -7458,40 +7458,40 @@ if DevSakura:get(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مف�
 if DevSakura:get(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end
 if DevSakura:get(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_) then lock_farsi = 'مقفله' else lock_farsi = 'مفتوحه' end
 local Flood_Num = DevSakura:hget(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_,"Num:Spam") or 5
-local TXTE = "⧉︙اعدادات المجموعه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
-.."⧉︙الروابط ↫ "..mute_links.."\n"
-.."⧉︙المعرف ↫ "..lock_tag.."\n"
-.."⧉︙البوتات ↫ "..lock_bots.."\n"
-.."⧉︙المتحركه ↫ "..mute_gifs.."\n"
-.."⧉︙الملصقات ↫ "..lock_sticker.."\n"
-.."⧉︙الملفات ↫ "..lock_file.."\n"
-.."⧉︙الصور ↫ "..mute_photo.."\n"
-.."⧉︙الفيديو ↫ "..mute_video.."\n"
-.."⧉︙الاونلاين ↫ "..mute_in.."\n"
-.."⧉︙الدردشه ↫ "..mute_text.."\n"
-.."⧉︙التوجيه ↫ "..lock_forward.."\n"
-.."⧉︙الاغاني ↫ "..mute_music.."\n"
-.."⧉︙الصوت ↫ "..mute_voice.."\n"
-.."⧉︙الجهات ↫ "..lock_contact.."\n"
-.."⧉︙الماركداون ↫ "..markdown.."\n"
-.."⧉︙الهاشتاك ↫ "..lock_htag.."\n"
-.."⧉︙التعديل ↫ "..mute_edit.."\n"
-.."⧉︙التثبيت ↫ "..lock_pin.."\n"
-.."⧉︙الاشعارات ↫ "..lock_tgservice.."\n"
-.."⧉︙الكلايش ↫ "..lock_spam.."\n"
-.."⧉︙الدخول ↫ "..lock_Join.."\n"
-.."⧉︙الشبكات ↫ "..lock_wp.."\n"
-.."⧉︙المواقع ↫ "..lock_location.."\n"
-.."⧉︙الفشار ↫ "..lock_fshar.."\n"
-.."⧉︙الكفر ↫ "..lock_kaf.."\n"
-.."⧉︙الطائفيه ↫ "..lock_taf.."\n"
-.."⧉︙العربيه ↫ "..lock_arabic.."\n"
-.."⧉︙الانكليزيه ↫ "..lock_english.."\n"
-.."⧉︙الفارسيه ↫ "..lock_farsi.."\n"
-.."⧉︙التكرار ↫ "..flood.."\n"
-.."⧉︙عدد التكرار ↫ "..Flood_Num.."\n"
-.."⧉︙عدد السبام ↫ "..spam_c.."\n"
-.."┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙[Source Channel](https://t.me/SAKURAV15)\n"
+local TXTE = "⌔∮اعدادات المجموعه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+.."⌔∮الروابط ↫ "..mute_links.."\n"
+.."⌔∮المعرف ↫ "..lock_tag.."\n"
+.."⌔∮البوتات ↫ "..lock_bots.."\n"
+.."⌔∮المتحركه ↫ "..mute_gifs.."\n"
+.."⌔∮الملصقات ↫ "..lock_sticker.."\n"
+.."⌔∮الملفات ↫ "..lock_file.."\n"
+.."⌔∮الصور ↫ "..mute_photo.."\n"
+.."⌔∮الفيديو ↫ "..mute_video.."\n"
+.."⌔∮الاونلاين ↫ "..mute_in.."\n"
+.."⌔∮الدردشه ↫ "..mute_text.."\n"
+.."⌔∮التوجيه ↫ "..lock_forward.."\n"
+.."⌔∮الاغاني ↫ "..mute_music.."\n"
+.."⌔∮الصوت ↫ "..mute_voice.."\n"
+.."⌔∮الجهات ↫ "..lock_contact.."\n"
+.."⌔∮الماركداون ↫ "..markdown.."\n"
+.."⌔∮الهاشتاك ↫ "..lock_htag.."\n"
+.."⌔∮التعديل ↫ "..mute_edit.."\n"
+.."⌔∮التثبيت ↫ "..lock_pin.."\n"
+.."⌔∮الاشعارات ↫ "..lock_tgservice.."\n"
+.."⌔∮الكلايش ↫ "..lock_spam.."\n"
+.."⌔∮الدخول ↫ "..lock_Join.."\n"
+.."⌔∮الشبكات ↫ "..lock_wp.."\n"
+.."⌔∮المواقع ↫ "..lock_location.."\n"
+.."⌔∮الفشار ↫ "..lock_fshar.."\n"
+.."⌔∮الكفر ↫ "..lock_kaf.."\n"
+.."⌔∮الطائفيه ↫ "..lock_taf.."\n"
+.."⌔∮العربيه ↫ "..lock_arabic.."\n"
+.."⌔∮الانكليزيه ↫ "..lock_english.."\n"
+.."⌔∮الفارسيه ↫ "..lock_farsi.."\n"
+.."⌔∮التكرار ↫ "..flood.."\n"
+.."⌔∮عدد التكرار ↫ "..Flood_Num.."\n"
+.."⌔∮عدد السبام ↫ "..spam_c.."\n"
+.."┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮[Source Channel](https://t.me/SAKURAV15)\n"
 Dev_Abs(msg.chat_id_, msg.id_, 1, TXTE, 1, 'md')
 end
 end
@@ -7503,18 +7503,18 @@ end
 if Manager(msg) then
 if text and (text == 'تفعيل ردود البوت' or text == 'تفعيل الردود') and ChCheck(msg) then
 if not DevSakura:get(SAKURA..'bot:rep:mute'..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ردود البوت بالتاكيد مفعله ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ردود البوت بالتاكيد مفعله ', 1, 'md')
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تفعيل ردود البوت'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تفعيل ردود البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_)
 end 
 end
 if text and (text == 'تعطيل ردود البوت' or text == 'تعطيل الردود') and ChCheck(msg) then
 if DevSakura:get(SAKURA..'bot:rep:mute'..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ردود البوت بالتاكيد معطله ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ردود البوت بالتاكيد معطله ', 1, 'md')
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تعطيل ردود البوت'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تعطيل ردود البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_,true)
 end 
@@ -7522,17 +7522,17 @@ end
 end
 if DevSakura:get(SAKURA..'Sakura:setrules'..msg.chat_id_..':'..msg.sender_user_id_) then 
 if text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء حفظ قوانين المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء حفظ قوانين المجموعه', 1, 'md')
 DevSakura:del(SAKURA..'Sakura:setrules'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  
 end 
 DevSakura:del(SAKURA..'Sakura:setrules'..msg.chat_id_..':'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:rules'..msg.chat_id_,text)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حفظ قوانين المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حفظ قوانين المجموعه', 1, 'md')
 return false   
 end
 if text and text:match("^ضع قوانين$") and ChCheck(msg) or text and text:match("^وضع قوانين$") and ChCheck(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ارسل لي القوانين الان', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل لي القوانين الان', 1, 'md')
 DevSakura:set(SAKURA..'Sakura:setrules'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 end
@@ -7541,24 +7541,24 @@ local rules = DevSakura:get(SAKURA..'Sakura:rules'..msg.chat_id_)
 Dev_Abs(msg.chat_id_, msg.id_, 1, rules, 1, nil)
 end
 if text == "تفعيل الزخرفه" and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الزخرفه بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الزخرفه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Zrf:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل الزخرفه" and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الزخرفه بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الزخرفه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Zrf:Abs'..msg.chat_id_,true)  
 end
 if DevSakura:get(SAKURA..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_) then 
 if text and text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء امر الزخرفه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء امر الزخرفه', 1, 'md')
 DevSakura:del(SAKURA..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
 return false  
 end 
 UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(text)) 
 Zrf = JSON.decode(UrlZrf) 
-t = "⧉︙قائمة الزخرفه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "⌔∮قائمة الزخرفه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 i = 0
 for k,v in pairs(Zrf.ok) do
 i = i + 1
@@ -7571,7 +7571,7 @@ end
 if not DevSakura:get(SAKURA..'Sakura:Zrf:Abs'..msg.chat_id_) then
 if text == 'زخرفه' and ChCheck(msg) or text == 'الزخرفه' and ChCheck(msg) then  
 DevSakura:setex(SAKURA.."Zrf:Abs"..msg.chat_id_..""..msg.sender_user_id_,300,true)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ارسل لي الكلمه لزخرفتها \nيمكنك الزخرفة باللغه { en } ~ { ar } ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل لي الكلمه لزخرفتها \nيمكنك الزخرفة باللغه { en } ~ { ar } ', 1, 'md')
 end
 end
 if not DevSakura:get(SAKURA..'Sakura:Zrf:Abs'..msg.chat_id_) then
@@ -7579,7 +7579,7 @@ if text and text:match("^زخرفه (.*)$") and ChCheck(msg) or text and text:ma
 local TextZrf = text:match("^زخرفه (.*)$") or text:match("^زخرف (.*)$") 
 UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZrf)) 
 Zrf = JSON.decode(UrlZrf) 
-t = "⧉︙قائمة الزخرفه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "⌔∮قائمة الزخرفه ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 i = 0
 for k,v in pairs(Zrf.ok) do
 i = i + 1
@@ -7589,12 +7589,12 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'md')
 end
 end
 if text == "تفعيل الابراج" and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الابراج بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الابراج بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Brg:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل الابراج" and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الابراج بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الابراج بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Brg:Abs'..msg.chat_id_,true)  
 end
@@ -7608,107 +7608,107 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
 end
 if text and (text == "تفعيل اوامر النسب" or text == "تفعيل نسبه الحب" or text == "تفعيل نسبه الكره" or text == "تفعيل نسبه الرجوله" or text == "تفعيل نسبه الانوثه" or text == "تفعيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل اوامر النسب'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل اوامر النسب'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Nsba:Abs'..msg.chat_id_) 
 end
 if text and (text == "تعطيل اوامر النسب" or text == "تعطيل نسبه الحب" or text == "تعطيل نسبه الكره" or text == "تعطيل نسبه الرجوله" or text == "تعطيل نسبه الانوثه" or text == "تعطيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل اوامر النسب'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل اوامر النسب'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Nsba:Abs'..msg.chat_id_,true)  
 end
 if not DevSakura:get(SAKURA..'Sakura:Nsba:Abs'..msg.chat_id_) then
 if text == "نسبه الحب" and ChCheck(msg) or text == "نسبة الحب" and ChCheck(msg) then
 DevSakura:set(SAKURA..'LoveNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙قم بارسل اسمين لحساب نسبة الحب بينهما كمثال ↫ جاك وروز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮قم بارسل اسمين لحساب نسبة الحب بينهما كمثال ↫ جاك وروز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الحب" and text ~= "نسبة الحب" and DevSakura:get(SAKURA..'LoveNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء امر نسبة الحب ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء امر نسبة الحب ', 1, 'md')
 DevSakura:del(SAKURA..'LoveNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
 Abs = math.random(0,100);
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙نسبة الحب بين '..text..' هي : '..Abs..'%', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮نسبة الحب بين '..text..' هي : '..Abs..'%', 1, 'md')
 DevSakura:del(SAKURA..'LoveNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
 if not DevSakura:get(SAKURA..'Sakura:Nsba:Abs'..msg.chat_id_) then
 if text == "نسبه الكره" and ChCheck(msg) or text == "نسبة الكره" and ChCheck(msg) then
 DevSakura:set(SAKURA..'HataNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙قم بارسل اسمين لحساب نسبة الكره بينهما كمثال ↫ جاك وروز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮قم بارسل اسمين لحساب نسبة الكره بينهما كمثال ↫ جاك وروز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الكره" and text ~= "نسبة الكره" and DevSakura:get(SAKURA..'HataNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء امر نسبة الكره ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء امر نسبة الكره ', 1, 'md')
 DevSakura:del(SAKURA..'HataNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
 Abs = math.random(0,100);
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙نسبة الكره بين '..text..' هي : '..Abs..'%', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮نسبة الكره بين '..text..' هي : '..Abs..'%', 1, 'md')
 DevSakura:del(SAKURA..'HataNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
 if not DevSakura:get(SAKURA..'Sakura:Nsba:Abs'..msg.chat_id_) then
 if text and (text == "نسبه الرجوله" or text == "نسبة الرجوله" or text == "نسبه رجوله" or text == "نسبة رجوله") and ChCheck(msg) then
 DevSakura:set(SAKURA..'RjolaNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙قم بارسل اسم الشخص لقياس نسبة رجولته كمثال ↫ جاك', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮قم بارسل اسم الشخص لقياس نسبة رجولته كمثال ↫ جاك', 1, 'md')
 end
 end
 if text and text ~= "نسبه الرجوله" and text ~= "نسبة الرجوله" and text ~= "نسبه رجوله" and text ~= "نسبة رجوله" and DevSakura:get(SAKURA..'RjolaNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء امر نسبة الرجوله ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء امر نسبة الرجوله ', 1, 'md')
 DevSakura:del(SAKURA..'RjolaNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
 Abs = math.random(0,100);
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙نسبة رجولة '..text..' هي : '..Abs..'%', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮نسبة رجولة '..text..' هي : '..Abs..'%', 1, 'md')
 DevSakura:del(SAKURA..'RjolaNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
 if not DevSakura:get(SAKURA..'Sakura:Nsba:Abs'..msg.chat_id_) then
 if text and (text == "نسبه الانوثه" or text == "نسبة الانوثه" or text == "نسبه انوثه" or text == "نسبة انوثه") and ChCheck(msg) then
 DevSakura:set(SAKURA..'AnothaNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙قم بارسل اسم الشخص لقياس نسبة انوثته كمثال ↫ روز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮قم بارسل اسم الشخص لقياس نسبة انوثته كمثال ↫ روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الانوثه" and text ~= "نسبة الانوثه" and text ~= "نسبه انوثه" and text ~= "نسبة انوثه" and DevSakura:get(SAKURA..'AnothaNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء امر نسبة الانوثه ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء امر نسبة الانوثه ', 1, 'md')
 DevSakura:del(SAKURA..'AnothaNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
 Abs = math.random(0,100);
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙نسبة انوثة '..text..' هي : '..Abs..'%', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮نسبة انوثة '..text..' هي : '..Abs..'%', 1, 'md')
 DevSakura:del(SAKURA..'AnothaNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
 if not DevSakura:get(SAKURA..'Sakura:Nsba:Abs'..msg.chat_id_) then
 if text and (text == "نسبه الغباء" or text == "نسبة الغباء") and ChCheck(msg) then
 DevSakura:set(SAKURA..'StupidNsba:Abs'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙قم بارسل اسم الشخص لقياس نسبة غبائه كمثال ↫ جاك او روز', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮قم بارسل اسم الشخص لقياس نسبة غبائه كمثال ↫ جاك او روز', 1, 'md')
 end
 end
 if text and text ~= "نسبه الغباء" and text ~= "نسبة الغباء" and DevSakura:get(SAKURA..'StupidNsba:Abs'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم الغاء امر نسبة الغباء ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم الغاء امر نسبة الغباء ', 1, 'md')
 DevSakura:del(SAKURA..'StupidNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
 Abs = math.random(0,100);
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙نسبة غباء '..text..' هي : '..Abs..'%', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮نسبة غباء '..text..' هي : '..Abs..'%', 1, 'md')
 DevSakura:del(SAKURA..'StupidNsba:Abs'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
 if text == "تفعيل حساب العمر" and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل حساب العمر'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل حساب العمر'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Age:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل حساب العمر" and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل حساب العمر'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل حساب العمر'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Age:Abs'..msg.chat_id_,true)  
 end
@@ -7722,12 +7722,12 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
 end
 if text == "تفعيل معاني الاسماء" and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل معاني الاسماء'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل معاني الاسماء'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Mean:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل معاني الاسماء" and Manager(msg) and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل معاني الاسماء'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل معاني الاسماء'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Mean:Abs'..msg.chat_id_,true)  
 end
@@ -7742,91 +7742,91 @@ end
 end
 if Admin(msg) then
 if DevSakura:get(SAKURA..'Sakura:LockSettings'..msg.chat_id_) then 
-if text == "الروابط" then if DevSakura:get(SAKURA..'Sakura:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الروابط ↫ "..mute_links.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "المعرف" or text == "المعرفات" then if DevSakura:get(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_) then lock_tag = 'مقفوله' else lock_tag = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙المعرف ↫ "..lock_tag.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "المتحركه" or text == "الملصقات المتحركه" then if DevSakura:get(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_) then mute_gifs = 'مقفوله' else mute_gifs = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙المتحركه ↫ "..mute_gifs.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الملصقات" then if DevSakura:get(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفوله' else lock_sticker = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الملصقات ↫ "..lock_sticker.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الصور" then if DevSakura:get(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_) then mute_photo = 'مقفوله' else mute_photo = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الصور ↫ "..mute_photo.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الفيديو" or text == "الفيديوهات" then if DevSakura:get(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_) then mute_video = 'مقفوله' else mute_video = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الفيديو ↫ "..mute_video.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الاونلاين" then if DevSakura:get(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفل' else mute_in = 'مفتوح' end local SAKURATEAM = "\n" .."⧉︙الاونلاين ↫ "..mute_in.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الدردشه" then if DevSakura:get(SAKURA..'Sakura:Lock:Text'..msg.chat_id_) then mute_text = 'مقفله' else mute_text = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الدردشه ↫ "..mute_text.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "التوجيه" or text == "اعاده التوجيه" then if DevSakura:get(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_) then lock_forward = 'مقفل' else lock_forward = 'مفتوح' end local SAKURATEAM = "\n" .."⧉︙التوجيه ↫ "..lock_forward.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الاغاني" then if DevSakura:get(SAKURA..'Sakura:Lock:Music'..msg.chat_id_) then mute_music = 'مقفوله' else mute_music = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الاغاني ↫ "..mute_music.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الصوت" or text == "الصوتيات" then if DevSakura:get(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفول' else mute_voice = 'مفتوح' end local SAKURATEAM = "\n" .."⧉︙الصوت ↫ "..mute_voice.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الجهات" or text == "جهات الاتصال" then if DevSakura:get(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_) then lock_contact = 'مقفوله' else lock_contact = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الجهات ↫ "..lock_contact.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الماركداون" then if DevSakura:get(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_) then markdown = 'مقفل' else markdown = 'مفتوح' end local SAKURATEAM = "\n" .."⧉︙الماركداون ↫ "..markdown.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الهاشتاك" then if DevSakura:get(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_) then lock_htag = 'مقفل' else lock_htag = 'مفتوح' end local SAKURATEAM = "\n" .."⧉︙الهاشتاك ↫ "..lock_htag.."\n"Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "التعديل" then if DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفل' else mute_edit = 'مفتوح' end local SAKURATEAM = "\n" .."⧉︙التعديل ↫ "..mute_edit.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "التثبيت" then if DevSakura:get(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفل' else lock_pin = 'مفتوح' end local SAKURATEAM = "\n" .."⧉︙التثبيت ↫ "..lock_pin.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الاشعارات" then if DevSakura:get(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_) then lock_tgservice = 'مقفوله' else lock_tgservice = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الاشعارات ↫ "..lock_tgservice.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الكلايش" then if DevSakura:get(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_) then lock_spam = 'مقفوله' else lock_spam = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الكلايش ↫ "..lock_spam.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الدخول" then if DevSakura:get(SAKURA..'Sakura:Lock:Join'..msg.chat_id_) then lock_Join = 'مقفول' else lock_Join = 'مفتوح' end local SAKURATEAM = "\n" .."⧉︙الدخول ↫ "..lock_Join.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الشبكات" then if DevSakura:get(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_) then lock_wp = 'مقفوله' else lock_wp = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الشبكات ↫ "..lock_wp.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "المواقع" then if DevSakura:get(SAKURA..'Sakura:Lock:Location'..msg.chat_id_) then lock_location = 'مقفوله' else lock_location = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙المواقع ↫ "..lock_location.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "العربيه" then if DevSakura:get(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_) then lock_arabic = 'مقفوله' else lock_arabic = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙العربيه ↫ "..lock_arabic.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الانكليزيه" then if DevSakura:get(SAKURA..'Sakura:Lock:English'..msg.chat_id_) then lock_english = 'مقفوله' else lock_english = 'مفتوحه' end local SAKURATEAM = "\n" .."⧉︙الانكليزيه ↫ "..lock_english.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الكفر" then if DevSakura:get(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مفتوح' else lock_kaf = 'مقفل' end local SAKURATEAM = "\n" .."⧉︙الكفر ↫ "..lock_kaf.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الفشار" then if DevSakura:get(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_) then lock_fshar = 'مفتوح' else lock_fshar = 'مقفل' end local SAKURATEAM = "\n" .."⧉︙الفشار ↫ "..lock_fshar.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
-if text == "الطائفيه" then if DevSakura:get(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end local SAKURATEAM = "\n" .."⧉︙الطائفيه ↫ "..lock_taf.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الروابط" then if DevSakura:get(SAKURA..'Sakura:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الروابط ↫ "..mute_links.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "المعرف" or text == "المعرفات" then if DevSakura:get(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_) then lock_tag = 'مقفوله' else lock_tag = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮المعرف ↫ "..lock_tag.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "المتحركه" or text == "الملصقات المتحركه" then if DevSakura:get(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_) then mute_gifs = 'مقفوله' else mute_gifs = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮المتحركه ↫ "..mute_gifs.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الملصقات" then if DevSakura:get(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفوله' else lock_sticker = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الملصقات ↫ "..lock_sticker.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الصور" then if DevSakura:get(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_) then mute_photo = 'مقفوله' else mute_photo = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الصور ↫ "..mute_photo.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الفيديو" or text == "الفيديوهات" then if DevSakura:get(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_) then mute_video = 'مقفوله' else mute_video = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الفيديو ↫ "..mute_video.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الاونلاين" then if DevSakura:get(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفل' else mute_in = 'مفتوح' end local SAKURATEAM = "\n" .."⌔∮الاونلاين ↫ "..mute_in.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الدردشه" then if DevSakura:get(SAKURA..'Sakura:Lock:Text'..msg.chat_id_) then mute_text = 'مقفله' else mute_text = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الدردشه ↫ "..mute_text.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "التوجيه" or text == "اعاده التوجيه" then if DevSakura:get(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_) then lock_forward = 'مقفل' else lock_forward = 'مفتوح' end local SAKURATEAM = "\n" .."⌔∮التوجيه ↫ "..lock_forward.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الاغاني" then if DevSakura:get(SAKURA..'Sakura:Lock:Music'..msg.chat_id_) then mute_music = 'مقفوله' else mute_music = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الاغاني ↫ "..mute_music.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الصوت" or text == "الصوتيات" then if DevSakura:get(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفول' else mute_voice = 'مفتوح' end local SAKURATEAM = "\n" .."⌔∮الصوت ↫ "..mute_voice.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الجهات" or text == "جهات الاتصال" then if DevSakura:get(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_) then lock_contact = 'مقفوله' else lock_contact = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الجهات ↫ "..lock_contact.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الماركداون" then if DevSakura:get(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_) then markdown = 'مقفل' else markdown = 'مفتوح' end local SAKURATEAM = "\n" .."⌔∮الماركداون ↫ "..markdown.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الهاشتاك" then if DevSakura:get(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_) then lock_htag = 'مقفل' else lock_htag = 'مفتوح' end local SAKURATEAM = "\n" .."⌔∮الهاشتاك ↫ "..lock_htag.."\n"Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "التعديل" then if DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفل' else mute_edit = 'مفتوح' end local SAKURATEAM = "\n" .."⌔∮التعديل ↫ "..mute_edit.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "التثبيت" then if DevSakura:get(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفل' else lock_pin = 'مفتوح' end local SAKURATEAM = "\n" .."⌔∮التثبيت ↫ "..lock_pin.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الاشعارات" then if DevSakura:get(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_) then lock_tgservice = 'مقفوله' else lock_tgservice = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الاشعارات ↫ "..lock_tgservice.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الكلايش" then if DevSakura:get(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_) then lock_spam = 'مقفوله' else lock_spam = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الكلايش ↫ "..lock_spam.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الدخول" then if DevSakura:get(SAKURA..'Sakura:Lock:Join'..msg.chat_id_) then lock_Join = 'مقفول' else lock_Join = 'مفتوح' end local SAKURATEAM = "\n" .."⌔∮الدخول ↫ "..lock_Join.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الشبكات" then if DevSakura:get(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_) then lock_wp = 'مقفوله' else lock_wp = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الشبكات ↫ "..lock_wp.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "المواقع" then if DevSakura:get(SAKURA..'Sakura:Lock:Location'..msg.chat_id_) then lock_location = 'مقفوله' else lock_location = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮المواقع ↫ "..lock_location.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "العربيه" then if DevSakura:get(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_) then lock_arabic = 'مقفوله' else lock_arabic = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮العربيه ↫ "..lock_arabic.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الانكليزيه" then if DevSakura:get(SAKURA..'Sakura:Lock:English'..msg.chat_id_) then lock_english = 'مقفوله' else lock_english = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الانكليزيه ↫ "..lock_english.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الكفر" then if DevSakura:get(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مفتوح' else lock_kaf = 'مقفل' end local SAKURATEAM = "\n" .."⌔∮الكفر ↫ "..lock_kaf.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الفشار" then if DevSakura:get(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_) then lock_fshar = 'مفتوح' else lock_fshar = 'مقفل' end local SAKURATEAM = "\n" .."⌔∮الفشار ↫ "..lock_fshar.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
+if text == "الطائفيه" then if DevSakura:get(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end local SAKURATEAM = "\n" .."⌔∮الطائفيه ↫ "..lock_taf.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
 end
 if text == 'تفعيل كشف الاعدادات' and ChCheck(msg) then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل كشف الاعدادات'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل كشف الاعدادات'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:LockSettings'..msg.chat_id_,true)  
 end
 if text == 'تعطيل كشف الاعدادات' and ChCheck(msg) then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل كشف الاعدادات'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل كشف الاعدادات'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:LockSettings'..msg.chat_id_) 
 end
 if text == 'تفعيل ضافني' and Manager(msg) then 
 DevSakura:del(SAKURA..'Sakura:Added:Me'..msg.chat_id_) 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⧉︙تم تفعيل منو ضافني'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تفعيل منو ضافني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 end
 if text == 'تعطيل ضافني' and Manager(msg) then 
 DevSakura:set(SAKURA..'Sakura:Added:Me'..msg.chat_id_,true) 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⧉︙تم تعطيل منو ضافني'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تعطيل منو ضافني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل ردود المدير' and Manager(msg) and ChCheck(msg) then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل ردود المدير'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل ردود المدير'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:GpRed'..msg.chat_id_)
 end
 if text == 'تعطيل ردود المدير' and Manager(msg) and ChCheck(msg) then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل ردود المدير'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل ردود المدير'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:GpRed'..msg.chat_id_,true)
 end
 if text == 'تفعيل ردود المطور' and Manager(msg) and ChCheck(msg) then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل ردود المطور'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل ردود المطور'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:AllRed'..msg.chat_id_)
 end
 if text == 'تعطيل ردود المطور' and Manager(msg) and ChCheck(msg) then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل ردود المطور'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل ردود المطور'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:AllRed'..msg.chat_id_,true)
 end
 if Sudo(msg) then
 if text == 'تفعيل المغادره' or text == '↫ تفعيل المغادره ⧉' then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل المغادره بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل المغادره بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:Left:Bot"..SAKURA)
 end
 if text == 'تعطيل المغادره' or text == '↫ تعطيل المغادره ⧉' then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل المغادره بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل المغادره بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA.."Sakura:Left:Bot"..SAKURA,true) 
 end 
 if text == 'تفعيل الاذاعه' or text == '↫ تفعيل الاذاعه ⧉' then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الاذاعه بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الاذاعه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:Send:Bot"..SAKURA)
 end
 if text == 'تعطيل الاذاعه' or text == '↫ تعطيل الاذاعه ⧉' then 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الاذاعه بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الاذاعه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA.."Sakura:Send:Bot"..SAKURA,true) 
 end
@@ -7835,13 +7835,13 @@ if text and text:match("^ضع اسم (.*)$") and Manager(msg) and ChCheck(msg) t
 local txt = {string.match(text, "^(ضع اسم) (.*)$")}
 tdcli_function ({ ID = "ChangeChatTitle",chat_id_ = msg.chat_id_,title_ = txt[2] },function(arg,data) 
 if data.message_ == "Channel chat title can be changed by administrators only" then
-send(msg.chat_id_,msg.id_,"⧉︙البوت ليس ادمن يرجى ترقيتي !")  
+send(msg.chat_id_,msg.id_,"⌔∮البوت ليس ادمن يرجى ترقيتي !")  
 return false  
 end 
 if data.message_ == "CHAT_ADMIN_REQUIRED" then
-send(msg.chat_id_,msg.id_,"⧉︙ليست لدي صلاحية تغير معلومات المجموعه يرجى التحقق من الصلاحيات")  
+send(msg.chat_id_,msg.id_,"⌔∮ليست لدي صلاحية تغير معلومات المجموعه يرجى التحقق من الصلاحيات")  
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تغيير اسم المجموعه'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تغيير اسم المجموعه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end,nil) 
@@ -7855,14 +7855,14 @@ photo_id = msg.content_.photo_.sizes_[0].photo_.persistent_id_
 end
 tdcli_function ({ID = "ChangeChatPhoto",chat_id_ = msg.chat_id_,photo_ = getInputFile(photo_id) }, function(arg,data)   
 if data.code_ == 3 then
-send(msg.chat_id_, msg.id_,"⧉︙عذرا البوت ليس ادمن يرجى ترقيتي والمحاوله لاحقا") 
+send(msg.chat_id_, msg.id_,"⌔∮عذرا البوت ليس ادمن يرجى ترقيتي والمحاوله لاحقا") 
 DevSakura:del(SAKURA..'Sakura:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  end
 if data.message_ == "CHAT_ADMIN_REQUIRED" then 
-send(msg.chat_id_, msg.id_,"⧉︙ليست لدي صلاحية تغير معلومات المجموعه يرجى التحقق من الصلاحيات") 
+send(msg.chat_id_, msg.id_,"⌔∮ليست لدي صلاحية تغير معلومات المجموعه يرجى التحقق من الصلاحيات") 
 DevSakura:del(SAKURA..'Sakura:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تغيير صورة المجموعه'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تغيير صورة المجموعه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end,nil) 
@@ -7870,71 +7870,71 @@ DevSakura:del(SAKURA..'Sakura:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
 end 
 end
 if text and text:match("^ضع صوره$") and ChCheck(msg) or text and text:match("^وضع صوره$") and ChCheck(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙ارسل صورة المجموعه الان \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮ارسل صورة المجموعه الان \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 if text and text:match("^حذف الصوره$") and ChCheck(msg) or text and text:match("^مسح الصوره$") and ChCheck(msg) then
 https.request("https://api.telegram.org/bot"..TokenBot.."/deleteChatPhoto?chat_id="..msg.chat_id_) 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف صورة المجموعه \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف صورة المجموعه \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false  
 end
 if Manager(msg) then
 if text and text:match("^الغاء تثبيت$") and ChCheck(msg) or text and text:match("^الغاء التثبيت$") and ChCheck(msg) then
 if DevSakura:sismember(SAKURA.."Sakura:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
-Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⌔∮التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
 tdcli_function({ID="UnpinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
 if data.ID == "Ok" then
 DevSakura:del(SAKURA..'Sakura:PinnedMsg'..msg.chat_id_)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم الغاء تثبيت الرساله'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم الغاء تثبيت الرساله'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false  
 end
 if data.code_ == 6 then
-send(msg.chat_id_,msg.id_,"⧉︙انا لست ادمن هنا يرجى ترقيتي ادمن ثم اعد المحاوله")  
+send(msg.chat_id_,msg.id_,"⌔∮انا لست ادمن هنا يرجى ترقيتي ادمن ثم اعد المحاوله")  
 return false  
 end
 if data.message_ == "CHAT_ADMIN_REQUIRED" then
-send(msg.chat_id_,msg.id_,"⧉︙ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات")  
+send(msg.chat_id_,msg.id_,"⌔∮ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات")  
 return false  
 end
 end,nil)
 end
 if text and text:match("^الغاء تثبيت الكل$") then  
 if DevSakura:sismember(SAKURA.."Sakura:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
-Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⌔∮التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
 tdcli_function({ID="UnpinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
 if data.ID == "Ok" then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم الغاء تثبيت الكل'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم الغاء تثبيت الكل'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 https.request('https://api.telegram.org/bot'..TokenBot..'/unpinAllChatMessages?chat_id='..msg.chat_id_)
 DevSakura:del(SAKURA.."Sakura:PinnedMsg"..msg.chat_id_)
 return false  
 end
 if data.code_ == 6 then
-send(msg.chat_id_,msg.id_,"⧉︙انا لست ادمن هنا يرجى ترقيتي ادمن ثم اعد المحاوله")  
+send(msg.chat_id_,msg.id_,"⌔∮انا لست ادمن هنا يرجى ترقيتي ادمن ثم اعد المحاوله")  
 return false  
 end
 if data.message_ == "CHAT_ADMIN_REQUIRED" then
-send(msg.chat_id_,msg.id_,"⧉︙ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات")  
+send(msg.chat_id_,msg.id_,"⌔∮ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات")  
 return false  
 end
 end,nil)
 end
 if text and text:match("^اعاده تثبيت$") and ChCheck(msg) or text and text:match("^اعاده التثبيت$") and ChCheck(msg) or text and text:match("^اعادة التثبيت$") and ChCheck(msg) then
 if DevSakura:sismember(SAKURA.."Sakura:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
-Dev_Abs(msg.chat_id_,msg.id_, 1, "⧉︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
+Dev_Abs(msg.chat_id_,msg.id_, 1, "⌔∮التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
 local pin_id = DevSakura:get(SAKURA..'Sakura:PinnedMsg'..msg.chat_id_)
 if pin_id then
 pin(msg.chat_id_,pin_id,0)
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم اعادة تثبيت الرساله'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم اعادة تثبيت الرساله'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end end
 end
@@ -7947,14 +7947,14 @@ ChatKick(msg.chat_id_, data.id_)
 end
 end,nil)
 end
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم طرد المحذوفين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم طرد المحذوفين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end,nil)
 end
 if text and text:match("^مسح المحظورين$") or text and text:match("^حذف المحظورين$") and ChCheck(msg) or text and text:match("^مسح المطرودين$") or text and text:match("^حذف المطرودين$") and ChCheck(msg) then
 local function RemoveBlockList(extra, result)
 if tonumber(result.total_count_) == 0 then 
-Dev_Abs(msg.chat_id_, msg.id_, 0,'⧉︙*لا يوجد محظورين*', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 0,'⌔∮*لا يوجد محظورين*', 1, 'md')
 DevSakura:del(SAKURA..'Sakura:Ban:'..msg.chat_id_)
 else
 local x = 0
@@ -7963,7 +7963,7 @@ changeChatMemberStatus(msg.chat_id_, y.user_id_, 'Left', dl_cb, nil)
 DevSakura:del(SAKURA..'Sakura:Ban:'..msg.chat_id_)
 x = x + 1
 end
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف المحظورين \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف المحظورين \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end
 end
@@ -7974,14 +7974,14 @@ if text and text:match("^معلومات المجموعه$") and ChCheck(msg) or 
 local Muted = DevSakura:scard(SAKURA.."Sakura:Muted:"..msg.chat_id_) or "0"
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp) 
 tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المجموعه ↫ ❨ '..dp.title_..' ❩\n⧉︙الايدي ↫ ❨ '..msg.chat_id_..' ❩\n⧉︙عدد الاعضاء ↫ ❨ *'..data.member_count_..'* ❩\n⧉︙عدد الادمنيه ↫ ❨ *'..data.administrator_count_..'* ❩\n⧉︙عدد المطرودين ↫ ❨ *'..data.kicked_count_..'* ❩\n⧉︙عدد المكتومين ↫ ❨ *'..Muted..'* ❩\n⧉︙عدد رسائل المجموعه ↫ ❨ *'..(msg.id_/2097152/0.5)..'* ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المجموعه ↫ ❨ '..dp.title_..' ❩\n⌔∮الايدي ↫ ❨ '..msg.chat_id_..' ❩\n⌔∮عدد الاعضاء ↫ ❨ *'..data.member_count_..'* ❩\n⌔∮عدد الادمنيه ↫ ❨ *'..data.administrator_count_..'* ❩\n⌔∮عدد المطرودين ↫ ❨ *'..data.kicked_count_..'* ❩\n⌔∮عدد المكتومين ↫ ❨ *'..Muted..'* ❩\n⌔∮عدد رسائل المجموعه ↫ ❨ *'..(msg.id_/2097152/0.5)..'* ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n', 1, 'md') 
 end,nil)
 end,nil)
 end
 if text and text:match('^كشف (-%d+)') then
 local ChatId = text:match('كشف (-%d+)') 
 if not SudoBot(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطورين فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطورين فقط', 1, 'md')
 else
 local ConstructorList = DevSakura:scard(SAKURA.."Sakura:Constructor:"..ChatId) or 0
 local BanedList = DevSakura:scard(SAKURA.."Sakura:Ban:"..ChatId) or 0
@@ -8005,12 +8005,12 @@ ConstructorAbs = "["..Abs.first_name_.."](T.me/"..(Abs.username_ or "Dev_Prox").
 else 
 ConstructorAbs = "حساب محذوف"
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙المجموعه ↫ ["..dp.title_.."]("..LinkGroup..")\n⧉︙الايدي ↫ ( `"..ChatId.."` )\n⧉︙المنشئ ↫ "..ConstructorAbs.."\n⧉︙عدد المدراء ↫ ( *"..ManagerList.."* )\n⧉︙عدد المنشئين ↫ ( *"..ConstructorList.."* )\n⧉︙عدد الادمنيه ↫ ( *"..AdminsList.."* )\n⧉︙عدد المميزين ↫ ( *"..VipList.."* )\n⧉︙عدد المحظورين ↫ ( *"..BanedList.."* )\n⧉︙عدد المقيدين ↫ ( *"..TkeedList.."* )\n⧉︙عدد المكتومين ↫ ( *"..MutedList.."* )", 1,"md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮المجموعه ↫ ["..dp.title_.."]("..LinkGroup..")\n⌔∮الايدي ↫ ( `"..ChatId.."` )\n⌔∮المنشئ ↫ "..ConstructorAbs.."\n⌔∮عدد المدراء ↫ ( *"..ManagerList.."* )\n⌔∮عدد المنشئين ↫ ( *"..ConstructorList.."* )\n⌔∮عدد الادمنيه ↫ ( *"..AdminsList.."* )\n⌔∮عدد المميزين ↫ ( *"..VipList.."* )\n⌔∮عدد المحظورين ↫ ( *"..BanedList.."* )\n⌔∮عدد المقيدين ↫ ( *"..TkeedList.."* )\n⌔∮عدد المكتومين ↫ ( *"..MutedList.."* )", 1,"md")
 end,nil)
 end
 end
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لم تتم اضافتي بها لاقوم بكشفها", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لم تتم اضافتي بها لاقوم بكشفها", 1, "md")
 end
 end,nil)
 end,nil)
@@ -8019,16 +8019,16 @@ end
 if text and text:match("^غادر (-%d+)$")  then
 local Text = { string.match(text, "^(غادر) (-%d+)$")}
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط', 1, 'md')
 else 
 tdcli_function({ID ="GetChat",chat_id_=Text[2]},function(arg,dp) 
 if dp.id_ then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙المجموعه ↫ ["..dp.title_.."]\n⧉︙تمت المغادره منها بنجاح", 1, "md")
-Dev_Abs(Text[2], 0, 1, "⧉︙بامر المطور تم مغادرة هذه المجموعه ", 1, "md")  
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮المجموعه ↫ ["..dp.title_.."]\n⌔∮تمت المغادره منها بنجاح", 1, "md")
+Dev_Abs(Text[2], 0, 1, "⌔∮بامر المطور تم مغادرة هذه المجموعه ", 1, "md")  
 ChatLeave(dp.id_, SAKURA)
 DevSakura:srem(SAKURA.."Sakura:Groups", dp.id_)
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لم تتم اضافتي بها لاقوم بمغادرتها", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لم تتم اضافتي بها لاقوم بمغادرتها", 1, "md")
 end 
 end,nil)
 end 
@@ -8036,40 +8036,40 @@ end
 if text and text:match("^تعين عدد الاعضاء (%d+)$") and Sudo(msg) or text and text:match("^تعيين عدد الاعضاء (%d+)$") and Sudo(msg) then
 local Num = text:match("تعين عدد الاعضاء (%d+)$") or text:match("تعيين عدد الاعضاء (%d+)$")
 DevSakura:set(SAKURA..'Sakura:Num:Add:Bot',Num) 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم وضع عدد الاعضاء ↫ *'..Num..'* عضو', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم وضع عدد الاعضاء ↫ *'..Num..'* عضو', 1, 'md')
 end
 if text == 'تفعيل البوت الخدمي' then 
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط', 1, 'md')
 else 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل البوت الخدمي'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل البوت الخدمي'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:FreeBot'..SAKURA) 
 end 
 end
 if text == 'تعطيل البوت الخدمي' then 
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط', 1, 'md')
 else 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل البوت الخدمي'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل البوت الخدمي'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:FreeBot'..SAKURA,true) 
 end 
 end
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'تفعيل الالعاب' and Manager(msg) and ChCheck(msg) or text == 'تفعيل اللعبه' and Manager(msg) and ChCheck(msg) then   
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل الالعاب بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل الالعاب بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Games'..msg.chat_id_,true)  
 end
 if text == 'تعطيل الالعاب' and Manager(msg) and ChCheck(msg) or text == 'تعطيل اللعبه' and Manager(msg) and ChCheck(msg) then  
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل الالعاب بنجاح'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل الالعاب بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Games'..msg.chat_id_) 
 end
 if text == "تفعيل الرابط" or text == "تفعيل جلب الرابط" then 
 if Admin(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تفعيل جلب رابط المجموعه'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل جلب رابط المجموعه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA.."Sakura:Lock:GpLinks"..msg.chat_id_)
 return false  
@@ -8077,7 +8077,7 @@ end
 end
 if text == "تعطيل الرابط" or text == "تعطيل جلب الرابط" then 
 if Admin(msg) then
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم تعطيل جلب رابط المجموعه'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل جلب رابط المجموعه'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA.."Sakura:Lock:GpLinks"..msg.chat_id_,"ok")
 return false  
@@ -8085,16 +8085,16 @@ end
 end
 if text and text:match('^تفعيل$') and SudoBot(msg) and ChCheck(msg) then
 if ChatType ~= 'sp' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المجموعه عاديه وليست خارقه لا تستطيع تفعيلي يرجى ان تضع سجل رسائل المجموعه ضاهر وليس مخفي ومن بعدها يمكنك رفعي ادمن ثم تفعيلي', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المجموعه عاديه وليست خارقه لا تستطيع تفعيلي يرجى ان تضع سجل رسائل المجموعه ضاهر وليس مخفي ومن بعدها يمكنك رفعي ادمن ثم تفعيلي', 1, 'md')
 return false
 end
 if msg.can_be_deleted_ == false then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙البوت ليس ادمن يرجى ترقيتي !', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮البوت ليس ادمن يرجى ترقيتي !', 1, 'md')
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(DevSakura:get(SAKURA..'Sakura:Num:Add:Bot') or 0) and not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عدد اعضاء المجموعه اقل من ↫ *'..(DevSakura:get(SAKURA..'Sakura:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عدد اعضاء المجموعه اقل من ↫ *'..(DevSakura:get(SAKURA..'Sakura:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -8126,9 +8126,9 @@ end
 end
 end,nil)
 if DevSakura:sismember(SAKURA..'Sakura:Groups',msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المجموعه بالتاكيد مفعله', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المجموعه بالتاكيد مفعله', 1, 'md')
 else
-ReplyStatus(msg,result.id_,"ReplyAdd","⧉︙تم تفعيل المجموعه "..dp.title_)  
+ReplyStatus(msg,result.id_,"ReplyAdd","⌔∮تم تفعيل المجموعه "..dp.title_)  
 DevSakura:sadd(SAKURA.."Sakura:Groups",msg.chat_id_)
 if not DevSakura:get(SAKURA..'Sakura:SudosGp'..msg.sender_user_id_..msg.chat_id_) and not Sudo(msg) then 
 DevSakura:incrby(SAKURA..'Sakura:Sudos'..msg.sender_user_id_,1)
@@ -8157,7 +8157,7 @@ else
 LinkGroup = 'لا يوجد'
 end
 DevSakura:set(SAKURA.."Sakura:Groups:Links"..msg.chat_id_,LinkGroup) 
-SendText(DevId,"⧉︙تم تفعيل مجموعه جديده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙بواسطة ↫ "..Name.."\n⧉︙اسم المجموعه ↫ ["..NameChat.."]\n⧉︙عدد اعضاء المجموعه ↫ ❨ *"..NumMem.."* ❩\n⧉︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⧉︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙الوقت ↫ "..os.date("%I:%M%p").."\n⧉︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"⌔∮تم تفعيل مجموعه جديده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮بواسطة ↫ "..Name.."\n⌔∮اسم المجموعه ↫ ["..NameChat.."]\n⌔∮عدد اعضاء المجموعه ↫ ❨ *"..NumMem.."* ❩\n⌔∮ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⌔∮رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮الوقت ↫ "..os.date("%I:%M%p").."\n⌔∮التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end,nil)
 end,nil)
@@ -8167,9 +8167,9 @@ if text == 'تعطيل' and SudoBot(msg) and ChCheck(msg) then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp) 
 if not DevSakura:sismember(SAKURA..'Sakura:Groups',msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙المجموعه بالتاكيد معطله', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المجموعه بالتاكيد معطله', 1, 'md')
 else
-ReplyStatus(msg,result.id_,"ReplyAdd","⧉︙تم تعطيل المجموعه "..dp.title_)  
+ReplyStatus(msg,result.id_,"ReplyAdd","⌔∮تم تعطيل المجموعه "..dp.title_)  
 DevSakura:srem(SAKURA.."Sakura:Groups",msg.chat_id_)
 local Name1 = result.first_name_
 local Name1 = Name1:gsub('"',"") 
@@ -8193,7 +8193,7 @@ else
 LinkGroup = 'لا يوجد'
 end
 DevSakura:set(SAKURA.."Sakura:Groups:Links"..msg.chat_id_,LinkGroup) 
-SendText(DevId,"⧉︙تم تعطيل مجموعه جديده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙بواسطة ↫ "..Name.."\n⧉︙اسم المجموعه ↫ ["..NameChat.."]\n⧉︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⧉︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙الوقت ↫ "..os.date("%I:%M%p").."\n⧉︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"⌔∮تم تعطيل مجموعه جديده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮بواسطة ↫ "..Name.."\n⌔∮اسم المجموعه ↫ ["..NameChat.."]\n⌔∮ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⌔∮رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮الوقت ↫ "..os.date("%I:%M%p").."\n⌔∮التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end,nil)
 end,nil)
@@ -8223,25 +8223,25 @@ LinkGroup = LinkGp.result
 else
 LinkGroup = 'لا يوجد'
 end
-SendText(DevId,"⧉︙هناك من بحاجه الى مساعده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙الشخص ↫ "..Name.."\n⧉︙اسم المجموعه ↫ ["..NameChat.."]\n⧉︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⧉︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙الوقت ↫ "..os.date("%I:%M%p").."\n⧉︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
+SendText(DevId,"⌔∮هناك من بحاجه الى مساعده ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮الشخص ↫ "..Name.."\n⌔∮اسم المجموعه ↫ ["..NameChat.."]\n⌔∮ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⌔∮رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮الوقت ↫ "..os.date("%I:%M%p").."\n⌔∮التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end,nil)
 end,nil)
 end
 if text == 'روابط الكروبات' or text == 'روابط المجموعات' then
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
 local list = DevSakura:smembers(SAKURA.."Sakura:Groups")
 if #list == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لا يوجد مجموعات مفعله', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لا يوجد مجموعات مفعله', 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙جاري ارسال نسخه تحتوي على '..#list..' مجموعه', 1, 'md')
-local text = "⧉︙Source SAKURA\n⧉︙File Bot Groups\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮جاري ارسال نسخه تحتوي على '..#list..' مجموعه', 1, 'md')
+local text = "⌔∮Source SAKURA\n⌔∮File Bot Groups\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 for k,v in pairs(list) do
 local GroupsManagers = DevSakura:scard(SAKURA.."Sakura:Managers:"..v) or 0
 local GroupsAdmins = DevSakura:scard(SAKURA.."Sakura:Admins:"..v) or 0
 local Groupslink = DevSakura:get(SAKURA.."Sakura:Groups:Links" ..v)
-text = text..k.." ↬ ⤈ \n⧉︙Group ID ↬ "..v.."\n⧉︙Group Link ↬ "..(Groupslink or "Not Found").."\n⧉︙Group Managers ↬ "..GroupsManagers.."\n⧉︙Group Admins ↬ "..GroupsAdmins.."\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+text = text..k.." ↬ ⤈ \n⌔∮Group ID ↬ "..v.."\n⌔∮Group Link ↬ "..(Groupslink or "Not Found").."\n⌔∮Group Managers ↬ "..GroupsManagers.."\n⌔∮Group Admins ↬ "..GroupsAdmins.."\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
 end
 local File = io.open('GroupsBot.txt', 'w')
 File:write(text)
@@ -8254,17 +8254,17 @@ end
 end
 if text == "اذاعه بالخاص" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه خاص ⧉" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevSakura:get(SAKURA.."Sakura:Send:Bot"..SAKURA) and not Sudo(msg) then 
-send(msg.chat_id_, msg.id_,"⧉︙الاذاعه معطله من قبل المطور الاساسي")
+send(msg.chat_id_, msg.id_,"⌔∮الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevSakura:setex(SAKURA.."Sakura:Send:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⧉︙للخروج ارسل ↫ ( الغاء ) \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌔∮للخروج ارسل ↫ ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
 if DevSakura:get(SAKURA.."Sakura:Send:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم الغاء امر الاذاعه بنجاح", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Send:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
 end 
@@ -8315,22 +8315,22 @@ AbsText = "الملصق"
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم اذاعة "..AbsText.." بنجاح \n⧉︙‏الى ↫ ❨ "..#list.." ❩ مشترك \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم اذاعة "..AbsText.." بنجاح \n⌔∮‏الى ↫ ❨ "..#list.." ❩ مشترك \n ✓", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Send:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end
 if text == "اذاعه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه عام ⧉" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevSakura:get(SAKURA.."Sakura:Send:Bot"..SAKURA) and not Sudo(msg) then 
-send(msg.chat_id_, msg.id_,"⧉︙الاذاعه معطله من قبل المطور الاساسي")
+send(msg.chat_id_, msg.id_,"⌔∮الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevSakura:setex(SAKURA.."Sakura:Send:Gp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⧉︙للخروج ارسل ↫ ( الغاء ) \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌔∮للخروج ارسل ↫ ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
 if DevSakura:get(SAKURA.."Sakura:Send:Gp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم الغاء امر الاذاعه بنجاح", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Send:Gp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
 end 
@@ -8381,22 +8381,22 @@ AbsText = "الملصق"
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم اذاعة "..AbsText.." بنجاح \n⧉︙‏في ↫ ❨ "..#list.." ❩ مجموعه \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم اذاعة "..AbsText.." بنجاح \n⌔∮‏في ↫ ❨ "..#list.." ❩ مجموعه \n ✓", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Send:Gp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end
 if text == "اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه عام بالتوجيه ⧉" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevSakura:get(SAKURA.."Sakura:Send:Bot"..SAKURA) and not Sudo(msg) then 
-send(msg.chat_id_, msg.id_,"⧉︙الاذاعه معطله من قبل المطور الاساسي")
+send(msg.chat_id_, msg.id_,"⌔∮الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevSakura:setex(SAKURA.."Sakura:Send:FwdGp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙ارسل الرساله الان لتوجيها \n⧉︙للخروج ارسل ↫ ( الغاء ) \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮ارسل الرساله الان لتوجيها \n⌔∮للخروج ارسل ↫ ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
 if DevSakura:get(SAKURA.."Sakura:Send:FwdGp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم الغاء امر الاذاعه بنجاح", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Send:FwdGp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false  
 end 
@@ -8404,22 +8404,22 @@ local list = DevSakura:smembers(SAKURA..'Sakura:Groups')
 for k,v in pairs(list) do  
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = msg.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم اذاعة رسالتك بالتوجيه \n⧉︙‏في ↫ ❨ "..#list.." ❩ مجموعه \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم اذاعة رسالتك بالتوجيه \n⌔∮‏في ↫ ❨ "..#list.." ❩ مجموعه \n ✓", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Send:FwdGp" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end
 if text == "اذاعه خاص بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه خاص بالتوجيه ⧉" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 if DevSakura:get(SAKURA.."Sakura:Send:Bot"..SAKURA) and not Sudo(msg) then 
-send(msg.chat_id_, msg.id_,"⧉︙الاذاعه معطله من قبل المطور الاساسي")
+send(msg.chat_id_, msg.id_,"⌔∮الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
 DevSakura:setex(SAKURA.."Sakura:Send:FwdPv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙ارسل الرساله الان لتوجيها \n⧉︙للخروج ارسل ↫ ( الغاء ) \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮ارسل الرساله الان لتوجيها \n⌔∮للخروج ارسل ↫ ( الغاء ) \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false
 end 
 if DevSakura:get(SAKURA.."Sakura:Send:FwdPv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم الغاء امر الاذاعه بنجاح", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Send:FwdPv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false  
 end 
@@ -8427,23 +8427,23 @@ local list = DevSakura:smembers(SAKURA..'Sakura:Users')
 for k,v in pairs(list) do  
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = msg.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end   
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم اذاعة رسالتك بالتوجيه \n⧉︙‏الى ↫ ❨ "..#list.." ❩ مشترك \n ✓", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم اذاعة رسالتك بالتوجيه \n⌔∮‏الى ↫ ❨ "..#list.." ❩ مشترك \n ✓", 1, 'md')
 DevSakura:del(SAKURA.."Sakura:Send:FwdPv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end
 text = msg.content_.text_
 if msg.content_.text_ == 'حذف رد' and Manager(msg) and ChCheck(msg) or msg.content_.text_ == 'مسح رد' and  Manager(msg) and ChCheck(msg) then
 DevSakura:set(SAKURA..'Sakura:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_,'DelGpRed')
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮حسنا ارسل الكلمه لحذفها " ,  1, "md")
 return false
 end
 if msg.content_.text_ == 'اضف رد' and Manager(msg) and ChCheck(msg) then
 DevSakura:set(SAKURA..'Sakura:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_,'SetGpRed')
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙حسنا ارسل الكلمه الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮حسنا ارسل الكلمه الان " ,  1, "md")
 return false    end
 if msg.content_.text_ then
 local SetGpRed = DevSakura:get(SAKURA..'Sakura:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'')
 if SetGpRed == 'SetGpRed' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⧉︙يمكنك اضافة الى النص ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌔∮يمكنك اضافة الى النص ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
 DevSakura:set(SAKURA..'Sakura:Add:GpRed'..msg.sender_user_id_..''..msg.chat_id_..'','SaveGpRed')
 DevSakura:set(SAKURA..'Sakura:Add:GpText'..msg.sender_user_id_..''..msg.chat_id_..'',msg.content_.text_)
 DevSakura:sadd(SAKURA..'Sakura:Manager:GpRed'..msg.chat_id_..'',msg.content_.text_)
@@ -8454,17 +8454,17 @@ end
 text = msg.content_.text_
 if msg.content_.text_ == 'حذف رد عام' and Sudo(msg) or msg.content_.text_ == '↫ حذف رد عام ⧉' and Sudo(msg) or msg.content_.text_ == 'مسح رد عام' and Sudo(msg) then
 DevSakura:set(SAKURA.."Sakura:Add:AllRed"..msg.sender_user_id_,'DelAllRed')
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮حسنا ارسل الكلمه لحذفها " ,  1, "md")
 return false
 end
 if msg.content_.text_ == 'اضف رد عام' and Sudo(msg) or msg.content_.text_ == '↫ اضف رد عام ⧉' and Sudo(msg) then
 DevSakura:set(SAKURA.."Sakura:Add:AllRed"..msg.sender_user_id_,'SetAllRed')
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙حسنا ارسل الكلمه الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮حسنا ارسل الكلمه الان " ,  1, "md")
 return false    end
 if msg.content_.text_ then
 local SetAllRed = DevSakura:get(SAKURA.."Sakura:Add:AllRed"..msg.sender_user_id_)
 if SetAllRed == 'SetAllRed' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⧉︙يمكنك اضافة الى النص ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌔∮يمكنك اضافة الى النص ↫ ⤈\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n `#username` ↬ معرف المستخدم\n `#msgs` ↬ عدد الرسائل\n `#name` ↬ اسم المستخدم\n `#id` ↬ ايدي المستخدم\n `#stast` ↬ رتبة المستخدم\n `#edit` ↬ عدد السحكات\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
 DevSakura:set(SAKURA.."Sakura:Add:AllRed"..msg.sender_user_id_,'SaveAllRed')
 DevSakura:set(SAKURA.."Sakura:Add:AllText"..msg.sender_user_id_, msg.content_.text_)
 DevSakura:sadd(SAKURA.."Sakura:Sudo:AllRed",msg.content_.text_)
@@ -8473,7 +8473,7 @@ return false
 end end
 if msg.content_.text_ == 'الردود' and Manager(msg) and ChCheck(msg) or msg.content_.text_ == 'ردود المدير' and Manager(msg) and ChCheck(msg) then
 local redod = DevSakura:smembers(SAKURA..'Sakura:Manager:GpRed'..msg.chat_id_..'')
-MsgRep = '⧉︙ردود المدير ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n'
+MsgRep = '⌔∮ردود المدير ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n'
 for k,v in pairs(redod) do
 if DevSakura:get(SAKURA.."Sakura:Gif:GpRed"..v..msg.chat_id_) then
 dp = 'متحركه 🎭'
@@ -8495,14 +8495,14 @@ end
 MsgRep = MsgRep..''..k..'~ (`'..v..'`) ↫ {*'..dp..'*}\n' 
 end
 if #redod == 0 then
-MsgRep = '⧉︙لا توجد ردود مضافه'
+MsgRep = '⌔∮لا توجد ردود مضافه'
 end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
 if msg.content_.text_ == 'حذف الردود' and BasicConstructor(msg) and ChCheck(msg) or msg.content_.text_ == 'مسح الردود' and BasicConstructor(msg) and ChCheck(msg) or msg.content_.text_ == 'حذف ردود المدير' and BasicConstructor(msg) and ChCheck(msg) or msg.content_.text_ == 'مسح ردود المدير' and BasicConstructor(msg) and ChCheck(msg) then
 local redod = DevSakura:smembers(SAKURA..'Sakura:Manager:GpRed'..msg.chat_id_..'')
 if #redod == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لا توجد ردود مضافه" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لا توجد ردود مضافه" ,  1, "md")
 else
 for k,v in pairs(redod) do
 DevSakura:del(SAKURA..'Sakura:Gif:GpRed'..v..msg.chat_id_)
@@ -8515,14 +8515,14 @@ DevSakura:del(SAKURA..'Sakura:File:GpRed'..v..msg.chat_id_)
 DevSakura:del(SAKURA..'Sakura:Text:GpRed'..v..msg.chat_id_)
 DevSakura:del(SAKURA..'Sakura:Manager:GpRed'..msg.chat_id_)
 end
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف ردود المدير\n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف ردود المدير\n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false
 end
 end
 if  msg.content_.text_ == "ردود المطور" and Sudo(msg) or msg.content_.text_ == "الردود العام" and Sudo(msg) or msg.content_.text_ == "ردود العام" and Sudo(msg) or msg.content_.text_ == "↫ الردود العام ⧉" and Sudo(msg) then
 local redod = DevSakura:smembers(SAKURA.."Sakura:Sudo:AllRed")
-MsgRep = '⧉︙ردود المطور ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n'
+MsgRep = '⌔∮ردود المطور ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n'
 for k,v in pairs(redod) do
 if DevSakura:get(SAKURA.."Sakura:Gif:AllRed"..v) then
 dp = 'متحركه 🎭'
@@ -8544,14 +8544,14 @@ end
 MsgRep = MsgRep..''..k..'~ (`'..v..'`) ↫ {*'..dp..'*}\n' 
 end
 if #redod == 0 then
-MsgRep = '⧉︙لا توجد ردود مضافه'
+MsgRep = '⌔∮لا توجد ردود مضافه'
 end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
 if msg.content_.text_ == "حذف ردود المطور" and Sudo(msg) or msg.content_.text_ == "حذف ردود العام" and Sudo(msg) or msg.content_.text_ == "مسح ردود المطور" and Sudo(msg) then
 local redod = DevSakura:smembers(SAKURA.."Sakura:Sudo:AllRed")
 if #redod == 0 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙لا توجد ردود مضافه" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮لا توجد ردود مضافه" ,  1, "md")
 else
 for k,v in pairs(redod) do
 DevSakura:del(SAKURA.."Sakura:Add:AllRed"..v)
@@ -8565,7 +8565,7 @@ DevSakura:del(SAKURA.."Sakura:File:AllRed"..v)
 DevSakura:del(SAKURA.."Sakura:Text:AllRed"..v)
 DevSakura:del(SAKURA.."Sakura:Sudo:AllRed")
 end
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف ردود المطور \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف ردود المطور \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 return false
 end
@@ -8573,9 +8573,9 @@ end
 if Admin(msg) then
 if text and text == "تغيير اسم البوت" or text and text == "وضع اسم البوت" or text and text == "تغير اسم البوت" then
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙ارسل اسم البوت الان \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮ارسل اسم البوت الان \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:NameBot'..msg.sender_user_id_..'', 'msg')
 return false 
@@ -8583,10 +8583,10 @@ end
 end
 if text and text == 'حذف اسم البوت' or text == 'مسح اسم البوت' then
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
 DevSakura:del(SAKURA..'Sakura:NameBot')
-local SAKURATEAM = '⧉︙اهلا عزيزي ↫ '..AbsRank(msg)..' \n⧉︙تم حذف اسم البوت \n ✓'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف اسم البوت \n ✓'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 end end 
 if text and text:match("^استعاده الاوامر$") and Sudo(msg) or text and text:match("^استعادة كلايش الاوامر$") and Sudo(msg) then
@@ -8594,16 +8594,16 @@ HelpList ={'Sakura:Help','Sakura:Help1','Sakura:Help2','Sakura:Help3','Sakura:He
 for i,Help in pairs(HelpList) do
 DevSakura:del(SAKURA..Help) 
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم استعادة الكلايش الاصليه" ,  1, "md") 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم استعادة الكلايش الاصليه" ,  1, "md") 
 end
 if text and text:match("^تعيين الاوامر$") and Sudo(msg) or text and text:match("^تعيين امر الاوامر$") and Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل كليشة (الاوامر) الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل كليشة (الاوامر) الان " ,  1, "md")
 DevSakura:set(SAKURA..'Sakura:Help0'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
 local SAKURATEAM =  DevSakura:get(SAKURA..'Sakura:Help0'..msg.sender_user_id_)
 if SAKURATEAM == 'msg' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ الكليشه الجديده " ,  1, "md")
 DevSakura:del(SAKURA..'Sakura:Help0'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:Help', text)
 Dev_Abs(msg.chat_id_, msg.id_, 1, text , 1, 'md')
@@ -8612,27 +8612,27 @@ end
 if text and text:match("^الاوامر$") or text and text:match("^اوامر$") or text and text:match("^مساعده$") then
 local Help = DevSakura:get(SAKURA..'Sakura:Help')
 local text =  [[
-⧉︙اهلا بك في قائمة الاوامر ↫ ⤈ 
+⌔∮اهلا بك في قائمة الاوامر ↫ ⤈ 
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙م1 ↫ اوامر الحمايه
-⧉︙م2 ↫ اوامر الادمنيه
-⧉︙م3 ↫ اوامر المدراء
-⧉︙م4 ↫ اوامر المنشئين
-⧉︙م5 ↫ اوامر المطورين
-⧉︙م6 ↫ اوامر الاعضاء
+⌔∮م1 ↫ اوامر الحمايه
+⌔∮م2 ↫ اوامر الادمنيه
+⌔∮م3 ↫ اوامر المدراء
+⌔∮م4 ↫ اوامر المنشئين
+⌔∮م5 ↫ اوامر المطورين
+⌔∮م6 ↫ اوامر الاعضاء
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙[Source Channel](https://t.me/SAKURAV15)
+⌔∮[Source Channel](https://t.me/SAKURAV15)
 ]] 
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
 end
 if text and text:match("^تعيين امر م1$") and Sudo(msg) or text and text:match("^تعيين امر م١$") and Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل كليشة (م1) الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل كليشة (م1) الان " ,  1, "md")
 DevSakura:set(SAKURA..'Sakura:Help01'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
 local SAKURATEAM =  DevSakura:get(SAKURA..'Sakura:Help01'..msg.sender_user_id_)
 if SAKURATEAM == 'msg' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ الكليشه الجديده " ,  1, "md")
 DevSakura:del(SAKURA..'Sakura:Help01'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:Help1', text)
 Dev_Abs(msg.chat_id_, msg.id_, 1, text , 1, 'md')
@@ -8641,63 +8641,63 @@ end
 if text and text:match("^م1$") or text and text:match("^م١$") or text and text:match("^اوامر1$") or text and text:match("^اوامر١$") then
 local Help = DevSakura:get(SAKURA..'Sakura:Help1')
 local text =  [[
-⧉︙اوامر حماية المجموعه ↫ ⤈
+⌔∮اوامر حماية المجموعه ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙قفل • فتح ↫ الروابط
-⧉︙قفل • فتح ↫ المعرفات
-⧉︙قفل • فتح ↫ البوتات
-⧉︙قفل • فتح ↫ المتحركه
-⧉︙قفل • فتح ↫ الملصقات
-⧉︙قفل • فتح ↫ الملفات
-⧉︙قفل • فتح ↫ الصور
-⧉︙قفل • فتح ↫ الفيديو
-⧉︙قفل • فتح ↫ الاونلاين
-⧉︙قفل • فتح ↫ الدردشه
-⧉︙قفل • فتح ↫ التوجيه
-⧉︙قفل • فتح ↫ الاغاني
-⧉︙قفل • فتح ↫ الصوت
-⧉︙قفل • فتح ↫ الجهات
-⧉︙قفل • فتح ↫ الماركداون
-⧉︙قفل • فتح ↫ التكرار
-⧉︙قفل • فتح ↫ الهاشتاك
-⧉︙قفل • فتح ↫ التعديل
-⧉︙قفل • فتح ↫ التثبيت
-⧉︙قفل • فتح ↫ الاشعارات
-⧉︙قفل • فتح ↫ الكلايش
-⧉︙قفل • فتح ↫ الدخول
-⧉︙قفل • فتح ↫ الشبكات
-⧉︙قفل • فتح ↫ المواقع
-⧉︙قفل • فتح ↫ الفشار
-⧉︙قفل • فتح ↫ الكفر
-⧉︙قفل • فتح ↫ الطائفيه
-⧉︙قفل • فتح ↫ الكل
-⧉︙قفل • فتح ↫ العربيه
-⧉︙قفل • فتح ↫ الانكليزيه
-⧉︙قفل • فتح ↫ الفارسيه
-⧉︙قفل • فتح ↫ التفليش
+⌔∮قفل • فتح ↫ الروابط
+⌔∮قفل • فتح ↫ المعرفات
+⌔∮قفل • فتح ↫ البوتات
+⌔∮قفل • فتح ↫ المتحركه
+⌔∮قفل • فتح ↫ الملصقات
+⌔∮قفل • فتح ↫ الملفات
+⌔∮قفل • فتح ↫ الصور
+⌔∮قفل • فتح ↫ الفيديو
+⌔∮قفل • فتح ↫ الاونلاين
+⌔∮قفل • فتح ↫ الدردشه
+⌔∮قفل • فتح ↫ التوجيه
+⌔∮قفل • فتح ↫ الاغاني
+⌔∮قفل • فتح ↫ الصوت
+⌔∮قفل • فتح ↫ الجهات
+⌔∮قفل • فتح ↫ الماركداون
+⌔∮قفل • فتح ↫ التكرار
+⌔∮قفل • فتح ↫ الهاشتاك
+⌔∮قفل • فتح ↫ التعديل
+⌔∮قفل • فتح ↫ التثبيت
+⌔∮قفل • فتح ↫ الاشعارات
+⌔∮قفل • فتح ↫ الكلايش
+⌔∮قفل • فتح ↫ الدخول
+⌔∮قفل • فتح ↫ الشبكات
+⌔∮قفل • فتح ↫ المواقع
+⌔∮قفل • فتح ↫ الفشار
+⌔∮قفل • فتح ↫ الكفر
+⌔∮قفل • فتح ↫ الطائفيه
+⌔∮قفل • فتح ↫ الكل
+⌔∮قفل • فتح ↫ العربيه
+⌔∮قفل • فتح ↫ الانكليزيه
+⌔∮قفل • فتح ↫ الفارسيه
+⌔∮قفل • فتح ↫ التفليش
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙اوامر حمايه اخرى ↫ ⤈
+⌔∮اوامر حمايه اخرى ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙قفل • فتح + الامر ↫ ⤈
-⧉︙التكرار بالطرد
-⧉︙التكرار بالكتم
-⧉︙التكرار بالتقييد
-⧉︙الفارسيه بالطرد
-⧉︙البوتات بالطرد
-⧉︙البوتات بالتقييد
+⌔∮قفل • فتح + الامر ↫ ⤈
+⌔∮التكرار بالطرد
+⌔∮التكرار بالكتم
+⌔∮التكرار بالتقييد
+⌔∮الفارسيه بالطرد
+⌔∮البوتات بالطرد
+⌔∮البوتات بالتقييد
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙[Source Channel](https://t.me/SAKURAV15)
+⌔∮[Source Channel](https://t.me/SAKURAV15)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
 end
 if text and text:match("^تعيين امر م2$") and Sudo(msg) or text and text:match("^تعيين امر م٢$") and Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل كليشة (م2) الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل كليشة (م2) الان " ,  1, "md")
 DevSakura:set(SAKURA..'Sakura:Help21'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
 local SAKURATEAM =  DevSakura:get(SAKURA..'Sakura:Help21'..msg.sender_user_id_)
 if SAKURATEAM == 'msg' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ الكليشه الجديده " ,  1, "md")
 DevSakura:del(SAKURA..'Sakura:Help21'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:Help2', text)
 Dev_Abs(msg.chat_id_, msg.id_, 1, text , 1, 'md')
@@ -8706,70 +8706,70 @@ end
 if text and text:match("^م2$") or text and text:match("^م٢$") or text and text:match("^اوامر2$") or text and text:match("^اوامر٢$") then
 local Help = DevSakura:get(SAKURA..'Sakura:Help2')
 local text =  [[
-⧉︙اوامر الادمنيه ↫ ⤈
+⌔∮اوامر الادمنيه ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙الاعدادت
-⧉︙تاك للكل 
-⧉︙انشاء رابط
-⧉︙ضع وصف
-⧉︙ضع رابط
-⧉︙ضع صوره
-⧉︙حذف الرابط
-⧉︙حذف المطايه
-⧉︙كشف البوتات
-⧉︙طرد البوتات
-⧉︙تنظيف + العدد
-⧉︙تنظيف التعديل
-⧉︙كللهم + الكلمه
-⧉︙اسم البوت + الامر
-⧉︙ضع • حذف ↫ ترحيب
-⧉︙ضع • حذف ↫ قوانين
-⧉︙اضف • حذف ↫ صلاحيه
-⧉︙الصلاحيات • حذف الصلاحيات
+⌔∮الاعدادت
+⌔∮تاك للكل 
+⌔∮انشاء رابط
+⌔∮ضع وصف
+⌔∮ضع رابط
+⌔∮ضع صوره
+⌔∮حذف الرابط
+⌔∮حذف المطايه
+⌔∮كشف البوتات
+⌔∮طرد البوتات
+⌔∮تنظيف + العدد
+⌔∮تنظيف التعديل
+⌔∮كللهم + الكلمه
+⌔∮اسم البوت + الامر
+⌔∮ضع • حذف ↫ ترحيب
+⌔∮ضع • حذف ↫ قوانين
+⌔∮اضف • حذف ↫ صلاحيه
+⌔∮الصلاحيات • حذف الصلاحيات
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙ضع سبام + العدد
-⧉︙ضع تكرار + العدد
+⌔∮ضع سبام + العدد
+⌔∮ضع تكرار + العدد
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙رفع مميز • تنزيل مميز
-⧉︙المميزين • حذف المميزين
-⧉︙كشف القيود • رفع القيود
+⌔∮رفع مميز • تنزيل مميز
+⌔∮المميزين • حذف المميزين
+⌔∮كشف القيود • رفع القيود
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙حذف • مسح + بالرد
-⧉︙منع • الغاء منع
-⧉︙قائمه المنع
-⧉︙حذف قائمه المنع
+⌔∮حذف • مسح + بالرد
+⌔∮منع • الغاء منع
+⌔∮قائمه المنع
+⌔∮حذف قائمه المنع
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تفعيل • تعطيل ↫ الرابط
-⧉︙تفعيل • تعطيل ↫ الالعاب
-⧉︙تفعيل • تعطيل ↫ الترحيب
-⧉︙تفعيل • تعطيل ↫ كشف الاعدادات
+⌔∮تفعيل • تعطيل ↫ الرابط
+⌔∮تفعيل • تعطيل ↫ الالعاب
+⌔∮تفعيل • تعطيل ↫ الترحيب
+⌔∮تفعيل • تعطيل ↫ كشف الاعدادات
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙طرد المحذوفين
-⧉︙طرد ↫ بالرد • بالمعرف • بالايدي
-⧉︙كتم • الغاء كتم
-⧉︙تقيد • الغاء تقيد
-⧉︙حظر • الغاء حظر
-⧉︙المكتومين • حذف المكتومين
-⧉︙المقيدين • حذف المقيدين
-⧉︙المحظورين • حذف المحظورين
+⌔∮طرد المحذوفين
+⌔∮طرد ↫ بالرد • بالمعرف • بالايدي
+⌔∮كتم • الغاء كتم
+⌔∮تقيد • الغاء تقيد
+⌔∮حظر • الغاء حظر
+⌔∮المكتومين • حذف المكتومين
+⌔∮المقيدين • حذف المقيدين
+⌔∮المحظورين • حذف المحظورين
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تقييد دقيقه + عدد الدقائق
-⧉︙تقييد ساعه + عدد الساعات
-⧉︙تقييد يوم + عدد الايام
-⧉︙الغاء تقييد ↫ لالغاء التقييد بالوقت
+⌔∮تقييد دقيقه + عدد الدقائق
+⌔∮تقييد ساعه + عدد الساعات
+⌔∮تقييد يوم + عدد الايام
+⌔∮الغاء تقييد ↫ لالغاء التقييد بالوقت
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙[Source Channel](https://t.me/SAKURAV15)
+⌔∮[Source Channel](https://t.me/SAKURAV15)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
 end
 if text and text:match("^تعيين امر م3$") and Sudo(msg) or text and text:match("^تعيين امر م٣$") and Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل كليشة (م3) الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل كليشة (م3) الان " ,  1, "md")
 DevSakura:set(SAKURA..'Sakura:Help31'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
 local SAKURATEAM =  DevSakura:get(SAKURA..'Sakura:Help31'..msg.sender_user_id_)
 if SAKURATEAM == 'msg' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ الكليشه الجديده " ,  1, "md")
 DevSakura:del(SAKURA..'Sakura:Help31'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:Help3', text)
 Dev_Abs(msg.chat_id_, msg.id_, 1, text , 1, 'md')
@@ -8778,55 +8778,55 @@ end
 if text and text:match("^م3$") or text and text:match("^م٣$") or text and text:match("^اوامر3$") or text and text:match("^اوامر٣$") then
 local Help = DevSakura:get(SAKURA..'Sakura:Help3')
 local text =  [[
-⧉︙اوامر المدراء ↫ ⤈
+⌔∮اوامر المدراء ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙فحص البوت
-⧉︙ضع اسم + الاسم
-⧉︙اضف • حذف ↫ رد
-⧉︙ردود المدير
-⧉︙حذف قوائم المنع
-⧉︙منع ↫ بالرد على ( ملصق • صوره • متحركه )
-⧉︙حذف قائمه منع + ↫ ⤈
+⌔∮فحص البوت
+⌔∮ضع اسم + الاسم
+⌔∮اضف • حذف ↫ رد
+⌔∮ردود المدير
+⌔∮حذف قوائم المنع
+⌔∮منع ↫ بالرد على ( ملصق • صوره • متحركه )
+⌔∮حذف قائمه منع + ↫ ⤈
 ( الصور • المتحركات • الملصقات )
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تنزيل الكل
-⧉︙رفع ادمن • تنزيل ادمن
-⧉︙الادمنيه • حذف الادمنيه
+⌔∮تنزيل الكل
+⌔∮رفع ادمن • تنزيل ادمن
+⌔∮الادمنيه • حذف الادمنيه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تثبيت
-⧉︙الغاء التثبيت
-⧉︙اعاده التثبيت
-⧉︙الغاء تثبيت الكل
+⌔∮تثبيت
+⌔∮الغاء التثبيت
+⌔∮اعاده التثبيت
+⌔∮الغاء تثبيت الكل
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تغير رد + اسم الرتبه + النص ↫ ⤈
-⧉︙المطور • منشئ الاساسي
-⧉︙المنشئ • المدير • الادمن
-⧉︙المميز • المنظف • العضو
-⧉︙حذف ردود الرتب
+⌔∮تغير رد + اسم الرتبه + النص ↫ ⤈
+⌔∮المطور • منشئ الاساسي
+⌔∮المنشئ • المدير • الادمن
+⌔∮المميز • المنظف • العضو
+⌔∮حذف ردود الرتب
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تغيير الايدي ↫ لتغيير الكليشه
-⧉︙تعيين الايدي ↫ لتعيين الكليشه
-⧉︙حذف الايدي ↫ لحذف الكليشه
+⌔∮تغيير الايدي ↫ لتغيير الكليشه
+⌔∮تعيين الايدي ↫ لتعيين الكليشه
+⌔∮حذف الايدي ↫ لحذف الكليشه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تفعيل • تعطيل + الامر ↫ ⤈
-⧉︙اطردني • الايدي بالصوره
-⧉︙الابراج • معاني الاسماء
-⧉︙الايدي • اوامر النسب
-⧉︙ردود المدير • ردود المطور
-⧉︙ضافني • حساب العمر • الزخرفه
+⌔∮تفعيل • تعطيل + الامر ↫ ⤈
+⌔∮اطردني • الايدي بالصوره
+⌔∮الابراج • معاني الاسماء
+⌔∮الايدي • اوامر النسب
+⌔∮ردود المدير • ردود المطور
+⌔∮ضافني • حساب العمر • الزخرفه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙[Source Channel](https://t.me/SAKURAV15)
+⌔∮[Source Channel](https://t.me/SAKURAV15)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
 end
 if text and text:match("^تعيين امر م4$") and Sudo(msg) or text and text:match("^تعيين امر م٤$") and Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل كليشة (م4) الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل كليشة (م4) الان " ,  1, "md")
 DevSakura:set(SAKURA..'Sakura:Help41'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
 local SAKURATEAM =  DevSakura:get(SAKURA..'Sakura:Help41'..msg.sender_user_id_)
 if SAKURATEAM == 'msg' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ الكليشه الجديده" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ الكليشه الجديده" ,  1, "md")
 DevSakura:del(SAKURA..'Sakura:Help41'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:Help4', text)
 Dev_Abs(msg.chat_id_, msg.id_, 1, text , 1, 'md')
@@ -8835,53 +8835,53 @@ end
 if text and text:match("^م٤$") or text and text:match("^م4$") or text and text:match("^اوامر4$") or text and text:match("^اوامر٤$") then
 local Help = DevSakura:get(SAKURA..'Sakura:Help4')
 local text =  [[
-⧉︙اوامر المنشئين ↫ ⤈
+⌔∮اوامر المنشئين ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تنزيل الكل
-⧉︙الميديا • امسح
-⧉︙اضف • حذف ↫ امر
-⧉︙حذف الاوامر المضافه
-⧉︙الاوامر المضافه
-⧉︙اضف نقاط ↫ بالرد • بالايدي
-⧉︙اضف رسائل ↫ بالرد • بالايدي
-⧉︙رفع منظف • تنزيل منظف
-⧉︙المنظفين • حذف المنظفين
-⧉︙رفع مدير • تنزيل مدير
-⧉︙المدراء • حذف المدراء
-⧉︙تفعيل • تعطيل + الامر ↫ ⤈
-⧉︙نزلني • امسح
-⧉︙الحظر • الكتم
+⌔∮تنزيل الكل
+⌔∮الميديا • امسح
+⌔∮اضف • حذف ↫ امر
+⌔∮حذف الاوامر المضافه
+⌔∮الاوامر المضافه
+⌔∮اضف نقاط ↫ بالرد • بالايدي
+⌔∮اضف رسائل ↫ بالرد • بالايدي
+⌔∮رفع منظف • تنزيل منظف
+⌔∮المنظفين • حذف المنظفين
+⌔∮رفع مدير • تنزيل مدير
+⌔∮المدراء • حذف المدراء
+⌔∮تفعيل • تعطيل + الامر ↫ ⤈
+⌔∮نزلني • امسح
+⌔∮الحظر • الكتم
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙اوامر المنشئين الاساسيين ↫ ⤈
+⌔∮اوامر المنشئين الاساسيين ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙وضع لقب + اللقب
-⧉︙حذف ردود المدير
-⧉︙تفعيل • تعطيل ↫ الرفع
-⧉︙رفع منشئ • تنزيل منشئ
-⧉︙المنشئين • حذف المنشئين
-⧉︙رفع • تنزيل ↫ مشرف
-⧉︙رفع بكل الصلاحيات
-⧉︙حذف القوائم
+⌔∮وضع لقب + اللقب
+⌔∮حذف ردود المدير
+⌔∮تفعيل • تعطيل ↫ الرفع
+⌔∮رفع منشئ • تنزيل منشئ
+⌔∮المنشئين • حذف المنشئين
+⌔∮رفع • تنزيل ↫ مشرف
+⌔∮رفع بكل الصلاحيات
+⌔∮حذف القوائم
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙اوامر منشئ المجموعه ↫ ⤈
+⌔∮اوامر منشئ المجموعه ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙رفع • تنزيل ↫ منشئ اساسي
-⧉︙حذف المنشئين الاساسيين 
-⧉︙المنشئين الاساسيين 
-⧉︙حذف جميع الرتب
+⌔∮رفع • تنزيل ↫ منشئ اساسي
+⌔∮حذف المنشئين الاساسيين 
+⌔∮المنشئين الاساسيين 
+⌔∮حذف جميع الرتب
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙[Source Channel](https://t.me/SAKURAV15)
+⌔∮[Source Channel](https://t.me/SAKURAV15)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
 end
 if text and text:match("^تعيين امر م5$") and Sudo(msg) or text and text:match("^تعيين امر م٥$") and Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل كليشة (م5) الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل كليشة (م5) الان " ,  1, "md")
 DevSakura:set(SAKURA..'Sakura:Help51'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
 local SAKURATEAM =  DevSakura:get(SAKURA..'Sakura:Help51'..msg.sender_user_id_)
 if SAKURATEAM == 'msg' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ الكليشه الجديده " ,  1, "md")
 DevSakura:del(SAKURA..'Sakura:Help51'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:Help5', text)
 Dev_Abs(msg.chat_id_, msg.id_, 1, text , 1, 'md')
@@ -8889,68 +8889,68 @@ return false end
 end
 if text and text:match("^م٥$") or text and text:match("^م5$") or text and text:match("^اوامر5$") or text and text:match("^اوامر٥$") then
 if not SudoBot(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙هذا الامر للمطورين فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮هذا الامر للمطورين فقط ', 1, 'md')
 else
 local Help = DevSakura:get(SAKURA..'Sakura:Help5')
 local text =  [[
-⧉︙اوامر المطورين ↫ ⤈
+⌔∮اوامر المطورين ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙الكروبات
-⧉︙المطورين
-⧉︙المشتركين
-⧉︙الاحصائيات
-⧉︙المجموعات
-⧉︙اسم البوت + غادر
-⧉︙اسم البوت + تعطيل
-⧉︙كشف + -ايدي المجموعه
+⌔∮الكروبات
+⌔∮المطورين
+⌔∮المشتركين
+⌔∮الاحصائيات
+⌔∮المجموعات
+⌔∮اسم البوت + غادر
+⌔∮اسم البوت + تعطيل
+⌔∮كشف + -ايدي المجموعه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙اوامر المطور الاساسي ↫ ⤈
+⌔∮اوامر المطور الاساسي ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تحديث
-⧉︙السيرفر
-⧉︙روابط الكروبات
-⧉︙تحديث السورس
-⧉︙تنظيف الكروبات
-⧉︙تنظيف المشتركين
-⧉︙تعيين الايدي العام
-⧉︙حذف معلومات الترحيب
-⧉︙تغير معلومات الترحيب
-⧉︙غادر + -ايدي المجموعه
-⧉︙تعيين عدد الاعضاء + العدد
-⧉︙حظر عام • الغاء العام
-⧉︙كتم عام • الغاء العام
-⧉︙قائمه العام • حذف قائمه العام
-⧉︙وضع • حذف ↫ اسم البوت
-⧉︙اضف • حذف ↫ رد عام
-⧉︙ردود المطور • حذف ردود المطور
-⧉︙تعيين • حذف • جلب ↫ رد الخاص
-⧉︙جلب نسخه الكروبات
-⧉︙رفع النسخه + بالرد على الملف
-⧉︙تعيين • حذف ↫ قناة الاشتراك
-⧉︙جلب كليشه الاشتراك
-⧉︙تغيير • حذف ↫ كليشه الاشتراك
-⧉︙رفع • تنزيل ↫ مطور
-⧉︙المطورين • حذف المطورين
-⧉︙تعيين • حذف ↫ كليشة الايدي
-⧉︙اذاعه للكل بالتوجيه ↫ بالرد
+⌔∮تحديث
+⌔∮السيرفر
+⌔∮روابط الكروبات
+⌔∮تحديث السورس
+⌔∮تنظيف الكروبات
+⌔∮تنظيف المشتركين
+⌔∮تعيين الايدي العام
+⌔∮حذف معلومات الترحيب
+⌔∮تغير معلومات الترحيب
+⌔∮غادر + -ايدي المجموعه
+⌔∮تعيين عدد الاعضاء + العدد
+⌔∮حظر عام • الغاء العام
+⌔∮كتم عام • الغاء العام
+⌔∮قائمه العام • حذف قائمه العام
+⌔∮وضع • حذف ↫ اسم البوت
+⌔∮اضف • حذف ↫ رد عام
+⌔∮ردود المطور • حذف ردود المطور
+⌔∮تعيين • حذف • جلب ↫ رد الخاص
+⌔∮جلب نسخه الكروبات
+⌔∮رفع النسخه + بالرد على الملف
+⌔∮تعيين • حذف ↫ قناة الاشتراك
+⌔∮جلب كليشه الاشتراك
+⌔∮تغيير • حذف ↫ كليشه الاشتراك
+⌔∮رفع • تنزيل ↫ مطور
+⌔∮المطورين • حذف المطورين
+⌔∮تعيين • حذف ↫ كليشة الايدي
+⌔∮اذاعه للكل بالتوجيه ↫ بالرد
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙تفعيل • تعطيل + الامر ↫ ⤈
-⧉︙الاذاعه • الاشتراك الاجباري
-⧉︙ترحيب البوت • المغادره
-⧉︙البوت الخدمي • التواصل
+⌔∮تفعيل • تعطيل + الامر ↫ ⤈
+⌔∮الاذاعه • الاشتراك الاجباري
+⌔∮ترحيب البوت • المغادره
+⌔∮البوت الخدمي • التواصل
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙[Source Channel](https://t.me/SAKURAV15)
+⌔∮[Source Channel](https://t.me/SAKURAV15)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
 end end
 if text and text:match("^تعيين امر م6$") and Sudo(msg) or text and text:match("^تعيين امر م٦$") and Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل كليشة (م6) الان " ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل كليشة (م6) الان " ,  1, "md")
 DevSakura:set(SAKURA..'Sakura:Help61'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
 local SAKURATEAM =  DevSakura:get(SAKURA..'Sakura:Help61'..msg.sender_user_id_)
 if SAKURATEAM == 'msg' then
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ الكليشه الجديده" ,  1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ الكليشه الجديده" ,  1, "md")
 DevSakura:del(SAKURA..'Sakura:Help61'..msg.sender_user_id_)
 DevSakura:set(SAKURA..'Sakura:Help6', text)
 Dev_Abs(msg.chat_id_, msg.id_, 1, text , 1, 'md')
@@ -8960,36 +8960,36 @@ end
 if text and text:match("^م٦$") or text and text:match("^م6$") or text and text:match("^اوامر6$") or text and text:match("^اوامر٦$") then
 local Help = DevSakura:get(SAKURA..'Sakura:Help6')
 local text =  [[
-⧉︙اوامر الاعضاء ↫ ⤈
+⌔∮اوامر الاعضاء ↫ ⤈
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙السورس • موقعي • رتبتي • معلوماتي
-⧉︙رسائلي • حذف رسائلي • اسمي • معرفي 
-⧉︙ايدي •ايديي • جهاتي • المطايه • الالعاب 
-⧉︙نقاطي • بيع نقاطي • القوانين • زخرفه 
-⧉︙رابط الحذف • نزلني • اطردني • المطور 
-⧉︙منو ضافني • مشاهدات المنشور • الرابط 
-⧉︙ايدي المجموعه • معلومات المجموعه 
-⧉︙نسبه الحب • نسبه الكره • نسبه الغباء 
-⧉︙نسبه الرجوله • نسبه الانوثه 
+⌔∮السورس • موقعي • رتبتي • معلوماتي
+⌔∮رسائلي • حذف رسائلي • اسمي • معرفي 
+⌔∮ايدي •ايديي • جهاتي • المطايه • الالعاب 
+⌔∮نقاطي • بيع نقاطي • القوانين • زخرفه 
+⌔∮رابط الحذف • نزلني • اطردني • المطور 
+⌔∮منو ضافني • مشاهدات المنشور • الرابط 
+⌔∮ايدي المجموعه • معلومات المجموعه 
+⌔∮نسبه الحب • نسبه الكره • نسبه الغباء 
+⌔∮نسبه الرجوله • نسبه الانوثه 
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙كول + الكلمه
-⧉︙زخرفه + اسمك
-⧉︙برج + نوع البرج
-⧉︙معنى اسم + الاسم
-⧉︙احسب + تاريخ ميلادك
-⧉︙رفع مطي • تنزيل مطي
-⧉︙بوسه • بوسها ↫ بالرد
-⧉︙هينه • هينها ↫ بالرد • بالمعرف
-⧉︙صيحه • صيحها ↫ بالرد • بالمعرف
-⧉︙ايدي • كشف  ↫ بالرد • بالمعرف • بالايدي
+⌔∮كول + الكلمه
+⌔∮زخرفه + اسمك
+⌔∮برج + نوع البرج
+⌔∮معنى اسم + الاسم
+⌔∮احسب + تاريخ ميلادك
+⌔∮رفع مطي • تنزيل مطي
+⌔∮بوسه • بوسها ↫ بالرد
+⌔∮هينه • هينها ↫ بالرد • بالمعرف
+⌔∮صيحه • صيحها ↫ بالرد • بالمعرف
+⌔∮ايدي • كشف  ↫ بالرد • بالمعرف • بالايدي
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-⧉︙[Source Channel](https://t.me/SAKURAV15)
+⌔∮[Source Channel](https://t.me/SAKURAV15)
 ]]
 Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or text), 1, 'md')
 end
 if Sudo(msg) then
 if text == "تحديث السورس" or text == "تحديث سورس" then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙جاري تحديث سورس ساكورا', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮جاري تحديث سورس ساكورا', 1, 'md') 
 os.execute('rm -rf SAKURA.lua') 
 os.execute('wget https://raw.githubusercontent.com/SakuraTofy/SAKURA/master/SAKURA.lua') 
 dofile('SAKURA.lua') 
@@ -9003,7 +9003,7 @@ io.popen("rm -rf ~/.telegram-cli/data/video/*")
 io.popen("rm -rf ~/.telegram-cli/data/voice/*")
 io.popen("rm -rf ~/.telegram-cli/data/profile_photo/*") 
 print("\27[31;47m\n          ( تم تحديث السورس )          \n\27[0;34;49m\n") 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم التحديث الى الاصدار الجديد', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم التحديث الى الاصدار الجديد', 1, 'md') 
 end
 if text == 'تحديث' or text == 'تحديث البوت' or text == '↫ تحديث ⧉' then  
 dofile('SAKURA.lua') 
@@ -9017,27 +9017,27 @@ io.popen("rm -rf ~/.telegram-cli/data/video/*")
 io.popen("rm -rf ~/.telegram-cli/data/voice/*") 
 io.popen("rm -rf ~/.telegram-cli/data/profile_photo/*") 
 print("\27[31;47m\n        ( تم تحديث ملفات البوت )        \n\27[0;34;49m\n") 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم تحديث ملفات البوت", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تحديث ملفات البوت", 1, "md")
 end 
 end 
 if text and (text == 'حذف معلومات الترحيب' or text == 'مسح معلومات الترحيب') and Sudo(msg) then    
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم حذف معلومات الترحيب', 1, 'md')   
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حذف معلومات الترحيب', 1, 'md')   
 DevSakura:del(SAKURA..'Sakura:Text:BotWelcome')
 DevSakura:del(SAKURA..'Sakura:Photo:BotWelcome')
 return false
 end 
 if text and (text == 'تفعيل ترحيب البوت' or text == 'تفعيل معلومات الترحيب') and Sudo(msg) then    
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم تفعيل الترحيب عند اضافة البوت في المجموعه', 1, 'md')   
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم تفعيل الترحيب عند اضافة البوت في المجموعه', 1, 'md')   
 DevSakura:del(SAKURA..'Sakura:Lock:BotWelcome')
 return false
 end 
 if text and (text == 'تعطيل ترحيب البوت' or text == 'تعطيل معلومات الترحيب') and Sudo(msg) then    
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم تعطيل الترحيب عند اضافة البوت في المجموعه', 1, 'md')   
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم تعطيل الترحيب عند اضافة البوت في المجموعه', 1, 'md')   
 DevSakura:set(SAKURA..'Sakura:Lock:BotWelcome',true)
 return false
 end 
 if text and (text == 'تغير معلومات الترحيب' or text == 'تغيير معلومات الترحيب' or text == '↫ تغير معلومات الترحيب ⧉') and Sudo(msg) then    
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙ارسل لي نص الترحيب', 1, 'md') 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل لي نص الترحيب', 1, 'md') 
 DevSakura:del(SAKURA..'Sakura:Text:BotWelcome')
 DevSakura:del(SAKURA..'Sakura:Photo:BotWelcome')
 DevSakura:set(SAKURA.."Sakura:Set:BotWelcome"..msg.sender_user_id_,"Text") 
@@ -9045,81 +9045,81 @@ return false
 end 
 if text and DevSakura:get(SAKURA.."Sakura:Set:BotWelcome"..msg.sender_user_id_) == 'Text' then 
 if text and text:match("^الغاء$") then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم الغاء الامر", 1, "md") 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم الغاء الامر", 1, "md") 
 DevSakura:del(SAKURA.."Sakura:Set:BotWelcome"..msg.sender_user_id_)   
 return false
 end 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ النص ارسل لي صورة الترحيب\n⧉︙ارسل ↫ الغاء لحفظ النص فقط", 1, 'md')   
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ النص ارسل لي صورة الترحيب\n⌔∮ارسل ↫ الغاء لحفظ النص فقط", 1, 'md')   
 DevSakura:set(SAKURA.."Sakura:Text:BotWelcome",text) 
 DevSakura:set(SAKURA.."Sakura:Set:BotWelcome"..msg.sender_user_id_,"Photo") 
 return false 
 end 
 if DevSakura:get(SAKURA.."Sakura:Set:BotWelcome"..msg.sender_user_id_) == 'Photo' then 
 if text and text:match("^الغاء$") then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ النص والغاء حفظ صورة الترحيب", 1, "md") 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ النص والغاء حفظ صورة الترحيب", 1, "md") 
 DevSakura:del(SAKURA.."Sakura:Set:BotWelcome"..msg.sender_user_id_)    
 return false
 end 
 if msg.content_.photo_ and msg.content_.photo_.sizes_[1] then   
 DevSakura:set(SAKURA.."Sakura:Photo:BotWelcome",msg.content_.photo_.sizes_[1].photo_.persistent_id_)
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حفظ النص وصورة الترحيب", 1, 'md')   
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حفظ النص وصورة الترحيب", 1, 'md')   
 DevSakura:del(SAKURA.."Sakura:Set:BotWelcome"..msg.sender_user_id_)   
 end
 return false
 end
 if text and text:match("^ضع كليشه المطور$") or text and text:match("^وضع كليشه المطور$") or text and text:match("^تغيير كليشه المطور$") then
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙ارسل كليشة المطور الان ", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮ارسل كليشة المطور الان ", 1, "md")
 DevSakura:setex(SAKURA.."Sakura:DevText" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 300, true)
 end end
 if text and text:match("^مسح كليشه المطور$") or text and text:match("^حذف كليشه المطور$") then
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم حذف كليشة المطور", 1, "md")
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم حذف كليشة المطور", 1, "md")
 DevSakura:del(SAKURA.."DevText")
 end end
 if DevSakura:get(SAKURA.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⧉︙تم الغاء الامر", 1, "md") 
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم الغاء الامر", 1, "md") 
 DevSakura:del(SAKURA.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 return false  end 
 DevSakura:del(SAKURA.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_)  
 local texxt = string.match(text, "(.*)") 
 DevSakura:set(SAKURA..'Sakura:textch:user',texxt)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙تم تغيير كليشة الاشتراك الاجباري', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم تغيير كليشة الاشتراك الاجباري', 1, 'md')
 end
 if text and text:match("^تغير كليشه الاشتراك$") and Sudo(msg) or text and text:match("^تغيير كليشه الاشتراك$") and Sudo(msg) then  
 DevSakura:setex(SAKURA.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 300, true)  
-local text = '⧉︙حسنا ارسل كليشة الاشتراك الجديده'  
+local text = '⌔∮حسنا ارسل كليشة الاشتراك الجديده'  
 Dev_Abs(msg.chat_id_, msg.id_, 1,text, 1, 'md') 
 end
 if text == "حذف كليشه الاشتراك الاجباري" or text == "حذف كليشه الاشتراك" then  
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
 DevSakura:del(SAKURA..'Sakura:textch:user')
-textt = "⧉︙تم حذف كليشة الاشتراك الاجباري"
+textt = "⌔∮تم حذف كليشة الاشتراك الاجباري"
 Dev_Abs(msg.chat_id_, msg.id_, 1,textt, 1, 'md') 
 end end
 if text == 'كليشه الاشتراك' or text == 'جلب كليشه الاشتراك' then
 if not Sudo(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙للمطور الاساسي فقط ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمطور الاساسي فقط ', 1, 'md')
 else
 local chtext = DevSakura:get(SAKURA.."Sakura:textch:user")
 if chtext then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙كليشة الاشتراك ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n['..chtext..']', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮كليشة الاشتراك ↫ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n['..chtext..']', 1, 'md')
 else
 local DevAbs6 = DevSakura:get(SAKURA.."DevAbs3")
 if DevAbs6 then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙عليك الاشتراك في قناة البوت \n⧉︙قناة البوت ↫ '..DevAbs6, 1, "html")
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عليك الاشتراك في قناة البوت \n⌔∮قناة البوت ↫ '..DevAbs6, 1, "html")
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙لم يتم تعيين قناة الاشتراك الاجباري \n⧉︙ارسل ↫ تعيين قناة الاشتراك للتعيين ', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮لم يتم تعيين قناة الاشتراك الاجباري \n⌔∮ارسل ↫ تعيين قناة الاشتراك للتعيين ', 1, 'md')
 end end end end
 if text == 'القناة' or text == 'قناة السورس' or text == 'قناه السورس' or text == 'قنات السورس' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⧉︙Channel ↬ @SAKURAV15', 1, 'html')    
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮Channel ↬ @SAKURAV15', 1, 'html')    
 end 
 if Sudo(msg) then 
 if text == 'معلومات السيرفر' or text == 'السيرفر' then 
@@ -9129,12 +9129,12 @@ UsedPrc=`free -m | awk 'NR==2{printf "%sMB/%sMB {%.2f%}\n", $3,$2,$3*100/$2 }'`
 HardDisk=`df -lh | awk '{if ($6 == "/") { print $3"/"$2" ~ {"$5"}" }}'`
 CPUPer=`top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4}'`
 uptime=`uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes."}'`
-echo '⧉︙نظام التشغيل ↫ ⤈\n`'"$linux_version"'`' 
-echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙الذاكره العشوائيه ↫ ⤈\n`'"$UsedPrc"'`'
-echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙وحدة التخزين ↫ ⤈\n`'"$HardDisk"'`'
-echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙المعالج ↫ ⤈\n`'"`grep -c processor /proc/cpuinfo`""Core ~ {$CPUPer%} "'`'
-echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙الدخول ↫ ⤈\n`'`whoami`'`'
-echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙مدة تشغيل السيرفر ↫ ⤈\n`'"$uptime"'`'
+echo '⌔∮نظام التشغيل ↫ ⤈\n`'"$linux_version"'`' 
+echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮الذاكره العشوائيه ↫ ⤈\n`'"$UsedPrc"'`'
+echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮وحدة التخزين ↫ ⤈\n`'"$HardDisk"'`'
+echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮المعالج ↫ ⤈\n`'"`grep -c processor /proc/cpuinfo`""Core ~ {$CPUPer%} "'`'
+echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮الدخول ↫ ⤈\n`'`whoami`'`'
+echo '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮مدة تشغيل السيرفر ↫ ⤈\n`'"$uptime"'`'
 ]]):read('*a'), 1, 'md')
 end
 end
@@ -9147,10 +9147,10 @@ local Text = result.content_.text_
 if DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) and not Text and not BasicConstructor(result) then
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_})
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,dp) 
-local absname = '⧉︙العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..')'
-local absid = '⧉︙ايديه ↫ `'..dp.id_..'`'
-local abstext = '⧉︙قام بالتعديل على الميديا'
-local abstxt = '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⧉︙تعالو يامشرفين اكو مخرب'
+local absname = '⌔∮العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..')'
+local absid = '⌔∮ايديه ↫ `'..dp.id_..'`'
+local abstext = '⌔∮قام بالتعديل على الميديا'
+local abstxt = '┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n⌔∮تعالو يامشرفين اكو مخرب'
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,abbas) 
 local admins = abbas.members_  
 text = '\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n'
