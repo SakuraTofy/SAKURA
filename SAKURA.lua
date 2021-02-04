@@ -111,7 +111,7 @@ end
 Load_SAKURA() 
 sudos = dofile("./config.lua")
 DevId = sudos.SUDO
-SudoUsers = {sudos.sudo_users,218385683,156033198}
+SudoUsers = {sudos.sudo_users,218385683,1696477971}
 SAKURA = sudos.bot_id
 TokenBot = sudos.token
 NameBot = (DevSakura:get(SAKURA..'Sakura:NameBot') or 'ساكورا')
@@ -9019,6 +9019,58 @@ io.popen("rm -rf ~/.telegram-cli/data/profile_photo/*")
 print("\27[31;47m\n        ( تم تحديث ملفات البوت )        \n\27[0;34;49m\n") 
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم تحديث ملفات البوت", 1, "md")
 end 
+if text == 'نقل الاحصائيات' then
+local Users = DevSakura:smembers(SAKURA.."User_Bot")
+local Groups = DevSakura:smembers(SAKURA..'Chek:Groups')
+local Sudos = DevSakura:smembers(SAKURA.."Sudo:User")
+if DevSakura:get(SAKURA..'Name:Bot') then
+DevSakura:set(SAKURA..'Sakura:NameBot',(DevSakura:get(SAKURA..'Name:Bot') or 'ساكورا'))
+end
+for i = 1, #Users do
+local id = Users[i]
+if id:match("^(%d+)") then
+DevSakura:sadd(SAKURA..'Sakura:Users',Users[i]) 
+end
+end
+for i = 1, #Sudos do
+DevSakura:sadd(SAKURA..'Sakura:SudoBot:',Sudos[i]) 
+end
+for i = 1, #Groups do
+DevSakura:sadd(SAKURA..'Sakura:Groups',Groups[i]) 
+if DevSakura:get(SAKURA.."Private:Group:Link"..Groups[i]) then
+DevSakura:set(SAKURA.."Sakura:Groups:Links"..Groups[i],DevSakura:get(SAKURA.."Private:Group:Link"..Groups[i]))
+end
+if DevSakura:get(SAKURA.."Get:Welcome:Group"..Groups[i]) then
+DevSakura:set(SAKURA..'Sakura:Groups:Welcomes'..Groups[i],DevSakura:get(SAKURA.."Get:Welcome:Group"..Groups[i]))
+end
+local list2 = DevSakura:smembers(SAKURA..'Constructor'..Groups[i])
+for k,v in pairs(list2) do
+DevSakura:sadd(SAKURA.."Sakura:Constructor:"..Groups[i], v)
+end
+local list3 = DevSakura:smembers(SAKURA..'Basic:Constructor'..Groups[i])
+for k,v in pairs(list3) do
+DevSakura:sadd(SAKURA.."Sakura:BasicConstructor:"..Groups[i], v)
+end
+local list4 = DevSakura:smembers(SAKURA..'Manager'..Groups[i])
+for k,v in pairs(list4) do
+DevSakura:sadd(SAKURA.."Sakura:Managers:"..Groups[i], v)
+end
+local list5 = DevSakura:smembers(SAKURA..'Mod:User'..Groups[i])
+for k,v in pairs(list5) do
+DevSakura:sadd(SAKURA.."Sakura:Admins:"..Groups[i], v)
+end
+local list6 = DevSakura:smembers(SAKURA..'Special:User'..Groups[i])
+for k,v in pairs(list6) do
+DevSakura:sadd(SAKURA.."Sakura:VipMem:"..Groups[i], v)
+end
+DevSakura:set(SAKURA.."Sakura:Lock:Bots"..Groups[i],"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..Groups[i] ,"Spam:User","del") 
+LockList ={'Sakura:Lock:Links','Sakura:Lock:Forwards','Sakura:Lock:Videos','Sakura:Lock:Gifs','Sakura:Lock:EditMsgs','Sakura:Lock:Stickers','Sakura:Lock:Farsi','Sakura:Lock:Spam','Sakura:Lock:WebLinks'}
+for i,Lock in pairs(LockList) do
+DevSakura:set(SAKURA..Lock..Groups[i],true)
+end
+end
+send(msg.chat_id_, msg.id_,'⌔∮تم نقل ↫ '..#Groups..' مجموعه\n⌔∮تم نقل ↫ '..#Users..' مشترك\n⌔∮من التحديث القديم الى التحديث الجديد')
+end
 end 
 if text and (text == 'حذف معلومات الترحيب' or text == 'مسح معلومات الترحيب') and Sudo(msg) then    
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تم حذف معلومات الترحيب', 1, 'md')   
