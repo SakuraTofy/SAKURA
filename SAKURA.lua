@@ -482,7 +482,7 @@ function CatchName(Name,Num)
 ChekName = utf8.sub(Name,0,Num) Name = ChekName return Name..'' 
 end
 local AbsRank = function(msg) if SudoId(msg.sender_user_id_) then SAKURATEAM  = "المطور" elseif SudoId(msg.sender_user_id_) then SAKURATEAM = "المطور" elseif SudoBot(msg) then SAKURATEAM = "المطور" elseif AbsConstructor(msg) then SAKURATEAM = "المنشئ" elseif BasicConstructor(msg) then SAKURATEAM = "المنشئ" elseif Constructor(msg) then SAKURATEAM = "المنشئ" elseif Manager(msg) then SAKURATEAM = "المدير" elseif Admin(msg) then SAKURATEAM = "الادمن" else SAKURATEAM = "العضو" end return SAKURATEAM end
-function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(156033198) then SAKURATEAM = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(SAKURA) then SAKURATEAM = 'البوت' elseif SudoId(user_id) then SAKURATEAM = 'المطور الاساسي' elseif DevSakura:sismember(SAKURA..'Sakura:SudoBot:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:SudoBot:Rd"..chat_id) or 'المطور' elseif DevSakura:sismember(SAKURA..'Sakura:AbsConstructor:'..chat_id, user_id) then SAKURATEAM = 'منشئ المجموعه' elseif DevSakura:sismember(SAKURA..'Sakura:BasicConstructor:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevSakura:sismember(SAKURA..'Sakura:Constructor:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevSakura:sismember(SAKURA..'Sakura:Managers:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Managers:Rd"..chat_id) or 'المدير' elseif DevSakura:sismember(SAKURA..'Sakura:Admins:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Admins:Rd"..chat_id) or 'الادمن' elseif DevSakura:sismember(SAKURA..'Sakura:VipMem:'..chat_id, user_id) then  SAKURATEAM = DevSakura:get(SAKURA.."Sakura:VipMem:Rd"..chat_id) or 'المميز' elseif DevSakura:sismember(SAKURA..'Sakura:Cleaner:'..chat_id, user_id) then  SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Cleaner:Rd"..chat_id) or 'المنظف' else SAKURATEAM = DevSakura:get(SAKURA.."Sakura:mem:Rd"..chat_id) or 'العضو' end return SAKURATEAM end
+function IdRank(user_id,chat_id) if tonumber(user_id) == tonumber(1696477971) then SAKURATEAM = 'مبرمج السورس' elseif tonumber(user_id) == tonumber(SAKURA) then SAKURATEAM = 'البوت' elseif SudoId(user_id) then SAKURATEAM = 'المطور الاساسي' elseif DevSakura:sismember(SAKURA..'Sakura:SudoBot:', user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:SudoBot:Rd"..chat_id) or 'المطور' elseif DevSakura:sismember(SAKURA..'Sakura:AbsConstructor:'..chat_id, user_id) then SAKURATEAM = 'منشئ المجموعه' elseif DevSakura:sismember(SAKURA..'Sakura:BasicConstructor:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif DevSakura:sismember(SAKURA..'Sakura:Constructor:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Constructor:Rd"..chat_id) or 'المنشئ' elseif DevSakura:sismember(SAKURA..'Sakura:Managers:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Managers:Rd"..chat_id) or 'المدير' elseif DevSakura:sismember(SAKURA..'Sakura:Admins:'..chat_id, user_id) then SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Admins:Rd"..chat_id) or 'الادمن' elseif DevSakura:sismember(SAKURA..'Sakura:VipMem:'..chat_id, user_id) then  SAKURATEAM = DevSakura:get(SAKURA.."Sakura:VipMem:Rd"..chat_id) or 'المميز' elseif DevSakura:sismember(SAKURA..'Sakura:Cleaner:'..chat_id, user_id) then  SAKURATEAM = DevSakura:get(SAKURA.."Sakura:Cleaner:Rd"..chat_id) or 'المنظف' else SAKURATEAM = DevSakura:get(SAKURA.."Sakura:mem:Rd"..chat_id) or 'العضو' end return SAKURATEAM end
 function RankChecking(user_id,chat_id)
 if SudoId(user_id) then
 var = true  
@@ -540,7 +540,7 @@ end
 function ReplyStatus(msg,user_id,status,text)
 tdcli_function ({ID = "GetUser",user_id_ = user_id},function(arg,dp) 
 if dp.first_name_ ~= false then
-local UserName = (dp.username_ or "Dev_Prox")
+local UserName = (dp.username_ or "SAKURAV15")
 for gmatch in string.gmatch(dp.first_name_, "[^%s]+") do
 dp.first_name_ = gmatch
 end
@@ -908,19 +908,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local mrabs = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..DEV_ABBAS..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SAKURAV15')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS) 
 DevSakura:sadd(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SAKURAV15')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)
 DevSakura:sadd(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SAKURAV15')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_ABBAS)  
 DevSakura:sadd(SAKURA..'Sakura:Managers:'..msg.chat_id_, result.sender_user_id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SAKURAV15')..')'..' ❩\n⌔∮تم رفعه ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -934,19 +934,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local mrabs = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..DEV_ABBAS..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SAKURAV15')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.sender_user_id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SAKURAV15')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.sender_user_id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SAKURAV15')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:Managers:'..msg.chat_id_, result.sender_user_id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SAKURAV15')..')'..' ❩\n⌔∮تم تنزيله ❨ '..DEV_ABBAS..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -960,19 +960,19 @@ function py_username(extra, result, success)
 if result.id_ then
 local mrabs = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..text1[2]..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SAKURAV15')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:sadd(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.id_)
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SAKURAV15')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:sadd(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.id_)
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SAKURAV15')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:sadd(SAKURA..'Sakura:Managers:'..msg.chat_id_, result.id_)
 DevSakura:set(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SAKURAV15')..')'..' ❩\n⌔∮تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 end
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*المعرف غير صحيح*", 1, 'md')
@@ -988,19 +988,19 @@ function py_username(extra, result, success)
 if result.id_ then
 local mrabs = DevSakura:get(SAKURA.."Comd:New:rt:Sakura:"..text1[2]..msg.chat_id_)
 if mrabs == "مميز" and VipMem(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SAKURAV15')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:VipMem:'..msg.chat_id_, result.id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "ادمن" and Admin(msg) then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SAKURAV15')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:Admins:'..msg.chat_id_, result.id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "مدير" and Manager(msg) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SAKURAV15')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 DevSakura:srem(SAKURA..'Sakura:Managers:'..msg.chat_id_, result.id_)
 DevSakura:del(SAKURA.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif mrabs == "عضو" then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'Dev_Prox')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SAKURAV15')..')'..' ❩\n⌔∮تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 end
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮*المعرف غير صحيح*", 1, 'md')
@@ -1414,7 +1414,7 @@ tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data
 if data.username_ ~= false then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ [@"..data.username_.."]\n⌔∮الصوره التي ارسلتها تم منعها من المجموعه", 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⌔∮الصوره التي ارسلتها تم منعها من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/SAKURAV15)\n⌔∮الصوره التي ارسلتها تم منعها من المجموعه", 1, 'md')
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -1432,7 +1432,7 @@ tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data
 if data.username_ ~= false then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ [@"..data.username_.."]\n⌔∮المتحركه التي ارسلتها تم منعها من المجموعه", 1, 'md')
 else
-Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⌔∮المتحركه التي ارسلتها تم منعها من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/SAKURAV15)\n⌔∮المتحركه التي ارسلتها تم منعها من المجموعه", 1, 'md')
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -1450,7 +1450,7 @@ tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data
 if data.username_ ~= false then
 Dev_Abs(msg.chat_id_,0, 1, "⌔∮عذرا عزيزي ↫ [@"..data.username_.."]\n⌔∮الملصق الذي ارسلته تم منعه من المجموعه", 1, 'md')
 else
-Dev_Abs(msg.chat_id_,0, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/Dev_Prox)\n⌔∮الملصق الذي ارسلته تم منعه من المجموعه", 1, 'md')
+Dev_Abs(msg.chat_id_,0, 1, "⌔∮عذرا عزيزي ↫ ["..data.first_name_.."](T.ME/SAKURAV15)\n⌔∮الملصق الذي ارسلته تم منعه من المجموعه", 1, 'md')
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
@@ -2069,7 +2069,7 @@ text = '• نورت حبي \n• [firstname lastname] \n• [@username]'
 end
 local text = text:gsub('firstname',(msg.content_.members_[0].first_name_ or ''))
 local text = text:gsub('lastname',(msg.content_.members_[0].last_name_ or ''))
-local text = text:gsub('username',(msg.content_.members_[0].username_ or 'Dev_Prox'))
+local text = text:gsub('username',(msg.content_.members_[0].username_ or 'SAKURAV15'))
 Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 --        Contact         --
@@ -2481,7 +2481,7 @@ if text:match("طيز") or text:match("ديس") or text:match("انيجمك") or
 if not DevSakura:get(SAKURA.."Sakura:Lock:Fshar"..msg.chat_id_) and not VipMem(msg) then
 function get_warning(extra,result,success)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⌔∮ممنوع الفشار في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'SAKURAV15')..') \n⌔∮ممنوع الفشار في المجموعه', 1, 'md')
 end 
 getUser(msg.sender_user_id_,get_warning)
 end end
@@ -2489,7 +2489,7 @@ if text:match("ڬ") or text:match("ٺ") or text:match("چ") or text:match("ڇ") 
 if DevSakura:get(SAKURA.."Sakura:Lock:Farsi"..msg.chat_id_) and not VipMem(msg) then
 function get_warning(extra,result,success)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⌔∮ممنوع التكلم بالغه الفارسيه هنا', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'SAKURAV15')..') \n⌔∮ممنوع التكلم بالغه الفارسيه هنا', 1, 'md')
 end 
 getUser(msg.sender_user_id_,get_warning)
 end end
@@ -2502,7 +2502,7 @@ if text:match("خره بالله") or text:match("خبربك") or text:match("ك
 if not DevSakura:get(SAKURA.."Sakura:Lock:Kfr"..msg.chat_id_) and not VipMem(msg) then
 function get_warning(extra,result,success)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⌔∮ممنوع الكفر في المجموعه', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'SAKURAV15')..') \n⌔∮ممنوع الكفر في المجموعه', 1, 'md')
 end 
 getUser(msg.sender_user_id_,get_warning)
 end end
@@ -2510,7 +2510,7 @@ if text:match("شيعي نكس") or text:match("سني نكس") or text:match("�
 if not DevSakura:get(SAKURA.."Sakura:Lock:Taf"..msg.chat_id_) and not VipMem(msg) then
 function get_warning(extra,result,success)
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'Dev_Prox')..') \n⌔∮ممنوع التكلم بالطائفيه هنا', 1, 'md')
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عذرا عزيزي ↫ ['..result.first_name_..'](https://T.me/'..(result.username_ or 'SAKURAV15')..') \n⌔∮ممنوع التكلم بالطائفيه هنا', 1, 'md')
 end 
 getUser(msg.sender_user_id_,get_warning)
 end end
@@ -3924,7 +3924,7 @@ if tonumber(result.id_) == tonumber(DevId) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md') 
 return false  
 end  
-if tonumber(result.id_) == tonumber(156033198) then 
+if tonumber(result.id_) == tonumber(1696477971) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md') 
 return false  
 end  
@@ -3952,7 +3952,7 @@ if tonumber(result.sender_user_id_) == tonumber(DevId) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md')
 return false
 end 
-if tonumber(result.sender_user_id_) == tonumber(156033198) then  
+if tonumber(result.sender_user_id_) == tonumber(1696477971) then  
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'دي لكك تريد اهينن تاج راسكك؟😏🖕🏿', 1, 'md')
 return false
 end 
@@ -5435,7 +5435,7 @@ if dp.first_name_ == false then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮حساب المنشئ محذوف", 1, "md")
 return false  
 end
-local UserName = (dp.username_ or "Dev_Prox")
+local UserName = (dp.username_ or "SAKURAV15")
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮منشئ المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md")  
 end,nil)   
 end
@@ -5580,7 +5580,7 @@ if dp.first_name_ == false then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮حساب المنشئ محذوف", 1, "md")
 return false  
 end
-local UserName = (dp.username_ or "Dev_Prox")
+local UserName = (dp.username_ or "SAKURAV15")
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮تم رفع منشئ المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
 DevSakura:sadd(SAKURA.."Sakura:AbsConstructor:"..msg.chat_id_,dp.id_)
 end,nil)   
@@ -7991,7 +7991,7 @@ local TkeedList = DevSakura:scard(SAKURA.."Sakura:Sakura:Tkeed:"..ChatId) or 0
 local AdminsList = DevSakura:scard(SAKURA.."Sakura:Admins:"..ChatId) or 0
 local VipList = DevSakura:scard(SAKURA.."Sakura:VipMem:"..ChatId) or 0
 local LinkGp = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/exportChatInviteLink?chat_id='..ChatId))
-if LinkGp.ok == true then LinkGroup = LinkGp.result else LinkGroup = 't.me/Dev_Prox' end
+if LinkGp.ok == true then LinkGroup = LinkGp.result else LinkGroup = 't.me/SAKURAV15' end
 tdcli_function({ID ="GetChat",chat_id_=ChatId},function(arg,dp)
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = ChatId:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
 if dp.id_ then
@@ -8001,7 +8001,7 @@ if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 Manager_id = admins[i].user_id_
 tdcli_function ({ID = "GetUser",user_id_ = Manager_id},function(arg,Abs) 
 if Abs.first_name_ ~= false then
-ConstructorAbs = "["..Abs.first_name_.."](T.me/"..(Abs.username_ or "Dev_Prox")..")"
+ConstructorAbs = "["..Abs.first_name_.."](T.me/"..(Abs.username_ or "SAKURAV15")..")"
 else 
 ConstructorAbs = "حساب محذوف"
 end
