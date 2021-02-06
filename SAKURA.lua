@@ -548,7 +548,7 @@ if status == "reply" then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮العضو ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
-if status == "ReplyAdd" then
+if status == "ReplyBy" then
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮بواسطة ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
@@ -1338,7 +1338,7 @@ if tonumber(data.member_count_) < tonumber(DevSakura:get(SAKURA..'Sakura:Num:Add
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮عدد اعضاء المجموعه اقل من ↫ *'..(DevSakura:get(SAKURA..'Sakura:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
 return false
 end
-ReplyStatus(msg,result.id_,"ReplyAdd","⌔∮تم تفعيل المجموعه "..dp.title_)  
+ReplyStatus(msg,result.id_,"ReplyBy","⌔∮تم تفعيل المجموعه "..dp.title_)  
 DevSakura:sadd(SAKURA.."Sakura:Groups",msg.chat_id_)
 DevSakura:sadd(SAKURA..'Sakura:BasicConstructor:'..msg.chat_id_,msg.sender_user_id_)
 local Name1 = result.first_name_
@@ -6131,8 +6131,7 @@ if text and text:match("^قفل (.*)$") then
 local lockptf = {string.match(text, "^(قفل) (.*)$")}
 if lockptf[2] == "التعديل" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التعديل بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التعديل")  
 DevSakura:set(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التعديل بالفعل مقفل في المجموعه', 1, 'md')
@@ -6140,8 +6139,7 @@ end
 end
 if lockptf[2] == "التعديل الميديا" or lockptf[2] == "تعديل الميديا" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل تعديل الميديا\n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل تعديل الميديا")  
 DevSakura:set(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تعديل الميديا بالفعل مقفل في المجموعه', 1, 'md')
@@ -6149,8 +6147,7 @@ end
 end
 if lockptf[2] == "الفارسيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الفارسيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الفارسيه")  
 DevSakura:set(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفارسيه بالفعل مقفله في المجموعه', 1, 'md')
@@ -6158,8 +6155,7 @@ end
 end
 if lockptf[2] == "الفشار" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الفشار بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الفشار")  
 DevSakura:del(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفشار بالفعل مقفل في المجموعه', 1, 'md')
@@ -6167,8 +6163,7 @@ end
 end
 if lockptf[2] == "الطائفيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الطائفيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الطائفيه")  
 DevSakura:del(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الطائفيه بالفعل مقفله في المجموعه', 1, 'md')
@@ -6176,8 +6171,7 @@ end
 end
 if lockptf[2] == "الكفر" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الكفر بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الكفر")  
 DevSakura:del(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الكفر بالفعل مقفل في المجموعه', 1, 'md')
@@ -6185,54 +6179,45 @@ end
 end
 if lockptf[2] == "الفارسيه بالطرد" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:FarsiBan'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الفارسيه بالطرد \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الفارسيه بالطرد")  
 DevSakura:set(SAKURA..'Sakura:Lock:FarsiBan'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفارسيه بالطرد بالفعل مقفله ', 1, 'md')
 end
 end
 if lockptf[2] == "البوتات" or lockptf[2] == "البوتات بالحذف" then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل البوتات بالحذف \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل البوتات بالحذف")  
 DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"del")  
 end
 if lockptf[2] == "البوتات بالطرد" then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل البوتات بالطرد \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل البوتات بالطرد")  
 DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"kick")  
 end
 if lockptf[2] == "البوتات بالتقييد" or lockptf[2] == "البوتات بالتقيد" then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل البوتات بالتقييد \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل البوتات بالتقييد")  
 DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"ked")  
 end
 if lockptf[2] == "التكرار" or lockptf[2] == "التكرار بالحذف" then 
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","del")  
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التكرار بالحذف \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التكرار بالحذف")  
 end
 if lockptf[2] == "التكرار بالطرد" then 
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","kick")  
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التكرار بالطرد \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التكرار بالطرد")  
 end
 if lockptf[2] == "التكرار بالتقيد" or lockptf[2] == "التكرار بالتقييد" then 
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed")  
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التكرار بالتقييد \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التكرار بالتقييد")  
 end
 if lockptf[2] == "التكرار بالكتم" then 
 DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","mute")  
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التكرار بالكتم \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التكرار بالكتم")  
 end
 if BasicConstructor(msg) then
 if lockptf[2] == "التثبيت" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_) then
 tdcli_function ({ ID = "GetChannelFull",  channel_id_ = msg.chat_id_:gsub("-100","") }, function(arg,data)  DevSakura:set(SAKURA.."Sakura:PinnedMsg"..msg.chat_id_,data.pinned_message_id_)  end,nil)
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التثبيت بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التثبيت")  
 DevSakura:set(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_,true)
 DevSakura:sadd(SAKURA.."Sakura:Lock:Pinpin",msg.chat_id_) 
 else
@@ -6338,8 +6323,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ارسل لي الترحيب الان\n
 DevSakura:set(SAKURA..'Sakura:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 if text and text:match("^حذف الترحيب$") and ChCheck(msg) or text and text:match("^حذف ترحيب$") and ChCheck(msg) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف الترحيب \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف الترحيب")  
 DevSakura:del(SAKURA..'Sakura:Groups:Welcomes'..msg.chat_id_)
 end
 if text and text:match("^جلب الترحيب$") and ChCheck(msg) or text and text:match("^جلب ترحيب$") and ChCheck(msg) or text and text:match("^الترحيب$") and ChCheck(msg) then
@@ -6579,8 +6563,7 @@ if text and text:match("^فتح (.*)$") and ChCheck(msg) then
 local unlockpts = {string.match(text, "^(فتح) (.*)$")}
 if unlockpts[2] == "التعديل" then
 if DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التعديل بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح التعديل")  
 DevSakura:del(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التعديل بالفعل مفتوح في المجموعه', 1, 'md')
@@ -6588,8 +6571,7 @@ end
 end
 if unlockpts[2] == "التعديل الميديا" or unlockpts[2] == "تعديل الميديا" then
 if DevSakura:get(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح تعديل الميديا\n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح تعديل الميديا")  
 DevSakura:del(SAKURA..'Sakura:Lock:EditMsgs'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮تعديل الميديا بالفعل مفتوح في المجموعه', 1, 'md')
@@ -6597,8 +6579,7 @@ end
 end
 if unlockpts[2] == "الفارسيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الفارسيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الفارسيه")  
 DevSakura:del(SAKURA..'Sakura:Lock:Farsi'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفارسيه بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6606,8 +6587,7 @@ end
 end
 if unlockpts[2] == "الفشار" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الفشار بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الفشار")  
 DevSakura:set(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفشار بالفعل مفتوح في المجموعه', 1, 'md')
@@ -6615,8 +6595,7 @@ end
 end
 if unlockpts[2] == "الطائفيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الطائفيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الطائفيه")  
 DevSakura:set(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الطائفيه بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6624,8 +6603,7 @@ end
 end
 if unlockpts[2] == "الكفر" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الكفر بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الكفر")  
 DevSakura:set(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الكفر بالفعل مفتوح في المجموعه', 1, 'md')
@@ -6633,38 +6611,24 @@ end
 end
 if unlockpts[2] == "الفارسيه بالطرد" then
 if DevSakura:get(SAKURA..'Sakura:Lock:FarsiBan'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الفارسيه بالطرد \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الفارسيه بالطرد")  
 DevSakura:del(SAKURA..'Sakura:Lock:FarsiBan'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفارسيه بالطرد بالفعل مفتوحه', 1, 'md')
 end
 end
 if unlockpts[2] == "البوتات" then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح البوتات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
-DevSakura:del(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_)  
-end
-if unlockpts[2] == "البوتات بالطرد" then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح البوتات بالطرد \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
-DevSakura:del(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_)  
-end
-if unlockpts[2] == "البوتات بالتقييد" then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح البوتات بالتقييد \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح البوتات")  
 DevSakura:del(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_)  
 end
 if unlockpts[2] == "التكرار" then 
 DevSakura:hdel(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User")  
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التكرار بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح التكرار")  
 end
 if BasicConstructor(msg) then
 if unlockpts[2] == "التثبيت" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التثبيت بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح التثبيت")  
 DevSakura:del(SAKURA..'Sakura:Lock:Pin'..msg.chat_id_)
 DevSakura:srem(SAKURA.."Sakura:Lock:Pinpin",msg.chat_id_)
 else
@@ -6677,8 +6641,7 @@ if text and text:match("^قفل (.*)$") then
 local LockText = {string.match(text, "^(قفل) (.*)$")}
 if LockText[2] == "الدردشه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Text'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الدردشه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الدردشه")  
 DevSakura:set(SAKURA..'Sakura:Lock:Text'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الدردشه بالفعل مقفله في المجموعه', 1, 'md')
@@ -6686,8 +6649,7 @@ end
 end
 if LockText[2] == "الاونلاين" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الاونلاين بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الاونلاين")  
 DevSakura:set(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاونلاين بالفعل مقفل في المجموعه', 1, 'md')
@@ -6695,8 +6657,7 @@ end
 end
 if LockText[2] == "الصور" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الصور بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الصور")  
 DevSakura:set(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الصور بالفعل مقفله في المجموعه', 1, 'md')
@@ -6704,8 +6665,7 @@ end
 end
 if LockText[2] == "الكلايش" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الكلايش بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الكلايش")  
 DevSakura:set(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الكلايش بالفعل مقفله في المجموعه', 1, 'md')
@@ -6713,8 +6673,7 @@ end
 end
 if LockText[2] == "الدخول" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Join'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الدخول بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الدخول")  
 DevSakura:set(SAKURA..'Sakura:Lock:Join'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الدخول بالفعل مقفل في المجموعه', 1, 'md')
@@ -6722,8 +6681,7 @@ end
 end
 if LockText[2] == "الفيديو" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الفيديو بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الفيديو")  
 DevSakura:set(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفيديو بالفعل مقفل في المجموعه', 1, 'md')
@@ -6731,8 +6689,7 @@ end
 end
 if LockText[2] == "المتحركه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل المتحركه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل المتحركه")  
 DevSakura:set(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المتحركه بالفعل مقفله في المجموعه', 1, 'md')
@@ -6740,8 +6697,7 @@ end
 end
 if LockText[2] == "الاغاني" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Music'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الاغاني بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الاغاني")  
 DevSakura:set(SAKURA..'Sakura:Lock:Music'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاغاني بالفعل مقفله في المجموعه', 1, 'md')
@@ -6749,8 +6705,7 @@ end
 end
 if LockText[2] == "الصوت" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الصوت بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الصوت")  
 DevSakura:set(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الصوت بالفعل مقفل في المجموعه', 1, 'md')
@@ -6758,8 +6713,7 @@ end
 end
 if LockText[2] == "الروابط" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Links'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الروابط بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الروابط")  
 DevSakura:set(SAKURA..'Sakura:Lock:Links'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الروابط بالفعل مقفله في المجموعه', 1, 'md')
@@ -6767,8 +6721,7 @@ end
 end
 if LockText[2] == "المواقع" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Location'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل المواقع بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل المواقع")  
 DevSakura:set(SAKURA..'Sakura:Lock:Location'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المواقع بالفعل مقفله في المجموعه', 1, 'md')
@@ -6776,8 +6729,7 @@ end
 end
 if LockText[2] == "المعرف" or LockText[2] == "المعرفات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل المعرفات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل المعرفات")  
 DevSakura:set(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المعرفات بالفعل مقفله في المجموعه', 1, 'md')
@@ -6785,8 +6737,7 @@ end
 end
 if LockText[2] == "الملفات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Document'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الملفات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الملفات")  
 DevSakura:set(SAKURA..'Sakura:Lock:Document'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الملفات بالفعل مقفله في المجموعه', 1, 'md')
@@ -6794,8 +6745,7 @@ end
 end
 if LockText[2] == "الهاشتاك" or LockText[2] == "التاك" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الهاشتاك بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الهاشتاك")  
 DevSakura:set(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الهاشتاك بالفعل مقفل في المجموعه', 1, 'md')
@@ -6803,8 +6753,7 @@ end
 end
 if LockText[2] == "الجهات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الجهات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الجهات")  
 DevSakura:set(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '️⌔∮الجهات بالفعل مقفله في المجموعه', 1, 'md')
@@ -6812,8 +6761,7 @@ end
 end
 if LockText[2] == "الشبكات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الشبكات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الشبكات")  
 DevSakura:set(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_,true) 
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الشبكات بالفعل مقفله في المجموعه', 1, 'md')
@@ -6821,8 +6769,7 @@ end
 end
 if LockText[2] == "العربيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل العربيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل العربيه")  
 DevSakura:set(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العربيه بالفعل مقفله في المجموعه', 1, 'md')
@@ -6830,8 +6777,7 @@ end
 end
 if LockText[2] == "الانكليزيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:English'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الانكليزيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الانكليزيه")  
 DevSakura:set(SAKURA..'Sakura:Lock:English'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الانكليزيه بالفعل مقفله في المجموعه', 1, 'md')
@@ -6839,8 +6785,7 @@ end
 end
 if LockText[2] == "الملصقات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الملصقات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الملصقات")  
 DevSakura:set(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الملصقات بالفعل مقفله في المجموعه', 1, 'md')
@@ -6848,8 +6793,7 @@ end
 end
 if LockText[2] == "الماركداون" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الماركداون بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الماركداون")  
 DevSakura:set(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الماركداون بالفعل مقفل في المجموعه', 1, 'md')
@@ -6857,8 +6801,7 @@ end
 end
 if LockText[2] == "الاشعارات" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل الاشعارات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل الاشعارات")  
 DevSakura:set(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاشعارات بالفعل مقفله في المجموعه', 1, 'md')
@@ -6866,8 +6809,7 @@ end
 end
 if LockText[2] == "التوجيه" then
 if not DevSakura:get(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التوجيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التوجيه")  
 DevSakura:set(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_,true)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التوجيه بالفعل مقفل في المجموعه', 1, 'md')
@@ -6880,8 +6822,7 @@ if text and text:match("^فتح (.*)$") then
 local UnLockText = {string.match(text, "^(فتح) (.*)$")}
 if UnLockText[2] == "الدردشه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Text'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الدردشه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الدردشه")  
 DevSakura:del(SAKURA..'Sakura:Lock:Text'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الدردشه بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6889,8 +6830,7 @@ end
 end
 if UnLockText[2] == "الصور" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الصور بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الصور")  
 DevSakura:del(SAKURA..'Sakura:Lock:Photo'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الصور بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6898,8 +6838,7 @@ end
 end
 if UnLockText[2] == "الكلايش" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الكلايش بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الكلايش")  
 DevSakura:del(SAKURA..'Sakura:Lock:Spam'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الكلايش بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6907,8 +6846,7 @@ end
 end
 if UnLockText[2] == "الدخول" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Join'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الدخول بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الدخول")  
 DevSakura:del(SAKURA..'Sakura:Lock:Join'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الدخول بالفعل مفتوح في المجموعه', 1, 'md')
@@ -6916,8 +6854,7 @@ end
 end
 if UnLockText[2] == "الفيديو" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الفيديو بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الفيديو")  
 DevSakura:del(SAKURA..'Sakura:Lock:Videos'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الفيديو بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6925,8 +6862,7 @@ end
 end
 if UnLockText[2] == "الملفات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Document'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الملفات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الملفات")  
 DevSakura:del(SAKURA..'Sakura:Lock:Document'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الملفات بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6934,8 +6870,7 @@ end
 end
 if UnLockText[2] == "الاونلاين" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الاونلاين بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الاونلاين")  
 DevSakura:del(SAKURA..'Sakura:Lock:Inline'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاونلاين بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6943,8 +6878,7 @@ end
 end
 if UnLockText[2] == "الماركداون" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الماركداون بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الماركداون")  
 DevSakura:del(SAKURA..'Sakura:Lock:Markdown'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الماركداون بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6952,8 +6886,7 @@ end
 end
 if UnLockText[2] == "المتحركه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح المتحركه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح المتحركه")  
 DevSakura:del(SAKURA..'Sakura:Lock:Gifs'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المتحركه بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6961,8 +6894,7 @@ end
 end
 if UnLockText[2] == "الاغاني" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Music'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الاغاني بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الاغاني")  
 DevSakura:del(SAKURA..'Sakura:Lock:Music'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاغاني بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6970,8 +6902,7 @@ end
 end
 if UnLockText[2] == "الصوت" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الصوت بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الصوت")  
 DevSakura:del(SAKURA..'Sakura:Lock:Voice'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الصوت بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6979,8 +6910,7 @@ end
 end
 if UnLockText[2] == "الروابط" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Links'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الروابط بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الروابط")  
 DevSakura:del(SAKURA..'Sakura:Lock:Links'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الروابط بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6988,8 +6918,7 @@ end
 end
 if UnLockText[2] == "المواقع" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Location'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح المواقع بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح المواقع")  
 DevSakura:del(SAKURA..'Sakura:Lock:Location'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المواقع بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -6997,8 +6926,7 @@ end
 end
 if UnLockText[2] == "المعرف" or UnLockText[2] == "المعرفات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح المعرفات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح المعرفات")  
 DevSakura:del(SAKURA..'Sakura:Lock:Tags'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المعرفات بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -7006,8 +6934,7 @@ end
 end
 if UnLockText[2] == "الهاشتاك" or UnLockText[2] == "التاك" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الهاشتاك بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الهاشتاك")  
 DevSakura:del(SAKURA..'Sakura:Lock:Hashtak'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الهاشتاك بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -7015,8 +6942,7 @@ end
 end
 if UnLockText[2] == "الجهات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الجهات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الجهات")  
 DevSakura:del(SAKURA..'Sakura:Lock:Contact'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الجهات بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -7024,8 +6950,7 @@ end
 end
 if UnLockText[2] == "الشبكات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الشبكات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الشبكات")  
 DevSakura:del(SAKURA..'Sakura:Lock:WebLinks'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الشبكات بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -7033,8 +6958,7 @@ end
 end
 if UnLockText[2] == "العربيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح العربيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح العربيه")  
 DevSakura:del(SAKURA..'Sakura:Lock:Arabic'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العربيه بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -7042,8 +6966,7 @@ end
 end
 if UnLockText[2] == "الانكليزيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:English'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الانكليزيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الانكليزيه")  
 DevSakura:del(SAKURA..'Sakura:Lock:English'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الانكليزيه بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -7051,8 +6974,7 @@ end
 end
 if UnLockText[2] == "الاشعارات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الاشعارات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الاشعارات")  
 DevSakura:del(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الاشعارات بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -7060,8 +6982,7 @@ end
 end
 if UnLockText[2] == "الملصقات" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح الملصقات بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح الملصقات")  
 DevSakura:del(SAKURA..'Sakura:Lock:Stickers'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮الملصقات بالفعل مفتوحه في المجموعه', 1, 'md')
@@ -7069,8 +6990,7 @@ end
 end
 if UnLockText[2] == "التوجيه" then
 if DevSakura:get(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التوجيه بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح التوجيه")  
 DevSakura:del(SAKURA..'Sakura:Lock:Forwards'..msg.chat_id_)
 else
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮التوجيه بالفعل مفتوح في المجموعه', 1, 'md')
@@ -7087,8 +7007,7 @@ LockList ={'Sakura:Lock:Links','Sakura:Lock:Contact','Sakura:Lock:Forwards','Sak
 for i,Lock in pairs(LockList) do
 DevSakura:set(SAKURA..Lock..msg.chat_id_,true)
 end
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل التفليش بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل التفليش")  
 end
 end
 if text and text:match("^فتح التفليش$") then
@@ -7100,8 +7019,7 @@ UnLockList ={'Sakura:Lock:Links','Sakura:Lock:Contact','Sakura:Lock:Forwards','S
 for i,UnLock in pairs(UnLockList) do
 DevSakura:del(SAKURA..UnLock..msg.chat_id_)
 end
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح التفليش بنجاح \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح التفليش")  
 end
 end
 if text and text:match("^قفل الكل$") then
@@ -7114,8 +7032,7 @@ LockList ={'Sakura:Lock:EditMsgs','Sakura:Lock:Farsi','Sakura:Lock:TagServr','Sa
 for i,Lock in pairs(LockList) do
 DevSakura:set(SAKURA..Lock..msg.chat_id_,true)
 end
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم قفل جميع الاوامر \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم قفل جميع الاوامر")  
 end
 end
 if text and text:match("^فتح الكل$") then
@@ -7127,8 +7044,7 @@ UnLockList ={'Sakura:Lock:EditMsgs','Sakura:Lock:Text','Sakura:Lock:Arabic','Sak
 for i,UnLock in pairs(UnLockList) do
 DevSakura:del(SAKURA..UnLock..msg.chat_id_)
 end
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم فتح جميع الاوامر \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم فتح جميع الاوامر")  
 end
 end
 if Admin(msg) then
@@ -8128,7 +8044,7 @@ end,nil)
 if DevSakura:sismember(SAKURA..'Sakura:Groups',msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المجموعه بالتاكيد مفعله', 1, 'md')
 else
-ReplyStatus(msg,result.id_,"ReplyAdd","⌔∮تم تفعيل المجموعه "..dp.title_)  
+ReplyStatus(msg,result.id_,"ReplyBy","⌔∮تم تفعيل المجموعه "..dp.title_)  
 DevSakura:sadd(SAKURA.."Sakura:Groups",msg.chat_id_)
 if not DevSakura:get(SAKURA..'Sakura:SudosGp'..msg.sender_user_id_..msg.chat_id_) and not Sudo(msg) then 
 DevSakura:incrby(SAKURA..'Sakura:Sudos'..msg.sender_user_id_,1)
@@ -8169,7 +8085,7 @@ tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp)
 if not DevSakura:sismember(SAKURA..'Sakura:Groups',msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮المجموعه بالتاكيد معطله', 1, 'md')
 else
-ReplyStatus(msg,result.id_,"ReplyAdd","⌔∮تم تعطيل المجموعه "..dp.title_)  
+ReplyStatus(msg,result.id_,"ReplyBy","⌔∮تم تعطيل المجموعه "..dp.title_)  
 DevSakura:srem(SAKURA.."Sakura:Groups",msg.chat_id_)
 local Name1 = result.first_name_
 local Name1 = Name1:gsub('"',"") 
@@ -8515,8 +8431,7 @@ DevSakura:del(SAKURA..'Sakura:File:GpRed'..v..msg.chat_id_)
 DevSakura:del(SAKURA..'Sakura:Text:GpRed'..v..msg.chat_id_)
 DevSakura:del(SAKURA..'Sakura:Manager:GpRed'..msg.chat_id_)
 end
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف ردود المدير\n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف ردود المدير")  
 return false
 end
 end
@@ -8565,8 +8480,7 @@ DevSakura:del(SAKURA.."Sakura:File:AllRed"..v)
 DevSakura:del(SAKURA.."Sakura:Text:AllRed"..v)
 DevSakura:del(SAKURA.."Sakura:Sudo:AllRed")
 end
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم حذف ردود المطور \n ✓'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌁︙تم حذف ردود المطور")  
 return false
 end
 end 
