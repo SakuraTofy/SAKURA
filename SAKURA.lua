@@ -111,7 +111,7 @@ end
 Load_SAKURA() 
 sudos = dofile("./config.lua")
 DevId = sudos.SUDO
-SudoUsers = {sudos.sudo_users,218385683,1696477971}
+SudoUsers = {sudos.sudo_users,1696477971}
 SAKURA = sudos.bot_id
 TokenBot = sudos.token
 NameBot = (DevSakura:get(SAKURA..'Sakura:NameBot') or 'ساكورا')
