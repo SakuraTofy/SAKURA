@@ -306,7 +306,7 @@ vardump(JsonInfo)
 DevSakura:set(SAKURA.."Sakura:NameBot",JsonInfo.BotName) 
 for IdGps,v in pairs(JsonInfo.GroupsList) do
 DevSakura:sadd(SAKURA.."Sakura:Groups",IdGps) 
-DevSakura:set(SAKURA.."Sakura:Lock:Bots"..IdGps,"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..IdGps ,"Spam:User","del") 
+DevSakura:set(SAKURA.."Sakura:Lock:Bots"..IdGps,"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..IdGps ,"Spam:User","keed") 
 LockList ={'Sakura:Lock:Links','Sakura:Lock:Contact','Sakura:Lock:Forwards','Sakura:Lock:Videos','Sakura:Lock:Gifs','Sakura:Lock:EditMsgs','Sakura:Lock:Stickers','Sakura:Lock:Farsi','Sakura:Lock:Spam','Sakura:Lock:WebLinks','Sakura:Lock:Photo'}
 for i,Lock in pairs(LockList) do
 DevSakura:set(SAKURA..Lock..IdGps,true)
@@ -1014,6 +1014,7 @@ local id = tostring(msg.chat_id_)
 if id:match("-100(%d+)") then
 DevSakura:incr(SAKURA..'Sakura:UsersMsgs'..SAKURA..os.date('%d')..':'..msg.chat_id_..':'..msg.sender_user_id_)
 DevSakura:incr(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
+DevSakura:incr(SAKURA..'Sakura:MsgNumberDay'..msg.chat_id_..':'..os.date('%d'))  
 ChatType = 'sp' 
 elseif id:match("^(%d+)") then
 if not DevSakura:sismember(SAKURA.."Sakura:Users",msg.chat_id_) then
@@ -1272,6 +1273,11 @@ if msg.content_.ID == "MessageChatDeletePhoto" or msg.content_.ID == "MessageCha
 if DevSakura:get(SAKURA..'Sakura:Lock:TagServr'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})    
 end   
+end
+if msg.content_.ID == "MessageChatJoinByLink" or msg.content_.ID == "MessageChatAddMembers" then   
+DevAbs:incr(DevProx..'Abs:EntryNumber'..msg.chat_id_..':'..os.date('%d'))  
+elseif msg.content_.ID == "MessageChatDeleteMember" then   
+DevAbs:incr(DevProx..'Abs:ExitNumber'..msg.chat_id_..':'..os.date('%d'))  
 end
 if (data.ID == "UpdateNewMessage") then
 local msg = data.message_
@@ -1741,39 +1747,17 @@ tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dp)
 Text = '⌔∮العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⌔∮قام بالتكرار المحدد تم طرده '
 SendText(msg.chat_id_,Text,0,'md')
 end,nil)
-my_ide = msg.sender_user_id_
-msgm = msg.id_
-local num = 100
-for i=1,tonumber(num) do
-tdcli_function ({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = {[0] = msgm}},function(arg,data) 
-if data.messages_[0] ~= false then
-if tonumber(my_ide) == (data.messages_[0].sender_user_id_) then
-DeleteMessage(msg.chat_id_, {[0] = data.messages_[0].id_})
-end;end;end, nil)
-msgm = msgm - 1048576
-end
 return false  
 end 
 if Type == "del" then 
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})   
-my_ide = msg.sender_user_id_
-msgm = msg.id_
-local num = 100
-for i=1,tonumber(num) do
-tdcli_function ({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = {[0] = msgm}},function(arg,data) 
-if data.messages_[0] ~= false then
-if tonumber(my_ide) == (data.messages_[0].sender_user_id_) then
-DeleteMessage(msg.chat_id_, {[0] = data.messages_[0].id_})
-end;end;end, nil)
-msgm = msgm - 1048576
-end
 return false  
 end 
-if Type == "keed" then
+if Type == "keed" and not DevSakura:sismember(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, msg.sender_user_id_) then
 https.request("https://api.telegram.org/bot" .. TokenBot .. "/restrictChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..msg.sender_user_id_.."") 
 DevSakura:sadd(SAKURA..'Sakura:Tkeed:'..msg.chat_id_, msg.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dp) 
-Text = '⌔∮العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⌔∮قام بالتكرار المحدد تم تقييده '
+Text = '⌔∮العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⌔∮قام بالتكرار المحدد تم تقيده '
 SendText(msg.chat_id_,Text,0,'md')
 end,nil)
 my_ide = msg.sender_user_id_
@@ -1789,7 +1773,7 @@ msgm = msgm - 1048576
 end
 return false  
 end  
-if Type == "mute" then
+if Type == "mute" and not DevSakura:sismember(SAKURA..'Sakura:Muted:'..msg.chat_id_, msg.sender_user_id_) then
 DevSakura:sadd(SAKURA..'Sakura:Muted:'..msg.chat_id_,msg.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dp) 
 Text = '⌔∮العضو ↫ ['..CatchName(dp.first_name_,15)..'](tg://user?id='..dp.id_..') \n⌔∮قام بالتكرار المحدد تم كتمه '
@@ -3872,6 +3856,12 @@ if text:match("^رسائلي$") and msg.reply_to_message_id_ == 0 and ChCheck(ms
 local user_msgs = DevSakura:get(SAKURA..'Sakura:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عدد رسائلك هنا ↫ *❨ "..user_msgs.." ❩*", 1, 'md')
 end
+if text == "التفاعل" and ChCheck(msg) then
+local EntryNumber = (DevSakura:get(SAKURA..'Sakura:EntryNumber'..msg.chat_id_..':'..os.date('%d')) or 0)
+local ExitNumber = (DevSakura:get(SAKURA..'Sakura:ExitNumber'..msg.chat_id_..':'..os.date('%d')) or 0)
+local MsgNumberDay = (DevSakura:get(SAKURA..'Sakura:MsgNumberDay'..msg.chat_id_..':'..os.date('%d')) or 0)
+Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮انضمام الاعضاء اليوم ↫ *"..EntryNumber.."*\n⌔∮مغادرة الاعضاء اليوم ↫ *"..ExitNumber.."*\n⌔∮عدد الرسائل اليوم ↫ *"..MsgNumberDay.."*\n⌔∮نسبة التفاعل اليوم ↫ *"..math.random(40,100).."%*", 1, 'md')
+end
 if text:match("^معرفي$") and ChCheck(msg) then
 function get_username(extra,result,success)
 text = '⌔∮معرفك ↫ ❨ User ❩'
@@ -3889,8 +3879,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 getUser(msg.sender_user_id_,get_firstname)
 end   
-if text and text == "اهمس" or text and text == "همسه" or text and text == "اريد بوت الهمسه" or text and text == "دزلي بوت الهمسه" or  text and text == "دزولي بوت الهمسه" then  Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮@HMSEBOT', 1, 'md') end
-if text:match("^رابط حذف$") or text:match("^رابط الحذف$") or text:match("^اريد رابط الحذف$") or  text:match("^شمرلي رابط الحذف$") or text:match("^اريد رابط حذف$") then local inline = {{{text="اضغط هنا",url="https://t.me/DYFBOT"}}} SendInline(msg.chat_id_,'⌔∮اضغط للحصول على الرابط',nil,inline) return false end
+if text:match("^رابط حذف$") or text:match("^رابط الحذف$") or text:match("^اريد رابط الحذف$") or  text:match("^شمرلي رابط الحذف$") or text:match("^اريد رابط حذف$") then local inline = {{{text="اضغط هنا",url="https://telegram.org/deactivate"}}} SendInline(msg.chat_id_,'⌔∮اضغط للحصول على الرابط',nil,inline) return false end
 if text:match("^بوت الحذف$") or text:match("^اريد بوت الحذف$") or text:match("^اريد بوت حذف$") or text:match("^بوت حذف$") or text:match("^بوت حذف حسابات$") or text:match("^راح احذف$") then local inline = {{{text="اضغط هنا",url="https://t.me/DYFBOT"}}} SendInline(msg.chat_id_,'⌔∮اضغط للحصول على البوت',nil,inline) return false end
 if text:match("^جهاتي$") and ChCheck(msg) or text:match("^اضافاتي$") and ChCheck(msg) then add = (tonumber(DevSakura:get(SAKURA..'Sakura:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0) Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عدد جهاتك المضافه ↫ *❨ "..add.." ❩* ", 1, 'md') end
 if text:match("^تعديلاتي$") or text:match("^سحكاتي$") and ChCheck(msg) then local edit_msg = DevSakura:get(SAKURA..'Sakura:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0  Dev_Abs(msg.chat_id_, msg.id_, 1, "⌔∮عدد تعديلاتك ↫ *❨ "..edit_msg.." ❩* ", 1, 'md') end
@@ -3913,6 +3902,7 @@ end
 end,nil)
 end 
 if text and text:match('^هينه @(.*)') and ChCheck(msg) or text and text:match('^هينها @(.*)') and ChCheck(msg) then 
+if not DevSakura:get(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_) then
 local username = text:match('^هينه @(.*)') or text:match('^هينها @(.*)') 
 function SAKURATEAM(extra,result,success)
 if result.id_ then  
@@ -3942,7 +3932,9 @@ end
 end 
 resolve_username(username,SAKURATEAM)
 end
+end
 if text:match("^هينه$") or text:match("^بعد هينه$") or text:match("^هينه بعد$") or text:match("^لك هينه$") or text:match("^هينها$") or text:match("^هينهه$") or text:match("^رزله$") or text:match("^رزلهه$") or text:match("^رزلها$") then
+if not DevSakura:get(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_) then
 function hena(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(SAKURA) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'شو تمضرط اكو واحد يهين نفسه؟🤔👌🏿', 1, 'md') 
@@ -3970,7 +3962,9 @@ else
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),hena)   
 end
 end
+end
 if text:match("^بوسه$") or text:match("^بعد بوسه$") or text:match("^ضل بوس$") or text:match("^بوسه بعد$") or text:match("^بوسها$") or text:match("^بعد بوسها$") or text:match("^ضل بوس$") or text:match("^بوسها بعد$") or text:match("^بوسهه$") then
+if not DevSakura:get(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_) then
 function bosh(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(SAKURA) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح ابوس نفسيي؟😶💔', 1, 'md') 
@@ -3990,7 +3984,9 @@ else
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),bosh)   
 end
 end
+end
 if text:match("^صيحه$") or text:match("^صيحها$") or text:match("^صيحهه$") or text:match("^صيح$") then
+if not DevSakura:get(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_) then
 function seha(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(SAKURA) then 
 Dev_Abs(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 1, 'md') 
@@ -4010,7 +4006,9 @@ else
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),seha)   
 end
 end
+end
 if text and text:match('^صيحه @(.*)') and ChCheck(msg) or text and text:match('^صيح @(.*)') and ChCheck(msg) then 
+if not DevSakura:get(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_) then
 local username = text:match('^صيحه @(.*)') or text:match('^صيح @(.*)') 
 function SAKURATEAM(extra,result,success)
 if result.id_ then  
@@ -4031,6 +4029,7 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮العضو غير موجود في ال�
 end 
 end 
 resolve_username(username,SAKURATEAM)
+end
 end
 end
 if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Manager(msg) and ChCheck(msg) then 
@@ -5192,7 +5191,7 @@ end
 end
 end
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع مطي$") and ChCheck(msg) then
+if text and text:match("^رفع مطي$") and not DevSakura:get(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function donky_by_reply(extra, result, success)
 if DevSakura:sismember(SAKURA..'User:Donky:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮هو مطي شرفع منه بعد😹💔") 
@@ -5203,7 +5202,7 @@ end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,donky_by_reply)
 end end
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل مطي$") and ChCheck(msg) then
+if text and text:match("^تنزيل مطي$") and not DevSakura:get(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function donky_by_reply(extra, result, success)
 if not DevSakura:sismember(SAKURA..'User:Donky:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"reply","⌔∮هو ليس مطي ليتم تنزيله") 
@@ -7043,7 +7042,7 @@ if text and text:match("^قفل التفليش$") or text and text:match("^تف�
 if not Constructor(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمنشئين فقط', 1, 'md')
 else
-DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","del") 
+DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed") 
 LockList ={'Sakura:Lock:Links','Sakura:Lock:Contact','Sakura:Lock:Forwards','Sakura:Lock:Videos','Sakura:Lock:Gifs','Sakura:Lock:EditMsgs','Sakura:Lock:Stickers','Sakura:Lock:Farsi','Sakura:Lock:Spam','Sakura:Lock:WebLinks','Sakura:Lock:Photo'}
 for i,Lock in pairs(LockList) do
 DevSakura:set(SAKURA..Lock..msg.chat_id_,true)
@@ -7068,7 +7067,7 @@ if not Constructor(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮للمنشئين فقط', 1, 'md')
 else
 DevSakura:del(SAKURA..'Sakura:Lock:Fshar'..msg.chat_id_) DevSakura:del(SAKURA..'Sakura:Lock:Taf'..msg.chat_id_) DevSakura:del(SAKURA..'Sakura:Lock:Kfr'..msg.chat_id_) 
-DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","del") 
+DevSakura:set(SAKURA.."Sakura:Lock:Bots"..msg.chat_id_,"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed") 
 LockList ={'Sakura:Lock:EditMsgs','Sakura:Lock:Farsi','Sakura:Lock:TagServr','Sakura:Lock:Inline','Sakura:Lock:Photo','Sakura:Lock:Spam','Sakura:Lock:Videos','Sakura:Lock:Gifs','Sakura:Lock:Music','Sakura:Lock:Voice','Sakura:Lock:Links','Sakura:Lock:Location','Sakura:Lock:Tags','Sakura:Lock:Stickers','Sakura:Lock:Markdown','Sakura:Lock:Forwards','Sakura:Lock:Document','Sakura:Lock:Contact','Sakura:Lock:Hashtak','Sakura:Lock:WebLinks'}
 for i,Lock in pairs(LockList) do
 DevSakura:set(SAKURA..Lock..msg.chat_id_,true)
@@ -7442,7 +7441,7 @@ DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if Manager(msg) then
 if text and (text == 'تفعيل ردود البوت' or text == 'تفعيل الردود') and ChCheck(msg) then
-if not DevSakura:get(SAKURA..'bot:rep:mute'..msg.chat_id_) then
+if not DevSakura:get(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ردود البوت بالتاكيد مفعله ', 1, 'md')
 else
 local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تفعيل ردود البوت'
@@ -7451,7 +7450,7 @@ DevSakura:del(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_)
 end 
 end
 if text and (text == 'تعطيل ردود البوت' or text == 'تعطيل الردود') and ChCheck(msg) then
-if DevSakura:get(SAKURA..'bot:rep:mute'..msg.chat_id_) then
+if DevSakura:get(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ردود البوت بالتاكيد معطله ', 1, 'md')
 else
 local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تعطيل ردود البوت'
@@ -7680,6 +7679,21 @@ t = Mean.ok.abs
 Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
 end
+if text == "غنيلي" and ChCheck(msg) then
+data,res = https.request('https://apiabs.ml/Audios.php')
+if res == 200 then
+Audios = json:decode(data)
+if Audios.Info == true then
+local Text ='⌔∮تم اختيار المقطع الصوتي لك'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '𝐒𝐀𝐊𝐔𝐑𝐀 𝐓𝐄𝐀𝐌',url="t.me/SAKURAV15"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(Audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+end
+end
 if Admin(msg) then
 if DevSakura:get(SAKURA..'Sakura:LockSettings'..msg.chat_id_) then 
 if text == "الروابط" then if DevSakura:get(SAKURA..'Sakura:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end local SAKURATEAM = "\n" .."⌔∮الروابط ↫ "..mute_links.."\n" Dev_Abs(msg.chat_id_, msg.id_, 1, SAKURATEAM, 1, 'md') end
@@ -7718,6 +7732,16 @@ if text == 'تعطيل كشف الاعدادات' and ChCheck(msg) then
 local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل كشف الاعدادات'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:LockSettings'..msg.chat_id_) 
+end
+if text == 'تفعيل اوامر التحشيش' and Manager(msg) and ChCheck(msg) then 
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل اوامر التحشيش'
+absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+DevSakura:del(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_)
+end
+if text == 'تعطيل اوامر التحشيش' and Manager(msg) and ChCheck(msg) then 
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل اوامر التحشيش'
+absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 14, string.len(msg.sender_user_id_))
+DevSakura:set(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_,true)
 end
 if text == 'تفعيل ضافني' and Manager(msg) then 
 DevSakura:del(SAKURA..'Sakura:Added:Me'..msg.chat_id_) 
@@ -8746,7 +8770,7 @@ local text =  [[
 ⌔∮تفعيل • تعطيل + الامر ↫ ⤈
 ⌔∮اطردني • الايدي بالصوره • الابراج
 ⌔∮معاني الاسماء • اوامر النسب
-⌔∮الايدي • تحويل الصيغ
+⌔∮الايدي • تحويل الصيغ • اوامر التحشيش
 ⌔∮ردود المدير • ردود المطور
 ⌔∮ضافني • حساب العمر • الزخرفه
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
@@ -8899,21 +8923,21 @@ local text =  [[
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ⌔∮السورس • موقعي • رتبتي • معلوماتي
 ⌔∮رسائلي • حذف رسائلي • اسمي • معرفي 
-⌔∮ايدي •ايديي • جهاتي • المطايه • الالعاب 
+⌔∮ايدي •ايديي • جهاتي • غنيلي • الالعاب 
 ⌔∮نقاطي • بيع نقاطي • القوانين • زخرفه 
 ⌔∮رابط الحذف • نزلني • اطردني • المطور 
 ⌔∮منو ضافني • مشاهدات المنشور • الرابط 
 ⌔∮ايدي المجموعه • معلومات المجموعه 
 ⌔∮نسبه الحب • نسبه الكره • نسبه الغباء 
-⌔∮نسبه الرجوله • نسبه الانوثه 
+⌔∮نسبه الرجوله • نسبه الانوثه • التفاعل
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ⌔∮كول + الكلمه
 ⌔∮زخرفه + اسمك
 ⌔∮برج + نوع البرج
 ⌔∮معنى اسم + الاسم
 ⌔∮احسب + تاريخ ميلادك
-⌔∮رفع مطي • تنزيل مطي
 ⌔∮بوسه • بوسها ↫ بالرد
+⌔∮رفع مطي • تنزيل مطي •المطايه
 ⌔∮هينه • هينها ↫ بالرد • بالمعرف
 ⌔∮صيحه • صيحها ↫ بالرد • بالمعرف
 ⌔∮ايدي • كشف  ↫ بالرد • بالمعرف • بالايدي
@@ -8999,7 +9023,7 @@ local list6 = DevSakura:smembers(SAKURA..'Special:User'..Groups[i])
 for k,v in pairs(list6) do
 DevSakura:sadd(SAKURA.."Sakura:VipMem:"..Groups[i], v)
 end
-DevSakura:set(SAKURA.."Sakura:Lock:Bots"..Groups[i],"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..Groups[i] ,"Spam:User","del") 
+DevSakura:set(SAKURA.."Sakura:Lock:Bots"..Groups[i],"del") DevSakura:hset(SAKURA.."Sakura:Spam:Group:User"..Groups[i] ,"Spam:User","keed") 
 LockList ={'Sakura:Lock:Links','Sakura:Lock:Forwards','Sakura:Lock:Videos','Sakura:Lock:Gifs','Sakura:Lock:EditMsgs','Sakura:Lock:Stickers','Sakura:Lock:Farsi','Sakura:Lock:Spam','Sakura:Lock:WebLinks'}
 for i,Lock in pairs(LockList) do
 DevSakura:set(SAKURA..Lock..Groups[i],true)
