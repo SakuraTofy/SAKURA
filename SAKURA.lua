@@ -7441,15 +7441,23 @@ DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if Manager(msg) then
 if text and (text == 'تفعيل ردود البوت' or text == 'تفعيل الردود') and ChCheck(msg) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تفعيل ردود البوت'
+if not DevSakura:get(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_) then
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ردود البوت بالتاكيد مفعله ', 1, 'md')
+else
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل ردود البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_)
+end 
 end
 if text and (text == 'تعطيل ردود البوت' or text == 'تعطيل الردود') and ChCheck(msg) then
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تعطيل ردود البوت'
+if DevSakura:get(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_) then
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ردود البوت بالتاكيد معطله ', 1, 'md')
+else
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل ردود البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_,true)
 end 
+end
 end
 if DevSakura:get(SAKURA..'Sakura:setrules'..msg.chat_id_..':'..msg.sender_user_id_) then 
 if text == 'الغاء' then 
@@ -7737,12 +7745,12 @@ DevSakura:set(SAKURA..'Sakura:Lock:Stupid'..msg.chat_id_,true)
 end
 if text == 'تفعيل ضافني' and Manager(msg) then 
 DevSakura:del(SAKURA..'Sakura:Added:Me'..msg.chat_id_) 
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تفعيل منو ضافني'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تفعيل منو ضافني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 end
 if text == 'تعطيل ضافني' and Manager(msg) then 
 DevSakura:set(SAKURA..'Sakura:Added:Me'..msg.chat_id_,true) 
-local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تعطيل منو ضافني'
+local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..AbsRank(msg)..' \n⌔∮تم تعطيل منو ضافني'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 end
 if text == 'تفعيل ردود المدير' and Manager(msg) and ChCheck(msg) then 
