@@ -7441,23 +7441,15 @@ DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if Manager(msg) then
 if text and (text == 'تفعيل ردود البوت' or text == 'تفعيل الردود') and ChCheck(msg) then
-if not DevSakura:get(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ردود البوت بالتاكيد مفعله ', 1, 'md')
-else
 local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تفعيل ردود البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 DevSakura:del(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_)
-end 
 end
 if text and (text == 'تعطيل ردود البوت' or text == 'تعطيل الردود') and ChCheck(msg) then
-if DevSakura:get(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_) then
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌔∮ردود البوت بالتاكيد معطله ', 1, 'md')
-else
 local SAKURATEAM = '⌔∮اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌔∮تم تعطيل ردود البوت'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, SAKURATEAM, 15, string.len(msg.sender_user_id_))
 DevSakura:set(SAKURA..'Sakura:Lock:Reply'..msg.chat_id_,true)
 end 
-end
 end
 if DevSakura:get(SAKURA..'Sakura:setrules'..msg.chat_id_..':'..msg.sender_user_id_) then 
 if text == 'الغاء' then 
