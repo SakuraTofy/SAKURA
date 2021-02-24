@@ -1275,9 +1275,9 @@ DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end   
 end
 if msg.content_.ID == "MessageChatJoinByLink" or msg.content_.ID == "MessageChatAddMembers" then   
-DevAbs:incr(DevProx..'Abs:EntryNumber'..msg.chat_id_..':'..os.date('%d'))  
+DevSakura:incr(SAKURA..'Sakura:EntryNumber'..msg.chat_id_..':'..os.date('%d'))  
 elseif msg.content_.ID == "MessageChatDeleteMember" then   
-DevAbs:incr(DevProx..'Abs:ExitNumber'..msg.chat_id_..':'..os.date('%d'))  
+DevSakura:incr(SAKURA..'Sakura:ExitNumber'..msg.chat_id_..':'..os.date('%d'))  
 end
 if (data.ID == "UpdateNewMessage") then
 local msg = data.message_
